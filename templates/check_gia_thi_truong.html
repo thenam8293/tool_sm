@@ -1,0 +1,1107 @@
+
+<style type="text/css">
+    hr{margin-top: 0; margin-bottom: 5px;}
+    .nam123 {vertical-align: middle !important; display: inline-block;}
+</style>
+
+<!-- MODAL KET QUA THO CU -->
+    <button type="button" id="ket_qua_tho_cu" class="btn btn-info btn-lg" data-toggle="modal" data-target="#modal_ket_qua_tho_cu" style="display: none;">Open Modal</button>
+    <div class="modal fade" id="modal_ket_qua_tho_cu" role="dialog">
+        <div class="modal-dialog modal-lg modal_ket_qua">
+            <div class="modal-content ">
+                <div class="modal-header" style="text-align:center;background-color: #901e1d;">
+                    <button type="button" class="close" data-dismiss="modal" style="outline: none;color: white !important;font-size: 200% !important;opacity: 0.8;">&times;</button>
+                    <div style="font-weight: bold;color: white; font-size: 150%">BẤT ĐỘNG SẢN ĐẤT THỔ CƯ</div>
+                </div>
+                <div class="modal-footer" style="text-align:left;color: black">  
+                    <label class="inline_label_sm label_custom">ID: </label>
+                    <label class="inline_label_md label_value" id="ket_qua_tho_cu_id"></label>
+
+                    <label class="inline_label_sm label_custom">Ngày khởi tạo: </label>
+                    <label class="inline_label_md label_value" id="ket_qua_tho_cu_ngay_khoi_tao"></label>
+                    <hr>
+                    <label class="inline_label_sm label_custom">Địa chỉ: </label>
+                    <label class="inline_label_md label_value" id="ket_qua_tho_cu_dia_chi"></label>
+
+                    <label class="inline_label_sm label_custom">Vị trí: </label>
+                    <label class="inline_label_md label_value" id="ket_qua_tho_cu_vi_tri"></label>
+                   
+                    <label class="inline_label_sm label_custom">Đặc điểm vị trí: </label>
+                    <label class="inline_label_md label_value" id="ket_qua_tho_cu_dd_vi_tri"></label>
+
+                    <label class="inline_label_sm label_custom">Diện tích: </label>
+                    <label class="inline_label_md label_value" id="ket_qua_tho_cu_dien_tich"></label>
+                    
+                    <label class="inline_label_sm label_custom">Mặt tiền: </label>
+                    <label class="inline_label_md label_value" id="ket_qua_tho_cu_mat_tien"></label>
+
+                    <label class="inline_label_sm label_custom">Hình dạng: </label>
+                    <label class="inline_label_md label_value" id="ket_qua_tho_cu_hinh_dang"></label>
+                    
+                    <label class="inline_label_sm label_custom">Độ rộng ngõ: </label>
+                    <label class="inline_label_md label_value" id="ket_qua_tho_cu_do_rong_ngo"></label>
+
+                    <label class="inline_label_sm label_custom">Khoảng cách đến trục chính: </label>
+                    <label class="inline_label_md label_value" id="ket_qua_tho_cu_kcach_truc_chinh"></label>
+                    <hr>
+                    <label class="inline_label_sm label_custom">Loại nhà: </label>
+                    <label class="inline_label_xl label_value" id="ket_qua_tho_cu_loai_nha"></label>
+
+                    <label class="inline_label_sm label_custom">Thời gian sử dụng: </label>
+                    <label class="inline_label_md label_value" id="ket_qua_tho_cu_thoi_gian_su_dung"></label>
+                    
+                    <label class="inline_label_sm label_custom">Diện tích sàn xây dựng: </label>
+                    <label class="inline_label_md label_value" id="ket_qua_tho_cu_dien_tich_san_xd"></label>
+                    <hr>
+                    <label class="inline_label_sm label_custom">Yếu tố lợi thế: </label>
+                    <label class="inline_label_md label_value" id="ket_qua_tho_cu_loi_the">
+                    </label>                    
+                    <label class="inline_label_sm label_custom">Yếu tố bất lợi: </label>
+                    <label class="inline_label_md label_value" id="ket_qua_tho_cu_bat_loi"></label>
+                    <hr style="border-bottom: 1px solid #901e1d;">
+                    <label class="inline_label_sm label_custom">Đơn giá đất trước điều chỉnh: </label>
+                    <label class="inline_label_md label_value" id="ket_qua_tho_cu_gia_truoc"></label>                   
+                    <label class="inline_label_sm label_custom">Đơn giá đất sau điều chỉnh: </label>
+                    <label class="inline_label_md label_value" id="ket_qua_tho_cu_gia_sau"></label>                   
+                    <label class="inline_label_sm label_custom">Tỷ lệ chênh lệch: </label>                   
+                    <label class="inline_label_md label_value" id="ket_qua_tho_cu_ti_le"></label>
+                    <label class="inline_label_sm label_custom">Tổng giá trị đất tham khảo: </label>
+                    <label class="inline_label_md label_value" id="ket_qua_tho_cu_tong_gia"></label>                
+            
+                    <hr>
+                    <label class="inline_label_sm label_custom">Đơn giá CTXD: </label>
+                    <label class="inline_label_md label_value" id="ket_qua_tho_cu_gia_ctxd"></label>                    
+                    <label class="inline_label_sm label_custom">Tổng giá trị CTXD: </label>                   
+                    <label class="inline_label_md label_value" id="ket_qua_tho_cu_tong_gia_ctxd"></label>
+                    <hr>
+                    <label class="inline_label_sm label_custom">Tổng giá trị tài sản: </label>                   
+                    <label class="inline_label_md label_value" id="ket_qua_tho_cu_tong_gia_tai_san"></label>
+                </div>
+                <div class="modal-footer" style="text-align:center;color: black">               
+                <button onclick="takeScreenShot2($('#ket_qua_tho_cu_id').text())" style="">Lưu kết quả</button>                
+                   
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!-- MODAL KET QUA CHUNG CU -->
+    <button type="button" id="ket_qua_chung_cu" class="btn btn-info btn-lg" data-toggle="modal" data-target="#modal_ket_qua_chung_cu" style="display: none;">Open  l</button>
+    <div class="modal fade" id="modal_ket_qua_chung_cu" role="dialog">
+            <div class="modal-dialog modal-lg modal_ket_qua">
+                <div class="modal-content ">
+                    <div class="modal-header" style="text-align:center;background-color: #901e1d;">
+                        <button type="button" class="close" data-dismiss="modal" style="outline: none;color: white !important;font-size: 200% !important;opacity: 0.8;">&times;</button>
+                        <div style="font-weight: bold;color: white; font-size: 150%">BẤT ĐỘNG SẢN CHUNG CƯ</div>
+                    </div>
+                    <div class="modal-footer" style="text-align:left;color: black">
+                        <label class="inline_label_sm label_custom">ID: </label>
+                        <label class="inline_label_md label_value" id="ket_qua_chung_cu_id"></label>
+
+                        <label class="inline_label_sm label_custom">Ngày khởi tạo: </label>
+                        <label class="inline_label_md label_value" id="ket_qua_chung_cu_ngay_khoi_tao"></label>
+                        <hr>
+                        <label class="inline_label_sm label_custom">Tên dự án: </label>
+                        <label class="inline_label_md label_value" id="ket_qua_chung_cu_ten_du_an"></label>
+
+                        <label class="inline_label_sm label_custom">Địa chỉ dự án: </label>
+                        <label class="inline_label_md label_value" id="ket_qua_chung_cu_dia_chi_du_an"></label>
+                        <hr>
+                        <label class="inline_label_sm label_custom">Tòa: </label>
+                        <label class="inline_label_md label_value" id="ket_qua_chung_cu_ten_toa"></label>
+                        
+
+                        <label class="inline_label_sm label_custom">Tầng: </label>
+                        <label class="inline_label_md label_value" id="ket_qua_chung_cu_so_tang"></label>
+                        <hr>
+                        <label class="inline_label_sm label_custom">Mã căn: </label>
+                        <label class="inline_label_md label_value" id="ket_qua_chung_cu_ma_can"></label>
+
+                        <label class="inline_label_sm label_custom">Diện tích: </label>
+                        <label class="inline_label_md label_value" id="ket_qua_chung_cu_dien_tich"></label>
+                        <hr>
+
+                        <label class="inline_label_sm label_custom">Loại diện tích: </label>
+                        <label class="inline_label_md label_value" id="ket_qua_chung_cu_loai_dien_tich"></label>
+                        <hr style="border-bottom:  1px solid #901e1d;">
+                        <label class="inline_label_sm label_custom">Đơn giá: </label>
+                        <label class="inline_label_md label_value" id="ket_qua_chung_cu_don_gia"></label>
+                        
+
+                        <label class="inline_label_sm label_custom">Tổng giá trị: </label>
+                        <label class="inline_label_md label_value" id="ket_qua_chung_cu_tong_gia"></label>
+                    </div>
+
+                    <div class="modal-footer" style="text-align:center;color: black">              
+                    <button onclick="takeScreenShot_cc($('#ket_qua_chung_cu_id').text())" style="">Lưu kết quả</button>                
+                       
+                    </div>
+                </div>
+            </div>
+    </div>
+
+<!-- MODAL KET QUA BIET THU -->
+    <button type="button" id="ket_qua_biet_thu" class="btn btn-info btn-lg" data-toggle="modal" data-target="#modal_ket_qua_biet_thu" style="display: none;">Open btl</button>
+    <div class="modal fade" id="modal_ket_qua_biet_thu" role="dialog">
+        <div class="modal-dialog modal-lg modal_ket_qua">
+            <div class="modal-content ">
+                <div class="modal-header" style="text-align:center;background-color: #901e1d;">
+                    <button type="button" class="close" data-dismiss="modal" style="outline: none;color: white !important;font-size: 200% !important;opacity: 0.8;">&times;</button>
+                    <div style="font-weight: bold;color: white; font-size: 150%">BẤT ĐỘNG SẢN SHOPHOUSE - BIỆT THỰ LIỀN KỀ</div>
+                </div>
+                <div class="modal-footer" style="text-align:left;color: black">  
+
+                    <label class="inline_label_sm label_custom">ID: </label>
+                    <label class="inline_label_md label_value" id="ket_qua_biet_thu_id"></label>
+
+                    <label class="inline_label_sm label_custom">Ngày khởi tạo: </label>
+                    <label class="inline_label_md label_value" id="ket_qua_biet_thu_ngay_khoi_tao"></label>
+                    <hr>
+                    <label class="inline_label_sm label_custom">Tên dự án: </label>
+                    <label class="inline_label_md label_value" id="ket_qua_biet_thu_ten_du_an"></label>
+
+                    <label class="inline_label_sm label_custom">Địa chỉ dự án: </label>
+                    <label class="inline_label_md label_value" id="ket_qua_biet_thu_dia_chi_du_an"></label>
+                    <hr>
+                    <label class="inline_label_sm label_custom">Đường\Dãy\Khu: </label>
+                    <label class="inline_label_md label_value" id="ket_qua_biet_thu_ten_toa_duong"></label>                    
+
+                    <label class="inline_label_sm label_custom">Loại nhà: </label>
+                    <label class="inline_label_md label_value" id="ket_qua_biet_thu_loai_nha"></label>
+                    <hr>
+                    <label class="inline_label_sm label_custom">Mã căn: </label>
+                    <label class="inline_label_md label_value" id="ket_qua_biet_thu_ma_can"></label>
+                    <hr style="border-bottom: 1px solid #901e1d;">
+                    <label class="inline_label_sm label_custom">Diện tích đất: </label>
+                    <label class="inline_label_md label_value" id="ket_qua_biet_thu_dien_tich_dat"></label>
+                    
+                    <label class="inline_label_sm label_custom">Diện tích sàn xây dựng: </label>
+                    <label class="inline_label_md label_value" id="ket_qua_biet_thu_dien_tich_san"></label>
+                    
+                    <hr>
+                    <label class="inline_label_sm label_custom">Đơn giá đất: </label>
+                    <label class="inline_label_md label_value" id="ket_qua_biet_thu_don_gia_dat"></label>
+                    
+                    <label class="inline_label_sm label_custom">Đơn giá CTXD: </label>
+                    <label class="inline_label_md label_value" id="ket_qua_biet_thu_don_gia_ctxd"></label>
+                    
+                    <hr>
+                    <label class="inline_label_sm label_custom">Tổng giá trị xây thô: </label>
+                    <label class="inline_label_md label_value" id="ket_qua_biet_thu_tong_gia_xay_tho"></label>
+
+                    <label class="inline_label_sm label_custom">Tổng giá trị hoàn thiện: </label>
+                    <label class="inline_label_md label_value" id="ket_qua_biet_thu_tong_gia_hoan_thien"></label>
+                </div>
+
+                <div class="modal-footer" style="text-align:center;color: black">              
+                <button onclick="takeScreenShot_bt($('#ket_qua_biet_thu_id').text())" style="">Lưu kết quả</button>                
+                   
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+<form id="input_form_tho_cu" method="POST" style="display: none;">
+<!-- MODAL WARNING -->
+    <button type="button" id="button_warning_box" class="btn btn-info btn-lg" data-toggle="modal" data-target="#warning_box" style="display:none;">Open Modal</button>
+    <div class="modal fade" id="warning_box" role="dialog">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content" style="width: 30vw;margin: 0 auto;margin-top: 25vh;">
+                <div class="modal-header" style="text-align:center;">
+                    <button type="button" class="close" data-dismiss="modal" style="outline: none;">&times;</button>
+                    <div style="font-weight: bold;color: red; font-size: 150%">WARNING</div>
+                </div>
+                <div class="modal-footer" style="text-align:center;color: black">
+                    
+                    <div>Thông tin không hợp lệ</div>
+                    <div>Vui lòng nhập thông tin phù hợp với Đặc điểm vị trí</div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.5.0-beta4/html2canvas.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.5.0-beta4/html2canvas.svg.js"></script>
+<script type="text/javascript">
+    var width_screen = $(window).width()
+
+    // THO CU
+    var ket_qua_tho_cu2 = document.getElementById("modal_ket_qua_tho_cu")
+    var takeScreenShot2 = function(id_tho_cu) {
+        html2canvas(ket_qua_tho_cu2, {
+            onrendered: function (canvas) {
+                let tempcanvas2=document.createElement('canvas')
+                let scr_shot_width2 = $("#modal_ket_qua_tho_cu").width()
+                let scr_shot_height2 = $("#modal_ket_qua_tho_cu").height()
+
+                tempcanvas2.width = scr_shot_width2
+                tempcanvas2.height = scr_shot_height2
+                let context=tempcanvas2.getContext('2d')
+                context.drawImage(canvas, 10, 0, scr_shot_width2, scr_shot_height2)
+                let link=document.createElement("a")
+                link.href=tempcanvas2.toDataURL('image/jpg')
+                link.download = `${id_tho_cu}.jpg`
+                link.click()
+          }
+      })
+    }
+
+
+    // CHUNG CU
+    var ket_qua_chung_cu = document.getElementById("modal_ket_qua_chung_cu")
+    var takeScreenShot_cc = function(id_cc) {
+        html2canvas(ket_qua_chung_cu, {
+            onrendered: function (canvas) {
+                let tempcanvas=document.createElement('canvas')
+                let scr_shot_width = $("#modal_ket_qua_chung_cu").width()
+                let scr_shot_height = $("#modal_ket_qua_chung_cu").height()
+
+                tempcanvas.width = scr_shot_width
+                tempcanvas.height = scr_shot_height
+                let context=tempcanvas.getContext('2d')
+                context.drawImage(canvas, 10, 0, scr_shot_width, scr_shot_height)
+                let link=document.createElement("a")
+                link.href=tempcanvas.toDataURL('image/jpg')
+                link.download = `${id_cc}.jpg`
+                link.click()
+          }
+      })
+    }
+
+    // BIET THU
+    var ket_qua_biet_thu = document.getElementById("modal_ket_qua_biet_thu")
+    var takeScreenShot_bt = function(id_bt) {
+        html2canvas(ket_qua_biet_thu, {
+            onrendered: function (canvas) {
+                let tempcanvas=document.createElement('canvas')
+                let scr_shot_width = $("#modal_ket_qua_biet_thu").width()
+                let scr_shot_height = $("#modal_ket_qua_biet_thu").height()
+
+                tempcanvas.width = scr_shot_width
+                tempcanvas.height = scr_shot_height
+                let context=tempcanvas.getContext('2d')
+                context.drawImage(canvas, 10, 0, scr_shot_width, scr_shot_height)
+                let link=document.createElement("a")
+                link.href=tempcanvas.toDataURL('image/jpg')
+                link.download = `${id_bt}.jpg`
+                link.click()
+          }
+      });
+    }
+</script>
+
+
+<!-- THO CU -->
+<div class="row">
+    <div class="col-md-12">
+
+        <div class="x_panel">
+            <!-- TITLE THO CU-->
+            <div class="x_title">
+                <h2>BẤT ĐỘNG SẢN THỔ CƯ</h2>                    
+                <div class="clearfix"></div>
+            </div>
+
+            <!-- CONTENT THO CU-->
+            <div class="x_content">
+                <!-- BDS NHA THO CU -->
+                <div class="collapse-group" id="div_main_tho_cu" style="margin-top: 2vh;display: ;">
+                    <!-- TT BDS -->
+                       <div class="panel panel-default">
+                           <div class="panel-heading color_panel" role="tab" id="">
+                               <div class="panel-title">
+                                   <a id="title" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseBDS_tho_cu_One" aria-expanded="true" aria-controls="collapseBDS_tho_cu_One" style="padding: 10px 15px !important"> THÔNG TIN CHUNG BĐS</a>
+                               </div>
+                           </div>
+                           <div class="panel-body">
+                               <!-- <div class="inline_modal" id="div_dia_chi_thi_truong">
+                                   <label class="inline_label" for="dia_chi_thi_truong">Địa chỉ</label>
+                                   <select id="dia_chi_thi_truong" class="form-control inline_select_input selectpicker" name="dia_chi_thi_truong" title="" data-live-search="true">
+
+                                   </select>
+                               </div>  --> 
+
+                               <div class="inline_modal">
+                                   <label class="inline_label" for="tinh_thanh_thi_truong" style="">Tỉnh/Thành</label>
+                                   <select id="tinh_thanh_thi_truong" name="tinh_thanh_thi_truong" class="form-control inline_select_input selectpicker" title="" data-live-search="true">
+                                        {% for i in list_tinh_thanh %}
+                                            <option>{{i}}</option>
+                                        {% endfor %}
+                                   </select>                   
+                               </div> 
+                               <div class="inline_modal">
+                                   <label class="inline_label" for="quan_huyen_thi_truong" style="">Quận/Huyện</label>
+                                   <select id="quan_huyen_thi_truong" name="quan_huyen_thi_truong" class="form-control inline_select_input selectpicker" title="" data-live-search="true">
+                                   </select>                   
+                               </div> 
+                               <div class="inline_modal">
+                                   <label class="inline_label" for="ten_duong_thi_truong" style="">Tuyến đường</label>
+                                   <select id="ten_duong_thi_truong" name="ten_duong_thi_truong" class="form-control inline_select_input selectpicker" title="" data-live-search="true">
+                                   </select>                   
+                               </div>                
+                               <div class="inline_modal">
+                                   <label class="inline_label" for="tuyen_duong_thi_truong" style="">Đoạn đường</label>
+                                   <select id="tuyen_duong_thi_truong" name="tuyen_duong_thi_truong" class="form-control inline_select_input selectpicker" title="" data-live-search="true">
+                                   </select>                   
+                               </div>                   
+                               <div class="inline_modal">
+                                   <label class="inline_label vi_tri_pop_thi_truong" for="vi_tri_bds_thi_truong" style="">Vị trí
+                                   </label>
+                                   <select id="vi_tri_bds_thi_truong" name="vi_tri_bds_thi_truong" class="form-control inline_select_input selectpicker" title="" data-live-search="true">
+                                   </select> 
+                                                  
+                               </div>              
+                               <div class="inline_modal float-label-control">
+                                   <label class="inline_label" for="dac_diem_vi_tri_thi_truong" style="margin-top: 2px; vertical-align: top;">Đặc điểm vị trí</label>
+                                   <label class="" id="dac_diem_vi_tri_thi_truong" style=" width: 65%"></label>
+                               </div>
+                           </div>
+                       </div>
+
+                    <!-- TT DIEU CHINH -->
+                        <div class="panel panel-default">
+                            <div class="panel-heading color_panel" role="tab" id="">
+                                <div class="panel-title">
+                                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseBDS_tho_cu_Two" aria-expanded="true" aria-controls="collapseBDS_tho_cu_Two" style="padding: 10px 15px !important"> THÔNG TIN CHI TIẾT BĐS </a>
+                                </div>
+                            </div>
+                            <div class="panel-body">
+                                 <div class="inline_modal float-label-control">
+                                     <label class="inline_label" for="dien_tich_dat_thi_truong">Diện tích đất <span style="font-style: italic;font-size: 90%;font-weight: normal;">(m2)</span></label>
+                                     <input type="number" id="dien_tich_dat_thi_truong" name="dien_tich_dat_thi_truong" class="form-control inline_select_input">
+                                 </div>
+                                 
+                                 <div class="inline_modal float-label-control">
+                                     <label class="inline_label" for="do_rong_mat_tien_thi_truong">Độ rộng mặt tiền <span style="font-style: italic;font-size: 90%;font-weight: normal;">(m)</span></label>
+                                     <input type="number" id="do_rong_mat_tien_thi_truong" name="do_rong_mat_tien_thi_truong" class="form-control inline_select_input">
+                                 </div>
+                                 <div class="inline_modal float-label-control">
+                                    <label class="inline_label" for="hinh_dang">Hình dáng</label>
+                                    <!-- <input type="text" id="hinh_dang" name="hinh_dang" class="form-control inline_select_input"> -->
+                                    <select id="hinh_dang" name="hinh_dang" class="form-control inline_select_input selectpicker" title="Chưa lựa chọn">
+                                        <option disabled="">Chưa lựa chọn</option>                            
+                                        <option>Vuông vức</option>
+                                        <option>Tương đối vuông vức</option>
+                                        <option>Không vuông vức (Tóp hậu, chiều dài gấp 7 lần chiều rộng trở lên)</option>
+                                        <option>Hình chữ L (mặt hậu lớn gấp trên 2 lần mặt tiền)</option>
+                                        <option>Tam giác/đa giác nhiều góc cạnh</option>
+                                    </select>
+
+                                 </div>
+                                 <div class="inline_modal float-label-control" id="div_do_rong_ngo_thi_truong" style="display: none;">
+                                     <label class="inline_label" for="do_rong_ngo_thi_truong">Độ rộng ngõ nhỏ nhất vào tài sản <span style="font-style: italic;font-size: 90%;font-weight: normal;">(m)</span></label>
+                                     <input type="number" id="do_rong_ngo_thi_truong" name="do_rong_ngo_thi_truong" class="form-control inline_select_input">
+                                 </div>
+                                 <div class="inline_modal float-label-control" id="div_kcach_truc_chinh_thi_truong" style="display: none;">
+                                     <label class="inline_label" for="kcach_truc_chinh_thi_truong">Khoảng cách đến trục chính <span style="font-style: italic;font-size: 90%;font-weight: normal;"> (m) </label>
+                                     <input type="number" id="kcach_truc_chinh_thi_truong" name="kcach_truc_chinh_thi_truong" class="form-control inline_select_input">
+                                 </div>
+                                 
+                            </div>
+                        </div>
+
+                    <!-- CTXD -->
+                    <div class="panel panel-default">
+                       <div class="panel-heading color_panel" role="tab" id="">
+                           <div class="panel-title">
+                               <a role="button" style="padding: 10px 15px !important;"> CÔNG TRÌNH XÂY DỰNG  </a>
+                           </div>
+                       </div>
+                       <div class="panel-body">
+                            <div class="inline_modal float-label-control">
+                               <label class="inline_label" for="loai_nha_tho_cu">Loại nhà </label>
+                               <select id="loai_nha_tho_cu" name="loai_nha_tho_cu" class="form-control inline_select_input selectpicker" title="Chưa lựa chọn">
+                                   <option disabled=""></option>                            
+                                   {% for r in list_loai_nha %}
+                                        <option>{{r}}</option>
+                                   {% endfor %}
+                               </select>
+
+                            </div>
+                            <div class="inline_modal float-label-control">
+                               <label class="inline_label" for="tang_ham_ctxd">Tầng hầm </label>
+                               <select id="tang_ham_ctxd" name="tang_ham_ctxd" class="form-control inline_select_input selectpicker" title="Chưa lựa chọn">
+                                   <option>Có</option>                            
+                                   <option>Không</option>                        
+                                   
+                               </select>      
+
+                            </div>
+                            <div class="inline_modal float-label-control">
+                               <label class="inline_label" for="thoi_gian_su_dung">Thời gian sử dụng</label>
+                               <select id="thoi_gian_su_dung" name="thoi_gian_su_dung" class="form-control inline_select_input selectpicker" title="Chưa lựa chọn">
+                                   <option disabled=""></option>                            
+                                   {% for r in list_nam_su_dung %}
+                                        <option>{{r}}</option>
+                                   {% endfor %}
+                               </select>
+
+                            </div>
+                            
+                            <div class="inline_modal float-label-control">
+                               <label class="inline_label" for="dien_tich_san_xd">Diện tích sàn xây dựng (m2)</label>
+                               <input type="number" id="dien_tich_san_xd" name="dien_tich_san_xd" class="form-control inline_select_input">        
+
+                            </div>
+                       </div>
+                    </div>
+
+                    <!-- YEU TO LOI THE -->
+                        <div class="panel panel-default">
+                           <div class="panel-heading color_panel" role="tab" id="">
+                               <div class="panel-title">
+                                   <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseBDS_tho_cu_Two" aria-expanded="true" aria-controls="collapseBDS_tho_cu_Two" style="padding: 10px 15px !important;"> YẾU TỐ LỢI THẾ </a>
+                               </div>
+                           </div>
+                           <div class="panel-body" id="div_select_loi_the">                                
+                           </div>
+                        </div>
+                        
+                    <!-- YEU TO BAT LOI -->
+                        <div class="panel panel-default">
+                           <div class="panel-heading color_panel" role="tab" id="">
+                               <div class="panel-title">
+                                   <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseBDS_tho_cu_Two" aria-expanded="true" aria-controls="collapseBDS_tho_cu_Two" style="padding: 10px 15px !important"> YẾU TỐ BẤT LỢI </a>
+                               </div>
+                           </div>
+                           <div class="panel-body" id="div_select_bat_loi">                                
+                           </div>
+                        </div>
+                        <!-- BTN SUBMIT -->
+                        <div style="text-align: center;">
+                            <button type="button" style="border: none; outline: none; background-color: #901e1d;color: white; width: 90px; height: 30px;margin-bottom: 10px;" id="get_result">SUBMIT</button>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+    
+    <!-- DISABLE BTN COMMA -->
+    <script type="text/javascript">
+        function disable_btn(e) {if ((e.which || e.keyCode) == 188 || (e.which || e.keyCode) == 69) e.preventDefault()}           
+        $(`input[type='number']`).on("keydown",disable_btn);
+    </script>
+
+
+    <!-- VALIDATION DK VI TRI -->
+    <script type="text/javascript">
+           function between_out(x, min, max) {
+             return x >= min && x <= max
+           }
+           function between_left(x, min, max) {
+             return x >= min && x < max
+           }
+           function between_right(x, min, max) {
+             return x > min && x <= max
+           }
+           function between_in(x, min, max) {
+             return x > min && x < max
+           }
+           // ON CHANGE SUBMIT
+           // $("#do_rong_ngo_thi_truong").change(function() {
+           //      $("#gia_sau").text('')
+           //      if($("#kcach_truc_chinh_thi_truong").val() !='') {
+           //          dieu_kien_vi_tri()
+           //      }
+           // })
+           // $("#kcach_truc_chinh_thi_truong").change(function() {
+           //      $("#gia_sau").text('')
+           //      if($("#do_rong_ngo_thi_truong").val() !='') {
+           //          dieu_kien_vi_tri()
+           //      }
+           // })
+           // $("#dien_tich_dat_thi_truong").change(function() {
+           //      $("#gia_sau").text('')
+           //      dieu_kien_vi_tri()
+           // })
+           // $("#do_rong_mat_tien_thi_truong").change(function() {
+           //      $("#gia_sau").text('')
+           //      dieu_kien_vi_tri()
+           // })
+           // $("#hinh_dang").change(function() {
+           //      $("#gia_sau").text('')
+           //      dieu_kien_vi_tri()
+           // })
+           // $(document).on('ifChanged', `input[id^='check_box_']`, function(event){
+           //      dieu_kien_vi_tri()
+           // })
+
+           // CHECK DIEU KIEN NGO VA TRUC CHINH
+           function dieu_kien_vi_tri() {
+                // CHECK EMPTY FIELD
+                if( $("#dien_tich_dat_thi_truong").val() == '' || $("#do_rong_mat_tien_thi_truong").val() == '' ){
+                    return false
+                }
+                if($("#vi_tri_bds_thi_truong").val() != 'Vị trí 1'){
+                    if( $("#do_rong_ngo_thi_truong").val() == '' || $("#kcach_truc_chinh_thi_truong").val() == '' ){
+                        return false
+                    }
+                }
+
+                var rong_ngo = $("#do_rong_ngo_thi_truong").val()
+                var truc_chinh = $("#kcach_truc_chinh_thi_truong").val()
+                var thanh_pho = $("#tinh_thanh_thi_truong").val()
+                var vi_tri = $("#vi_tri_bds_thi_truong").val()
+
+                if(thanh_pho == 'Hà Nội') {
+                    if(vi_tri == 'Vị trí 2') {
+                        if( !(between_left(rong_ngo, 3.5, 100)) ){
+                            // alert("Thông tin nhập không hợp lệ.")
+                                $("#button_warning_box").click()
+                            return false
+                        }
+                    }
+                    if(vi_tri == 'Vị trí 3') {
+                        if( !(between_left(rong_ngo, 2, 3.5)) ){
+                            // alert("Thông tin nhập không hợp lệ.")
+                                $("#button_warning_box").click()
+                            return false
+                        }
+                    }
+                    if(vi_tri == 'Vị trí 4') {
+                        if( !(between_in(rong_ngo, 0, 2)) ){
+                            // alert("Thông tin nhập không hợp lệ.")
+                                $("#button_warning_box").click()
+                            return false
+                        }
+                    }
+
+                }
+                if(thanh_pho == 'Hà Nam') {
+                    if(vi_tri == 'Vị trí 2') {
+                        if( !(between_in(rong_ngo, 6, 100)) ){
+                            // alert("Thông tin nhập không hợp lệ.")
+                                $("#button_warning_box").click()
+                            return false
+                        }
+                    }
+                    if(vi_tri == 'Vị trí 3') {
+                        if( !(between_out(rong_ngo, 3, 6)) ){
+                            // alert("Thông tin nhập không hợp lệ.")
+                                $("#button_warning_box").click()
+                            return false
+                        }
+                    }
+                    if(vi_tri == 'Vị trí 4') {
+                        if( !(between_in(rong_ngo, 0, 3)) ){
+                            // alert("Thông tin nhập không hợp lệ.")
+                                $("#button_warning_box").click()
+                            return false
+                        }
+                    }
+
+                }
+                if(thanh_pho == 'Nghệ An') {
+                    if(vi_tri == 'Vị trí 2') {
+                        if( !(between_left(rong_ngo, 4, 100)) ){
+                            // alert("Thông tin nhập không hợp lệ.")
+                                $("#button_warning_box").click()
+                            return false
+                        }
+                    }
+                    if(vi_tri == 'Vị trí 3') {
+                        if( !(between_left(rong_ngo, 2, 4)) ){
+                            // alert("Thông tin nhập không hợp lệ.")
+                                $("#button_warning_box").click()
+                            return false
+                        }
+                    }
+                    if(vi_tri == 'Vị trí 4') {
+                        if( !(between_in(rong_ngo, 0, 2)) ){
+                            // alert("Thông tin nhập không hợp lệ.")
+                                $("#button_warning_box").click()
+                            return false
+                        }
+                    }
+
+                }
+                if(thanh_pho == 'Thái Bình') {
+                    if(vi_tri == 'Vị trí 2') {
+                        if( !(between_left(rong_ngo, 4, 100)) ){
+                            // alert("Thông tin nhập không hợp lệ.")
+                                $("#button_warning_box").click()
+                            return false
+                        }
+                    }
+                    if(vi_tri == 'Vị trí 3') {
+                        if( !(between_left(rong_ngo, 2, 4)) ){
+                            // alert("Thông tin nhập không hợp lệ.")
+                                $("#button_warning_box").click()
+                            return false
+                        }
+                    }
+                    if(vi_tri == 'Vị trí 4') {
+                        if( !(between_in(rong_ngo, 0, 2)) ){
+                            // alert("Thông tin nhập không hợp lệ.")
+                                $("#button_warning_box").click()
+                            return false
+                        }
+                    }
+
+                }
+                if(thanh_pho == 'Đà Nẵng') {
+                    if(vi_tri == 'Vị trí 2') {
+                        if( !(between_left(rong_ngo, 4.5, 100)) ){
+                            // alert("Thông tin nhập không hợp lệ.")
+                                $("#button_warning_box").click()
+                            return false
+                        }
+                    }
+                    if(vi_tri == 'Vị trí 3') {
+                        if( !(between_left(rong_ngo, 3, 4.5)) ){
+                            // alert("Thông tin nhập không hợp lệ.")
+                                $("#button_warning_box").click()
+                            return false
+                        }
+                    }
+                    if(vi_tri == 'Vị trí 4') {
+                        if( !(between_left(rong_ngo, 1.7, 3)) ){
+                            // alert("Thông tin nhập không hợp lệ.")
+                                $("#button_warning_box").click()
+                            return false
+                        }
+                    }
+
+                }
+                if(thanh_pho == 'Hải Phòng') {
+                    if(vi_tri == 'Vị trí 2') {
+                        if( !(between_left(rong_ngo, 3, 100) && between_right(truc_chinh, 0, 50)) ){
+                            // alert("Thông tin nhập không hợp lệ.")
+                                $("#button_warning_box").click()
+                            return false
+                        }
+                    }
+                    if(vi_tri == 'Vị trí 3') {
+                        if( !((between_in(rong_ngo, 0, 3) && between_right(truc_chinh, 0, 50)) 
+                            || (between_left(rong_ngo, 3, 100) && between_right(truc_chinh, 50, 200))) ){
+                            $("#button_warning_box").click()
+                            return false
+                        }
+                    }
+                    if(vi_tri == 'Vị trí 4') {
+                        if( !((between_in(rong_ngo, 0, 3) && between_right(truc_chinh, 50, 1000)) 
+                            || (between_left(rong_ngo, 3, 100) && between_right(truc_chinh, 200, 1000))) ){
+                            // alert("Thông tin nhập không hợp lệ.")
+                            $("#button_warning_box").click()
+                        return false
+                        }
+                    }
+
+                }
+                if(thanh_pho == 'Bắc Ninh') {
+                    if(vi_tri == 'Vị trí 2') {
+                        if( !(between_left(rong_ngo, 5, 100) && between_right(truc_chinh, 0, 100)) ){
+                            // alert("Thông tin nhập không hợp lệ.")
+                                $("#button_warning_box").click()
+                            return false
+                        }
+                    }
+                    if(vi_tri == 'Vị trí 3') {
+                        if( !((between_left(rong_ngo, 2, 5)) 
+                            || (between_left(rong_ngo, 5, 100) && between_right(truc_chinh, 100, 1000))) ){
+                            // alert("Thông tin nhập không hợp lệ.")
+                            $("#button_warning_box").click()
+                        return false
+                        }
+                    }
+                    if(vi_tri == 'Vị trí 4') {
+                        if( !(between_in(rong_ngo, 0, 2)) ){
+                            // alert("Thông tin nhập không hợp lệ.")
+                                $("#button_warning_box").click()
+                            return false
+                        }
+                    }
+
+                }
+                if(thanh_pho == 'Bắc Giang') {
+                    if(vi_tri == 'Vị trí 2') {
+                        if( !(between_left(rong_ngo, 5, 100) && between_in(truc_chinh, 0, 200)) ){
+                            // alert("Thông tin nhập không hợp lệ.")
+                                $("#button_warning_box").click()
+                            return false
+                        }
+                    }
+                    if(vi_tri == 'Vị trí 3') {
+                        if( !((between_left(rong_ngo, 3, 5) && between_right(truc_chinh, 100, 1000)) 
+                            || (between_left(rong_ngo, 5, 100) && between_left(truc_chinh, 200, 1000))) ){
+                            // alert("Thông tin nhập không hợp lệ.")
+                            $("#button_warning_box").click()
+                        return false
+                        }
+                    }
+                    if(vi_tri == 'Vị trí 4') {
+                        if( !((between_left(rong_ngo, 3, 5) && between_in(truc_chinh, 100, 1000)) || !(between_in(rong_ngo, 0, 3)) )){
+                            // alert("Thông tin nhập không hợp lệ.")
+                                $("#button_warning_box").click()
+                            return false
+                        }
+                    }
+
+                }
+                if(thanh_pho == 'Hải Dương') {
+                    if(vi_tri == 'Vị trí 2') {
+                        if( !(between_left(rong_ngo, 3, 100) && between_in(truc_chinh, 0, 200)) ){
+                            // alert("Thông tin nhập không hợp lệ.")
+                                $("#button_warning_box").click()
+                            return false
+                        }
+                    }
+                    if(vi_tri == 'Vị trí 3') {
+                        if( !((between_left(rong_ngo, 2, 3) && between_in(truc_chinh, 100, 1000)) 
+                            || (between_left(rong_ngo, 3, 100) && between_left(truc_chinh, 200, 1000))) ){
+                            // alert("Thông tin nhập không hợp lệ.")
+                            $("#button_warning_box").click()
+                        return false
+                        }
+                    }
+                    if(vi_tri == 'Vị trí 4') {
+                        if( !((between_left(rong_ngo, 2, 3) && between_left(truc_chinh, 100, 1000)) || !(between_in(rong_ngo, 0, 2)) )){
+                            // alert("Thông tin nhập không hợp lệ.")
+                                $("#button_warning_box").click()
+                            return false
+                        }
+                    }
+
+                }
+                if(thanh_pho == 'Hồ Chí Minh') {
+                    if(vi_tri == 'Vị trí 2') {
+                        if( !(between_left(rong_ngo, 5, 100)) ){
+                            // alert("Thông tin nhập không hợp lệ.")
+                                $("#button_warning_box").click()
+                            return false
+                        }
+                    }
+                    if(vi_tri == 'Vị trí 3') {
+                        if( !(between_left(rong_ngo, 3, 5)) ){
+                            // alert("Thông tin nhập không hợp lệ.")
+                                $("#button_warning_box").click()
+                            return false
+                        }
+                    }
+                    if(vi_tri == 'Vị trí 4') {
+                        if( !(between_in(rong_ngo, 0, 3)) ){
+                            // alert("Thông tin nhập không hợp lệ.")
+                                $("#button_warning_box").click()
+                            return false
+                        }
+                    }
+
+                }
+                if(thanh_pho == 'Yên Bái') {
+                    if(vi_tri == 'Vị trí 2') {
+                        if( !(between_in(rong_ngo, 3, 100) && between_right(truc_chinh, 0, 50)) ){
+                            // alert("Thông tin nhập không hợp lệ.")
+                                $("#button_warning_box").click()
+                            return false
+                        }
+                    }
+                    if(vi_tri == 'Vị trí 3') {
+                        if( !((between_out(rong_ngo, 2.5, 3) && between_right(truc_chinh, 0, 50)) 
+                            || (between_in(rong_ngo, 3, 100) && between_right(truc_chinh, 50, 200))) ){
+                            // alert("Thông tin nhập không hợp lệ.")
+                            $("#button_warning_box").click()
+                        return false
+                        }
+                    }
+                    if(vi_tri == 'Vị trí 4') {
+                        if(!(between_in(rong_ngo, 0, 2.5) && between_right(truc_chinh, 0, 50))
+                            || (between_out(rong_ngo, 2.5, 3) && between_right(truc_chinh, 50, 200))
+                            || (between_in(rong_ngo, 3, 100) && between_in(truc_chinh, 200, 1000)) ){
+                            // alert("Thông tin nhập không hợp lệ.")
+                            $("#button_warning_box").click()
+                        return false
+                        }
+                    }
+
+                }
+                submit_form()
+           }
+    </script>
+
+    <!-- GET RESULT GIA THI TRUONG -->
+    <script type="text/javascript">
+        var list_loi_the
+        var list_bat_loi
+
+        function submit_form() {            
+            // GET VALUE CHECKBOX
+            let list_yeu_to = []
+            list_loi_the = []
+            list_bat_loi = []
+            $.each($(`input[id^='check_box_loi_the']`), function(i,r) {
+                if($(this).is(':checked') == true) {
+                    list_yeu_to.push($(this).val()) 
+                    list_loi_the.push($(this).val())         
+                }
+            })
+            $.each($(`input[id^='check_box_bat_loi']`), function(i,r) {
+                if($(this).is(':checked') == true) {
+                    list_yeu_to.push($(this).val())                   
+                    list_bat_loi.push($(this).val())                   
+                }
+            })
+            
+            // SUBMIT AJAX
+            let data_yeu_to = (list_yeu_to.join("|"))
+            let data_loi_the = (list_loi_the.join("|"))
+            let data_bat_loi = (list_bat_loi.join("|"))
+
+            $.getJSON($SCRIPT_ROOT + '/ajax_get_result', 
+                $("#input_form_tho_cu").serialize()+'&'+$.param({ 'data_yeu_to': data_yeu_to , 'data_loi_the': data_loi_the ,'data_bat_loi': data_bat_loi }), 
+                function(data) {
+
+                $("#ket_qua_tho_cu_id").text(data.new_id)
+                $("#ket_qua_tho_cu_ngay_khoi_tao").text(data.ngay_khoi_tao)
+                $("#ket_qua_tho_cu_dd_vi_tri").text(data.dac_diem_vi_tri)
+                $("#ket_qua_tho_cu_gia_truoc").text(dot_number(Math.round(data.gia_truoc)) + ' VNĐ ')
+                $("#ket_qua_tho_cu_gia_sau").text(dot_number(Math.round(data.gia_sau)) + ' VNĐ')                
+                $("#ket_qua_tho_cu_dia_chi").text(data.dia_chi)
+                $("#ket_qua_tho_cu_vi_tri").text(data.vi_tri)
+                $("#ket_qua_tho_cu_do_rong_ngo").text(data.do_rong_ngo + ' m')
+                $("#ket_qua_tho_cu_kcach_truc_chinh").text(data.kcach + ' m')
+                $("#ket_qua_tho_cu_mat_tien").text(data.mat_tien + ' m')
+                $("#ket_qua_tho_cu_hinh_dang").text(data.hinh_dang)                
+                $("#ket_qua_tho_cu_dien_tich").text(data.dien_tich + ' m2')
+                $("#ket_qua_tho_cu_loai_nha").text(data.loai_nha_tho_cu)
+                $("#ket_qua_tho_cu_thoi_gian_su_dung").text(data.thoi_gian_su_dung)
+                $("#ket_qua_tho_cu_dien_tich_san_xd").text(data.dien_tich_san_xd + ' m2')
+                $("#ket_qua_tho_cu_gia_ctxd").text(dot_number(Math.round(data.don_gia_ctxd)) + ' VNĐ')
+                $("#ket_qua_tho_cu_tong_gia_ctxd").text(dot_number(Math.round(data.tong_gia_ctxd))  + ' VNĐ')
+                $("#ket_qua_tho_cu_tong_gia").text(dot_number(Math.round(data.tong_gia_dat)) + ' VNĐ ')
+                $("#ket_qua_tho_cu_tong_gia_tai_san").text(dot_number(Math.round(data.tong_gia_tai_san))  + ' VNĐ')
+
+                $("#ket_qua_tho_cu_loi_the").empty()
+                $("#ket_qua_tho_cu_bat_loi").empty()
+
+                $.each(data.list_loi_the, function(i,r) {
+                    if (data.list_loi_the != '') {
+                        $("#ket_qua_tho_cu_loi_the").append(`<div style="margin-left:5px;"><span>&#8226;</span> ${r}</div>`)
+                    }else {
+                        $("#ket_qua_tho_cu_loi_the").append(`<div style="margin-left:5px;"> Không có </div>`)
+                    }
+                })
+
+                $.each(data.list_bat_loi, function(i,r) {
+                    if (data.list_bat_loi != '') {
+                        $("#ket_qua_tho_cu_bat_loi").append(`<div style="margin-left:5px;"><span>&#8226;</span> ${r}</div>`)
+                    }else {
+                        $("#ket_qua_tho_cu_bat_loi").append(`<div style="margin-left:5px;"> Không có </div>`)
+                    }
+                    
+                })
+
+                
+               
+                $("#ket_qua_tho_cu_ti_le").text(
+                    Math.round((parseFloat(data.gia_sau) - parseFloat(data.gia_truoc))/parseFloat(data.gia_truoc)*10000)/100  + '%')
+                $("#ket_qua_tho_cu").click()
+
+              })
+              return false
+        }
+
+        // AUTO SUBMIT
+        $(document).on('click','#get_result', function() {
+           dieu_kien_vi_tri()
+        }) 
+
+    </script>
+</form>
+
+<!-- CHUNG CU -->
+<form id="input_form_chung_cu" method="POST" style="display: none;">
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="x_panel">
+                <!-- TITLE CHUNG CU-->
+                <div class="x_title">
+                    <h2>CĂN HỘ CHUNG CƯ</h2>                    
+                    <div class="clearfix"></div>
+                </div>
+
+                <!-- CONTENT CHUNG CU-->
+                <div class="x_content">
+                    <!-- BDS CHUNG CU -->
+                    <div class="collapse-group" id="div_main_Can_ho" style="margin-top: 2vh;height: 50vh;">
+                        <!-- THONG TIN CHUNG BDS -->
+                        <div class="panel panel-default">
+                            <div class="panel-heading color_panel" role="tab" id="">
+                                <div class="panel-title">
+                                    <a id="title" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseBDS_tho_cu_One" aria-expanded="true" aria-controls="collapseBDS_tho_cu_One" style="padding: 10px 15px !important"> THÔNG TIN CHUNG BĐS</a>
+                                </div>
+                            </div>
+                            <div class="panel-body">
+                                <div class="inline_modal">
+                                    <label class="inline_label" for="du_an_cc_thi_truong" style="">Dự án</label>
+                                    <select id="du_an_cc_thi_truong" name="du_an_cc_thi_truong" class="form-control inline_select_input selectpicker" title="" data-live-search="true">
+                                        {% for i in list_can_ho %}
+                                            <option>{{i}}</option>
+                                        {% endfor %}
+                                    </select>                   
+                                </div> 
+                                <div class="inline_modal">
+                                    <label class="inline_label" for="toa_nha_cc_thi_truong" style="">Tòa</label>
+                                    <select id="toa_nha_cc_thi_truong" name="toa_nha_cc_thi_truong" class="form-control inline_select_input selectpicker" title="" data-live-search="true">
+                                    </select>                   
+                                </div> 
+                                <div class="inline_modal">
+                                    <label class="inline_label" for="tang_cc_thi_truong" style="">Tầng</label>
+                                    <select id="tang_cc_thi_truong" name="tang_cc_thi_truong" class="form-control inline_select_input selectpicker" title="" data-live-search="true">
+                                    </select>                   
+                                </div> 
+                                <div class="inline_modal">
+                                    <label class="inline_label" for="ma_can_cc_thi_truong" style="">Mã căn</label>
+                                    <select id="ma_can_cc_thi_truong" name="ma_can_cc_thi_truong" class="form-control inline_select_input selectpicker" title="" data-live-search="true">
+                                    </select>                   
+                                </div> 
+                            </div>
+                        </div>
+                        <!-- BTN SUBMIT CC -->
+                        <div style="text-align: center;">
+                            <button type="button" style="border: none; outline: none; background-color: #901e1d;color: white; width: 90px; height: 30px;margin-bottom: 10px;" id="get_result_chung_cu">SUBMIT</button>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+</form>
+
+
+<!-- BIET THU -->
+
+<form id="input_form_biet_thu" method="POST" style="display: none;">
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="x_panel">
+                <!-- TITLE BIET THU-->
+                <div class="x_title">
+                    <h2>SHOPHOUSE - BIỆT THỰ LIỀN KỀ</h2>                    
+                    <div class="clearfix"></div>
+                </div>
+
+                <!-- CONTENT BIET THU-->
+                <div class="x_content">
+                    <!-- BDS BIET THU -->
+                    <div class="collapse-group" id="div_main_Biet_thu" style="margin-top: 2vh;">
+                        <!-- THONG TIN CHUNG BDS -->
+                        <div class="panel panel-default">
+                            <div class="panel-heading color_panel" role="tab" id="">
+                                <div class="panel-title">
+                                    <a id="title" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseBDS_tho_cu_One" aria-expanded="true" aria-controls="collapseBDS_tho_cu_One" style="padding: 10px 15px !important"> THÔNG TIN CHUNG BĐS </a>
+                                </div>
+                            </div>
+                            <div class="panel-body">
+                                <div class="inline_modal">
+
+                                    <label class="inline_label" for="du_an_biet_thu" style="">Dự án</label>
+                                    <select id="du_an_biet_thu" name="du_an_biet_thu" class="form-control inline_select_input selectpicker" title="" data-live-search="true">
+                                        {% for i in list_biet_thu %}
+                                            <option>{{i}}</option>
+                                        {% endfor %}
+                                    </select>                   
+                                </div> 
+                                <div class="inline_modal">
+                                    <label class="inline_label" for="duong_nha_biet_thu" style="">Đường/Dãy/Khu</label>
+                                    <select id="duong_nha_biet_thu" name="duong_nha_biet_thu" class="form-control inline_select_input selectpicker" title="" data-live-search="true">
+                                    </select>                   
+                                </div> 
+                                <div class="inline_modal">
+                                    <label class="inline_label" for="loai_nha_biet_thu"  data-toggle="tooltip" data-placement="bottom" title="Biệt thự/Liền kề/Shophouse/Condotel/…" style="">Loại nhà</label>
+                                    <select id="loai_nha_biet_thu" name="loai_nha_biet_thu" class="form-control inline_select_input selectpicker" title="" data-live-search="true">
+                                    </select>                   
+                                </div> 
+                                <div class="inline_modal">
+                                    <label class="inline_label" for="ma_can_biet_thu" style="">Mã căn</label>
+                                    <select id="ma_can_biet_thu" name="ma_can_biet_thu" class="form-control inline_select_input selectpicker" title="" data-live-search="true">
+                                    </select>                   
+                                </div> 
+                            </div>
+                        </div>
+                        <!-- BTN SUBMIT BIET THU -->
+                        <div style="text-align: center;">
+                            <button type="button" style="border: none; outline: none; background-color: #901e1d;color: white; width: 90px; height: 30px;margin-bottom: 10px;" id="get_result_biet_thu">SUBMIT</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- CHECK VI TRI -->
+    <script type="text/javascript">
+        var list_vi_tri = ['Vị trí 1',
+            'Vị trí 2',
+            'Vị trí 3',
+            'Vị trí 4'
+            ]
+        $("#vi_tri_bds_thi_truong").change(function() {
+            // TOGGLE 
+            if(list_vi_tri.indexOf($(this).val()) != -1 && $(this).val() != 'Vị trí 1' ){
+                $("#div_do_rong_ngo_thi_truong").css("display","")
+                $("#div_kcach_truc_chinh_thi_truong").css("display","")
+            }
+            else{
+                $("#div_do_rong_ngo_thi_truong").css("display","none")
+                $("#div_kcach_truc_chinh_thi_truong").css("display","none")
+            }
+            // EMPTY FIELD
+            empty_field()
+            // AJAX
+            $.getJSON($SCRIPT_ROOT + '/ajax_get_dac_diem_vi_tri', {
+                tinh_thanh: $(`#tinh_thanh_thi_truong`).val(),
+                vi_tri: $(this).val(),
+
+            }, function(data) {
+                console.log(data.loi_the)
+                $("#div_select_loi_the").empty()
+                $("#div_select_bat_loi").empty()
+                $.each(data.loi_the, function(i,r) {
+                    $("#div_select_loi_the").append(`
+                                <div class="inline_modal_3 float-label-control">                        
+                                    <input type="checkbox" id="check_box_loi_the${i}" value="${r}">
+                                    <label style="word-wrap: normal; word-break: break-word;width: 90%;vertical-align: top" for="check_box_loi_the${i}">${r}</label>                        
+                                </div>`)
+                })
+                $.each(data.bat_loi, function(i,r) {
+                    $("#div_select_bat_loi").append(`
+                        <div class="inline_modal_3 float-label-control">                        
+                            <input type="checkbox" id="check_box_bat_loi${i}" value="${r}">
+                            <label style="word-wrap: normal; word-break: break-word;width: 90%;vertical-align: top" for="check_box_bat_loi${i}">${r}</label>                        
+                        </div>`)
+                })
+                // ICHECKBOX
+                $('[id^="check_box_"]').iCheck({
+                    checkboxClass: 'icheckbox_square-red',
+                    increaseArea: '20%'
+                }) 
+
+                let dac_diem_vtri = ''
+                $.each(String(data.result).split("|"), function(i, r) {
+                    dac_diem_vtri += `<div style="margin-left: 10px;">${r}</div>`
+                })
+                $("#dac_diem_vi_tri_thi_truong").html(dac_diem_vtri)
+                        
+            });
+            return false;
+
+        })
+
+        
+    </script>
+    <script>     
+        $(document).ready(function(){
+            $('[data-toggle="tooltip"]').tooltip();   
+        });
+    </script>
+</form>

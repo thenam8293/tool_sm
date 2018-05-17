@@ -1,0 +1,177 @@
+{% extends "tool_calculate_template/layout.html" %}
+
+{% block title %} Profile {% endblock title %}
+
+{% block stylesheets %}
+  {{ super() }}
+  <style type="text/css">
+    .inline_modal {display: inline-block;width: 49.5%;padding: 10px; vertical-align: top}
+    .inline_modal_lg {display: inline-block;width: 90.5%;padding: 10px}
+    .inline_modal_3 {display: inline-block;width: 33%;padding: 10px;height: 6vh;}
+    .inline_label {display: inline-block !important ;width: 30% !important}
+    .inline_label_sm {display: inline-block !important ;width: 20% !important}
+    
+    .inline_select_input {display: inline-block !important ;width: 68% !important}
+    .label_value {
+        font-family: Arial, Helvetica, sans-serif;
+        color: #901e1d;
+        font-size: 150%;
+    }
+
+  </style>
+{% endblock stylesheets %}
+
+
+{% block content %}
+<script type=text/javascript>
+    var $SCRIPT_ROOT = {{ request.script_root|tojson|safe }}
+</script>
+
+    <div class="right_col" role="main" style="">
+        <form action="" method="post" style="padding-top:140px;" onsubmit="return(checkForm(this))">
+            <div class="row tile_count" style="">          
+                <div class="col-md-12">
+
+                    <!-- CHANGE PASS -->
+                    <div class="x_panel">
+                        <div class="x_title">
+                            <h3 style="color: #901e1d;">ĐỔI MẬT KHẨU</h3>                    
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="x_content">
+                            <div class="inline_modal_lg">
+                                <label class="inline_label">Mật khẩu cũ: </label>
+                                <label class="inline_label_xl" id="change_p_old_pass">
+                                    <input type="text" class="form-control" name="old_pass" id="old_pass">
+                                </label>
+                            </div>
+                            <div class="inline_modal_lg">
+                                <label class="inline_label">Mật khẩu mới: </label>
+                                <label class="inline_label_xl" id="change_p_new_pass">
+                                    <input type="text" class="form-control" name="new_pass" id="new_pass">
+                                </label>
+                            </div>
+                            <div class="inline_modal_lg">
+                                <label class="inline_label">Mật khẩu mới 2: </label>
+                                <label class="inline_label_xl" id="change_p_new_pass2">
+                                    <input type="text" class="form-control" name="new_pass2" id="new_pass2">
+                                </label>
+                            </div>
+                            <div class="inline_modal_lg" style="">
+                                <label class="inline_label"></label>
+                                <label class="inline_label_xl" id="change_p_new_pass2">
+                                    <button type="submit" class="form-control" name="submit" id="submit" style="width: 25vw;color: black;background-color: #cccccc;">SUBMIT</button>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <!-- /top tiles -->    
+  </div>
+{% endblock content %}
+
+{% block javascripts %}
+  {{ super()}}
+    <script type="text/javascript">
+    var list_ky_tu = [',','.','<','>','/','?',';',':','"','[',']','{','}','|','`','-','+','=']
+      function checkForm(form)
+      {
+        if(form.old_pass.value == "") {
+          alert("Xin mời nhập mật khẩu.");
+          form.old_pass.focus();
+          return false;
+        }
+        if(form.old_pass.value != "{{session.password}}") {
+          alert("Mật khẩu cũ chưa chính xác.");
+          form.old_pass.focus();
+          return false;
+        }
+        if(form.new_pass.value == "") {
+          alert("Xin mời nhập mật khẩu.");
+          form.new_pass.focus();
+          return false;
+        }
+        if(form.new_pass2.value == "") {
+          alert("Xin mời nhập mật khẩu.");
+          form.new_pass2.focus();
+          return false;
+        }
+      
+
+        if(form.new_pass.value != "" && form.new_pass.value == form.new_pass2.value) {
+            for(i=0; i< form.new_pass.value.length; i++) {
+                if(list_ky_tu.indexOf(form.new_pass.value[i]) != -1 ){
+                  alert("Mật khẩu chứa ký tự không hợp lệ.");
+                  form.new_pass.focus();
+                  return false;
+                }
+            }
+           
+          if(form.new_pass.value.length < 8) {
+            alert("Mật khẩu có độ dài tối thiểu là 8 ký tự.");
+            form.new_pass.focus();
+            return false;
+          }
+          if(form.new_pass.value == form.old_pass.value) {
+            alert("Mật khẩu mới phải khác mật khẩu cũ.");
+            form.new_pass.focus();
+            return false;
+          }
+          re = /[0-9]/;
+          if(!re.test(form.new_pass.value)) {
+            alert("Mật khẩu phải có ít nhất một chữ số.");
+            form.new_pass.focus();
+            return false;
+          }
+          re = /[a-z]/;
+          if(!re.test(form.new_pass.value)) {
+            alert("Mật khẩu phải có ít nhât 1 ký tự viết thường.");
+            form.new_pass.focus();
+            return false;
+          }
+          re = /[A-Z]/;
+          if(!re.test(form.new_pass.value)) {
+            alert("Mật khẩu phải có ít nhât 1 ký tự viết hoa.");
+            form.new_pass.focus();
+            return false;
+          }
+
+          re = /[!@#$%^&*]/;
+          if(!re.test(form.new_pass.value)) {
+            alert("Mật khẩu phải có ít nhât 1 ký tự đặc biệt.");
+            form.new_pass.focus();
+            return false;
+          }
+          
+        }
+        else if(form.new_pass.value != "" && form.new_pass.value != form.new_pass2.value){
+          alert("Mật khẩu mới chưa khớp.");
+            form.new_pass.focus();
+            return false;
+        }
+         else {
+          alert("Xin mời kiểm tra lại mật khẩu mới và xác nhận.");
+          form.new_pass.focus();
+          return false;
+        }
+
+       
+        $.getJSON($SCRIPT_ROOT + '/ajax_change_pass', {
+            new_pass: form.new_pass.value,
+        }, function(data) { 
+            console.log(data)
+        })
+          // return false;
+        window.location.href = '/user/profile';
+        alert("Đổi mật khẩu thành công.");
+        return false
+
+        // window.location.href = '/_station';
+      }
+
+    </script>
+{% endblock javascripts %}

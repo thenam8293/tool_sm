@@ -1,0 +1,235 @@
+<style type="text/css">
+    .bootstrap-select .dropdown-toggle:focus {outline: none !important;}
+</style>
+<script type=text/javascript>
+    var $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
+</script>
+
+<div class="nav_menu">
+    <nav>
+      <div class="nav toggle">
+        <!-- <a id="menu_toggle_lg"><i class="fa fa-bars"></i></a> -->
+        <a id="menu_toggle_m" onclick="openNav()"><i class="fa fa-bars"></i></a>
+        <div style="margin-left: 20px;outline: none;">
+            <select class="selectpicker" data-live-search="true" title="Tìm kiếm" id="search_ticket">
+                {% for r in Id_ticket %}
+                <option>{{r}}</option>
+                {% endfor %}
+            </select>
+        </div>
+      </div>
+
+      <ul class="nav navbar-nav navbar-right">
+        <li class="">
+           <a href="/logout"><i class="fa fa-sign-out"></i><span class="top_nav_text"> Log Out</span></a>          
+        </li>
+
+        <li class="">
+            <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                <i class="fa fa-user">&nbsp;</i>{{session.username}}
+                <span class=" fa fa-angle-down"></span>
+            </a>
+            <ul class="dropdown-menu dropdown-usermenu pull-right">
+                <li><a href="/user/profile"><i class="fa fa-user pull-right"></i> Profile</a></li>                
+                <li><a href="/user/changepass"><i class="fa fa-lock pull-right"></i> Change password</a></li>
+            </ul>
+        </li>
+        
+      </ul>
+    </nav>
+</div>
+<script type="text/javascript">
+    $("#search_ticket").selectpicker("val","").selectpicker("refresh")
+    $("#search_ticket").change(function() {
+        $.getJSON($SCRIPT_ROOT + '/ajax_search_ticket', {            
+            id_ticket: $(this).val(),
+        }, function(data) { 
+            console.log(data.result)
+            console.log(data.phan_loai)
+
+            // BDS THO CU
+            if(data.phan_loai == 'bds_tho_cu'){
+                $("#ket_qua_tho_cu_id").text(data.result[0])          
+                               
+                $("#ket_qua_tho_cu_dia_chi").text(data.result[1])
+                $("#ket_qua_tho_cu_vi_tri").text(data.result[2])
+                $("#ket_qua_tho_cu_dien_tich").text(data.result[3] + ' m2')
+                $("#ket_qua_tho_cu_mat_tien").text(data.result[4] + ' m')
+                $("#ket_qua_tho_cu_hinh_dang").text(data.result[5]) 
+                $("#ket_qua_tho_cu_do_rong_ngo").text(data.result[6] + ' m')
+                $("#ket_qua_tho_cu_kcach_truc_chinh").text(data.result[7] + ' m')               
+
+                $("#ket_qua_tho_cu_loi_the").empty()
+                $("#ket_qua_tho_cu_bat_loi").empty()
+                console.log(data.result[8],data.result[9])
+                $.each(data.result[8].split("|"), function(i,r) {
+                    if (data.result[8] != '') {
+                        $("#ket_qua_tho_cu_loi_the").append(`<div style="margin-left:5px;"><span>&#8226;</span> ${r}</div>`)
+                    }else {
+                        $("#ket_qua_tho_cu_loi_the").append(`<div style="margin-left:5px;"> Không có </div>`)
+                    }
+                })
+                $.each(data.result[9].split("|"), function(i,r) {
+                    if (data.result[9] != '') {
+                        $("#ket_qua_tho_cu_bat_loi").append(`<div style="margin-left:5px;"><span>&#8226;</span> ${r}</div>`)
+                    }else {
+                        $("#ket_qua_tho_cu_bat_loi").append(`<div style="margin-left:5px;"> Không có </div>`)
+                    }
+                    
+                })
+                $("#ket_qua_tho_cu_gia_truoc").text(dot_number(Math.round(data.result[10])) + ' VNĐ ')
+                $("#ket_qua_tho_cu_gia_sau").text(dot_number(Math.round(data.result[11])) + ' VNĐ')
+                $("#ket_qua_tho_cu_loai_nha").text(data.result[12])
+                $("#ket_qua_tho_cu_thoi_gian_su_dung").text(data.result[13])
+                $("#ket_qua_tho_cu_gia_ctxd").text(dot_number(Math.round(data.result[14])) + ' VNĐ')
+                $("#ket_qua_tho_cu_dien_tich_san_xd").text(data.result[15] + ' m2')
+                let tong_gia_ctxd = parseFloat(data.result[14])*parseFloat(data.result[15])
+                let tong_gia_dat = parseFloat(data.result[11])*parseFloat(data.result[3])
+                $("#ket_qua_tho_cu_tong_gia_ctxd").text(dot_number(Math.round(tong_gia_ctxd))  + ' VNĐ')
+                $("#ket_qua_tho_cu_tong_gia").text(dot_number(Math.round(tong_gia_dat)) + ' VNĐ ')
+                $("#ket_qua_tho_cu_tong_gia_tai_san").text(dot_number(Math.round(tong_gia_dat+tong_gia_ctxd))  + ' VNĐ')
+                $("#ket_qua_tho_cu_dd_vi_tri").text(data.dac_diem_VT)            
+                $("#ket_qua_tho_cu_ti_le").text(
+                    Math.round((parseFloat(data.result[11]) - parseFloat(data.result[10]))/parseFloat(data.result[10])*10000)/100  + '%')
+                $("#ket_qua_tho_cu_ngay_khoi_tao").text(data.result[13])
+
+                $("#ket_qua_tho_cu").click()
+            }
+            // BDS QUY HOACH
+            else if(data.phan_loai == 'quy_hoach'){
+                console.log(data.dict_label_value)
+                $("#ket_qua_quy_hoach_id").text(data.result[0])
+                
+                $("#ket_qua_quy_hoach_dia_chi").text(data.result[1])
+                $("[id^='quy_hoach_']").empty()
+
+                quy_hoach_hien_huu = data.result[3].split("*|*")[0]
+                quy_hoach_moi = data.result[3].split("*|*")[1]
+                quy_hoach_thoat_lu = data.result[3].split("*|*")[2]
+                quy_hoach_cong_trinh = data.result[3].split("*|*")[3]
+
+                if(quy_hoach_hien_huu == 'Chưa xác định'){
+                    $("[id$='quy_hoach_hien_huu']").attr('style','display:none !important')
+                }
+                else{
+                    $("[id$='quy_hoach_hien_huu']").attr('style','display:block !important')
+
+                    let result_1 = ''                
+                    $.each(String(quy_hoach_hien_huu).split("|"), function(i, r) {
+                        result_1 += `<div style="margin-left: 10px;">${r}</div>`
+                    })
+                    $(`#quy_hoach_hien_huu`).append(result_1) 
+                }
+                
+                if(quy_hoach_moi == 'Chưa xác định'){
+                    $("[id$='quy_hoach_moi']").attr('style','display:none !important')                    
+                }
+                else {
+                    $("[id$='quy_hoach_moi']").attr('style','display:block !important')                    
+
+                    let result_2 = ''                
+                    $.each(String(quy_hoach_moi).split("|"), function(i, r) {
+                        result_2 += `<div style="margin-left: 10px;">${r}</div>`
+                    })
+                    $(`#quy_hoach_moi`).append(result_2)
+                }                
+
+                if(quy_hoach_thoat_lu == 'Chưa xác định'){
+                    $("[id$='quy_hoach_thoat_lu']").attr('style','display:none !important')
+                }
+                else {
+                    $("[id$='quy_hoach_thoat_lu']").attr('style','display:block !important')
+
+                    let result_3 = ''                
+                    $.each(String(quy_hoach_thoat_lu).split("|"), function(i, r) {
+                        result_3 += `<div style="margin-left: 10px;">${r}</div>`
+                    })
+                    $(`#quy_hoach_thoat_lu`).append(result_3)
+                }               
+
+                if(quy_hoach_cong_trinh == 'Chưa xác định'){
+                    $("[id$='quy_hoach_cong_trinh']").attr('style','display:none !important')
+                }
+                else {
+                    $("[id$='quy_hoach_cong_trinh']").attr('style','display:block !important')
+                    let result_4 = ''                
+                    $.each(String(quy_hoach_cong_trinh).split("|"), function(i, r) {
+                        result_4 += `<div style="margin-left: 10px;">${r}</div>`
+                    })
+                    $(`#quy_hoach_cong_trinh`).append(result_4)
+                }
+                if(quy_hoach_hien_huu == 'Chưa xác định' && quy_hoach_moi == 'Chưa xác định' && quy_hoach_thoat_lu == 'Chưa xác định' && quy_hoach_cong_trinh == 'Chưa xác định') {
+                    $("[id$='quy_hoach_chua_xac_dinh']").attr('style', 'display:block !important')
+                    $("#quy_hoach_chua_xac_dinh").append(`<div style="margin-left: 10px;">Chưa xác định</div>`)
+                }else {
+                    $("[id$='quy_hoach_chua_xac_dinh']").attr('style', 'display:none !important')
+                }
+
+                $("#ket_qua_quy_hoach_ngay_khoi_tao").text(data.result[5])
+                chart(data.dict_label_value, data.result[1].split(", ")[2], data.result[1].split(", ")[3])
+                $("#ket_qua_quy_hoach").click()
+            }
+            // BDS CHUNG CU
+            else if(data.phan_loai == 'bds_chung_cu'){
+                $("#ket_qua_chung_cu_id").text(data.result[0])
+                $("#ket_qua_chung_cu_ten_du_an").text(data.result[1].split(",")[3])
+                $("#ket_qua_chung_cu_ten_toa").text(data.result[1].split(",")[2])
+                $("#ket_qua_chung_cu_so_tang").text(data.result[1].split(",")[1])
+                $("#ket_qua_chung_cu_ma_can").text(data.result[1].split(",")[0])
+                $("#ket_qua_chung_cu_dia_chi_du_an").text(data.result[8])
+                $("#ket_qua_chung_cu_dien_tich").text(data.result[2])
+                $("#ket_qua_chung_cu_loai_dien_tich").text(data.result[3] + ' m2')
+                $("#ket_qua_chung_cu_don_gia").text(dot_number(Math.round(data.result[4])) + " VNĐ")
+                $("#ket_qua_chung_cu_tong_gia").text(dot_number(Math.round(data.result[5])) + " VNĐ")
+                $("#ket_qua_chung_cu_ngay_khoi_tao").text(data.result[7])
+                $("#ket_qua_chung_cu").click()
+            }
+
+            // BDS BIET THU
+            else if(data.phan_loai == 'bds_biet_thu'){
+                $("#ket_qua_biet_thu_id").text(data.result[0])
+                $("#ket_qua_biet_thu_ten_du_an").text(data.result[1].split(",")[3])
+                $("#ket_qua_biet_thu_ten_toa_duong").text(data.result[1].split(",")[2])
+                $("#ket_qua_biet_thu_loai_nha").text(data.result[1].split(",")[1])
+                $("#ket_qua_biet_thu_ma_can").text(data.result[1].split(",")[0])
+                $("#ket_qua_biet_thu_dia_chi_du_an").text(data.result[10])
+                $("#ket_qua_biet_thu_dien_tich_dat").text(data.result[2] + " m2")
+                $("#ket_qua_biet_thu_dien_tich_san").text(data.result[3] + " m2")
+
+                if(data.result[4] != 'Không xác định'){
+                    $("#ket_qua_biet_thu_don_gia_dat").text(dot_number(Math.round(data.result[4])) + " VNĐ")
+                }else {
+                    $("#ket_qua_biet_thu_don_gia_dat").text(data.result[4])
+                }
+                if(data.result[5] != 'Không xác định'){
+                    $("#ket_qua_biet_thu_don_gia_ctxd").text(dot_number(Math.round(data.result[5])) + " VNĐ")
+
+                }else {
+                    $("#ket_qua_biet_thu_don_gia_ctxd").text(data.result[5])
+                }
+
+                if($.isNumeric(data.result[6])  ) {
+                    $("#ket_qua_biet_thu_tong_gia_xay_tho").text(dot_number(Math.round(data.result[6])) + " VNĐ")
+
+                }else {
+                    $("#ket_qua_biet_thu_tong_gia_xay_tho").text(data.result[6])
+                }
+
+                if($.isNumeric(data.result[7])  ) {
+                    $("#ket_qua_biet_thu_tong_gia_hoan_thien").text(dot_number(Math.round(data.result[7])) + " VNĐ")
+
+                }else {
+                    $("#ket_qua_biet_thu_tong_gia_hoan_thien").text(data.result[7])
+                }
+
+                
+
+                
+                $("#ket_qua_biet_thu_ngay_khoi_tao").text(data.result[9])
+                $("#ket_qua_biet_thu").click()
+            }
+            $("#search_ticket").selectpicker("val","").selectpicker("refresh")
+        })
+        return false
+    })
+</script>

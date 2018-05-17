@@ -1,0 +1,432 @@
+{% extends "tool_calculate_template/layout_check_gia.html" %}
+
+{% block title %} Check Giá {% endblock title %}
+
+{% block stylesheets %}
+  {{ super() }}
+<style type="text/css">
+    /** {border: 1px solid black}*/
+</style>
+{% endblock stylesheets %}
+
+
+{% block content %}
+<script type=text/javascript>
+    var $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
+</script>
+
+  <div class="right_col" role="main" style="">
+
+    <!-- top tiles -->
+    <div class="row tile_count" style="">
+          <!-- GIA THI TRUONG -->
+              {% include 'check_gia_thi_truong.html' %}
+          <!-- GIA UY BAN -->
+              {% include 'check_gia_uy_ban.html' %}
+          
+          <!-- THONG TIN QUY HOACH -->
+              {% include 'thong_tin_quy_hoach.html' %}
+    </div>
+
+
+
+    <script type="text/javascript">
+
+    </script>
+
+    <!-- SET VALUE NONE -->
+    <script type="text/javascript">
+        $("[id^='tinh_thanh']").selectpicker("refresh").selectpicker("val","")
+        $("[id^='vi_tri_']").selectpicker("refresh").selectpicker("val","")
+        $("#du_an_cc_thi_truong").selectpicker("refresh").selectpicker("val","")
+        $("#du_an_biet_thu").selectpicker("refresh").selectpicker("val","")
+    </script>
+    <!-- /top tiles -->    
+  </div>
+{% endblock content %}
+
+{% block javascripts %}
+  {{ super()}}
+    
+    <!-- DOT NUMBER -->
+    <script type="text/javascript">
+        function reverseNumber(input) {
+            return [].map.call(input, function(x) {
+                return x;
+            }).reverse().join(''); 
+        };
+          
+        function plainNumber(number) {
+            return number.split(',').join('');
+        };
+          
+        function splitInDots(input) {
+            var value = input.value;
+            if(isNaN(value.replace(/\,/g,'')) == false) {
+                var plain = plainNumber(value)
+                var reversed = reverseNumber(plain)
+                var reversedWithDots = reversed.match(/.{1,3}/g).join(',')
+                var normal = reverseNumber(reversedWithDots);
+                input.value = normal;
+            }else {
+                input.value = ''
+            }       
+        };
+        function dot_number(number) {
+            number = String(number).split("").reverse().join("")
+            number = number.match(/.{1,3}/g).join(',')
+            number = reverseNumber(number)
+            return number
+        }
+    </script>
+
+    
+    <!-- AXAX BDS THO CU -->
+    <script type="text/javascript">
+        $(`#hinh_dang`).selectpicker("refresh").selectpicker("val","")
+        // FUNCTION EMPTY FIELD
+        function empty_field() {
+            $("#dien_tich_dat_thi_truong").val("")
+            $("#do_rong_mat_tien_thi_truong").val("")
+            $("#do_rong_ngo_thi_truong").val("")
+            $("#kcach_truc_chinh_thi_truong").val("")
+            $(`#hinh_dang`).selectpicker("val","").selectpicker("refresh")              
+            $("#dac_diem_vi_tri_thi_truong").text("")
+            $("#gia_sau").text("")
+        }
+
+        // QUAN HUYEN AJAX
+            $(document).on('change','[id^="tinh_thanh_thi_truong"]', function() {
+
+                let tinh_thanh_id = $(this).attr("id")
+                let quan_huyen_id = `quan_huyen_${tinh_thanh_id.split("tinh_thanh_")[1]}`
+                let ten_duong_id = `ten_duong_${tinh_thanh_id.split("tinh_thanh_")[1]}`
+                let tuyen_duong_id = `tuyen_duong_${tinh_thanh_id.split("tinh_thanh_")[1]}`
+                let vi_tri_bds_id = `vi_tri_bds_${tinh_thanh_id.split("tinh_thanh_")[1]}`
+
+                // EMPTY FIELD ONCHANGE
+                empty_field()
+                // AJAX
+                $.getJSON($SCRIPT_ROOT + '/ajax_get_option_quan_huyen', {
+                    tinh_thanh: $(this).val(),
+                }, function(data) { 
+                    
+                    // empty field                        
+                    $(`#${quan_huyen_id}`).empty().prop("disabled",true)
+                    $(`#${ten_duong_id}`).empty().prop("disabled",true)
+                    $(`#${tuyen_duong_id}`).empty().prop("disabled",true)
+                    $(`#${vi_tri_bds_id}`).empty().prop("disabled",true)
+                    $(`[id^="gia_tri_tai_san_"]`).empty()
+                    $("#div_select_loi_the").empty()
+                    $("#div_select_bat_loi").empty()
+
+                    $.each(data.result, function(i,r) {
+                        $(`#${quan_huyen_id}`).append(`<option>${r}</option>`).prop("disabled",false)
+                    })
+                    $(`#${quan_huyen_id}`).selectpicker("refresh").selectpicker("val","")
+                    $(`#${ten_duong_id}`).selectpicker("refresh").selectpicker("val","")
+                    $(`#${tuyen_duong_id}`).selectpicker("refresh").selectpicker("val","")
+                    $(`#${vi_tri_bds_id}`).selectpicker("refresh").selectpicker("val","")
+
+                  })
+                  return false;
+            })
+        // DOAN DUONG AJAX
+            $(document).on('change','[id^="quan_huyen_thi_truong"]', function() {
+                let quan_huyen_id = $(this).attr("id")
+                let tinh_thanh_id = `tinh_thanh_${quan_huyen_id.split("quan_huyen_")[1]}`
+                let ten_duong_id = `ten_duong_${quan_huyen_id.split("quan_huyen_")[1]}`
+                let tuyen_duong_id = `tuyen_duong_${quan_huyen_id.split("quan_huyen_")[1]}`
+                let vi_tri_bds_id = `vi_tri_bds_${quan_huyen_id.split("quan_huyen_")[1]}`
+                empty_field()
+                // AJAX
+                $.getJSON($SCRIPT_ROOT + '/ajax_get_option_duong_pho', {
+                    tinh_thanh: $(`#${tinh_thanh_id}`).val(),
+                    quan_huyen: $(this).val(),
+
+                }, function(data) { 
+                    $(`#${ten_duong_id}`).empty().prop("disabled",true)
+                    $(`#${tuyen_duong_id}`).empty().prop("disabled",true)
+                    $(`#${vi_tri_bds_id}`).empty().prop("disabled",true)
+                    $(`[id^="gia_tri_tai_san_"]`).empty()
+                    $("#div_select_loi_the").empty()
+                    $("#div_select_bat_loi").empty()
+                    $.each(data.result, function(i,r) {
+                        $(`#${ten_duong_id}`).append(`<option>${r}</option>`).prop("disabled",false)
+                    })
+                    $(`#${ten_duong_id}`).selectpicker("refresh").selectpicker("val","")
+                    $(`#${tuyen_duong_id}`).selectpicker("refresh").selectpicker("val","")
+                    $(`#${vi_tri_bds_id}`).selectpicker("refresh").selectpicker("val","")
+
+                  });
+                  return false;
+            })
+        // TUYEN DUONG AJAX
+            $(document).on('change','[id^="ten_duong_thi_truong"]', function() {
+                let ten_duong_id = $(this).attr("id")
+                let tinh_thanh_id = `tinh_thanh_${ten_duong_id.split("ten_duong_")[1]}`
+                let quan_huyen_id = `quan_huyen_${ten_duong_id.split("ten_duong_")[1]}`
+                let tuyen_duong_id = `tuyen_duong_${ten_duong_id.split("ten_duong_")[1]}`
+                let vi_tri_bds_id = `vi_tri_bds_${ten_duong_id.split("ten_duong_")[1]}`
+                empty_field()
+                // AJAX
+                $.getJSON($SCRIPT_ROOT + '/ajax_get_option_tuyen_duong', {
+                    tinh_thanh: $(`#${tinh_thanh_id}`).val(),
+                    quan_huyen: $(`#${quan_huyen_id}`).val(),              
+                    ten_duong: $(this).val(),
+
+                }, function(data) { 
+                    $(`#${tuyen_duong_id}`).empty().prop("disabled",true)
+                    $(`#${vi_tri_bds_id}`).empty().prop("disabled",true)
+                    $(`[id^="gia_tri_tai_san_"]`).empty()
+                    $("#div_select_loi_the").empty()
+                    $("#div_select_bat_loi").empty()
+                    $.each(data.result, function(i,r) {
+                        $(`#${tuyen_duong_id}`).append(`<option>${r}</option>`).prop("disabled",false)
+                    })
+                    $(`#${tuyen_duong_id}`).selectpicker("refresh").selectpicker("val","")
+                    $(`#${vi_tri_bds_id}`).selectpicker("refresh").selectpicker("val","")
+
+                  });
+                  return false;
+            })
+        // VI TRI BDS AJAX
+            $(document).on('change','[id^="tuyen_duong_thi_truong"]', function() {
+                let tuyen_duong_id = $(this).attr("id")
+                let tinh_thanh_id = `tinh_thanh_${tuyen_duong_id.split("tuyen_duong_")[1]}`
+                let quan_huyen_id = `quan_huyen_${tuyen_duong_id.split("tuyen_duong_")[1]}`
+                let ten_duong_id = `ten_duong_${tuyen_duong_id.split("tuyen_duong_")[1]}`
+                let vi_tri_bds_id = `vi_tri_bds_${tuyen_duong_id.split("tuyen_duong_")[1]}`
+                empty_field()
+                // AJAX
+                $.getJSON($SCRIPT_ROOT + '/ajax_get_option_vi_tri_bds', {
+                    tinh_thanh: $(`#${tinh_thanh_id}`).val(),
+                    quan_huyen: $(`#${quan_huyen_id}`).val(),
+                    ten_duong: $(`#${ten_duong_id}`).val(),            
+                    tuyen_duong: $(this).val(),
+
+                }, function(data) { 
+
+                    $(`#${vi_tri_bds_id}`).empty().prop("disabled",true)
+                    $(`[id^="gia_tri_tai_san_"]`).empty()
+                    $("#div_select_loi_the").empty()
+                    $("#div_select_bat_loi").empty()
+                    $.each(data.result, function(i,r) {
+                        $(`#${vi_tri_bds_id}`).append(`<option>${r}</option>`).prop("disabled",false)
+                    })
+                    $(`#${vi_tri_bds_id}`).selectpicker("refresh").selectpicker("val","")
+                  });
+                  return false;
+            })
+        ////// DIA CHI CHANGE
+            // $(document).on('change','#dia_chi_thi_truong', function() {
+
+            //     $.getJSON($SCRIPT_ROOT + '/ajax_get_option_bds_nha_tho_cu', {
+            //       dia_chi_thi_truong: $("#dia_chi_thi_truong").val(),
+            //     }, function(data) { 
+            //         $("#ten_duong_thi_truong").empty().prop("disabled",true)
+            //         $.each(data.result, function(i,r) {
+            //             $("#ten_duong_thi_truong").append(`<option>${r}</option>`).prop("disabled",false)
+            //         })
+            //         $("#ten_duong_thi_truong").selectpicker("refresh").selectpicker("val","")
+            //       });
+            //       return false;
+            // })
+    </script>
+
+    <!-- AJAX BDS CAN HO -->
+    <script type="text/javascript">
+        // GET TEN TOA NHA
+        $(document).on('change','[id^="du_an_cc_thi_truong"]', function() {
+            $.getJSON($SCRIPT_ROOT + '/ajax_get_option_du_an_can_ho', {            
+                ten_du_an: $(this).val(),
+            }, function(data) { 
+                $(`#toa_nha_cc_thi_truong`).empty().prop("disabled",true)
+                $(`#tang_cc_thi_truong`).empty().prop("disabled",true)
+                $(`#ma_can_cc_thi_truong`).empty().prop("disabled",true)
+                $(`[id^="value_"]`).empty()               
+
+                $.each(data.result, function(i,r) {
+                    $(`#toa_nha_cc_thi_truong`).append(`<option>${r}</option>`).prop("disabled",false)
+                })
+                $(`#toa_nha_cc_thi_truong`).selectpicker("refresh").selectpicker("val","")
+                $(`#tang_cc_thi_truong`).selectpicker("refresh").selectpicker("val","")
+                $(`#ma_can_cc_thi_truong`).selectpicker("refresh").selectpicker("val","")
+              });
+              return false;
+        })
+        // GET SO TANG NHA
+            $(document).on('change','[id^="toa_nha_cc_thi_truong"]', function() {
+                $.getJSON($SCRIPT_ROOT + '/ajax_get_option_tang_can_ho', { 
+                    ten_du_an: $("#du_an_cc_thi_truong").val(),
+                    ten_toa_nha: $(this).val(),
+                }, function(data) { 
+                    $(`#tang_cc_thi_truong`).empty().prop("disabled",true)
+                    $(`#ma_can_cc_thi_truong`).empty().prop("disabled",true)
+                    $(`[id^="value_"]`).empty()               
+
+                    $.each(data.result, function(i,r) {
+                        $(`#tang_cc_thi_truong`).append(`<option>${r}</option>`).prop("disabled",false)
+                    })
+                    $(`#tang_cc_thi_truong`).selectpicker("refresh").selectpicker("val","")
+                    $(`#ma_can_cc_thi_truong`).selectpicker("refresh").selectpicker("val","")
+
+                  });
+                  return false;
+            })
+        // GET MA CAN
+            $(document).on('change','[id^="tang_cc_thi_truong"]', function() {
+                $.getJSON($SCRIPT_ROOT + '/ajax_get_option_ma_can_ho', { 
+                    ten_du_an: $("#du_an_cc_thi_truong").val(),
+                    ten_toa_nha: $("#toa_nha_cc_thi_truong").val(),
+                    so_tang: $(this).val(),
+
+                }, function(data) { 
+                    $(`#ma_can_cc_thi_truong`).empty().prop("disabled",true)
+                    $(`[id^="value_"]`).empty()               
+                    $.each(data.result, function(i,r) {
+                        $(`#ma_can_cc_thi_truong`).append(`<option>${r}</option>`).prop("disabled",false)
+                    })
+                    $(`#ma_can_cc_thi_truong`).selectpicker("refresh").selectpicker("val","")
+                  });
+                  return false;
+            })
+        // GET VALUE
+            $(document).on('click','#get_result_chung_cu', function() {
+                $.getJSON($SCRIPT_ROOT + '/ajax_get_option_gia_can_ho', { 
+                    ten_du_an: $("#du_an_cc_thi_truong").val(),
+                    ten_toa_nha: $("#toa_nha_cc_thi_truong").val(),
+                    so_tang: $("#tang_cc_thi_truong").val(),
+                    ma_can: $("#ma_can_cc_thi_truong").val(),
+                }, function(data) { 
+                    console.log(data.tong_gia)
+                    $("#ket_qua_chung_cu_id").text(data.new_id)
+                    $("#ket_qua_chung_cu_ngay_khoi_tao").text(data.ngay_khoi_tao)
+                    $("#ket_qua_chung_cu_ten_du_an").text(data.ten_du_an)
+                    $("#ket_qua_chung_cu_ten_toa").text(data.ten_toa_nha)
+                    $("#ket_qua_chung_cu_so_tang").text(data.so_tang)
+                    $("#ket_qua_chung_cu_ma_can").text(data.ma_can)
+
+
+                    $("#ket_qua_chung_cu_dia_chi_du_an").text(data.dia_chi)
+                    $("#ket_qua_chung_cu_dien_tich").text(data.result[0] + ' m2')
+                    $("#ket_qua_chung_cu_loai_dien_tich").text(data.result[1])
+                    $("#ket_qua_chung_cu_don_gia").text(dot_number(Math.round(data.result[2])) + ' VNĐ')
+                    $("#ket_qua_chung_cu_tong_gia").text(dot_number(Math.round(data.tong_gia)) + ' VNĐ')
+                    $("#ket_qua_chung_cu").click()
+
+                  });
+                  return false;
+            })
+    </script>
+    <!-- AJAX BDS BIET THU -->
+    <script type="text/javascript">
+        // GET TEN DUONG
+            $(document).on('change','[id^="du_an_biet_thu"]', function() {
+                $.getJSON($SCRIPT_ROOT + '/ajax_get_option_ten_duong_biet_thu', { 
+                    ten_du_an: $("#du_an_biet_thu").val(),
+                }, function(data) { 
+                    $(`#duong_nha_biet_thu`).empty().prop("disabled",true)
+                    $(`#loai_nha_biet_thu`).empty().prop("disabled",true)
+                    $(`#ma_can_biet_thu`).empty().prop("disabled",true)
+                    $(`[id^="value_"]`).empty()          
+            
+                    $.each(data.result, function(i,r) {
+                        $(`#duong_nha_biet_thu`).append(`<option>${r}</option>`).prop("disabled",false)
+                    })
+                    $(`#duong_nha_biet_thu`).selectpicker("refresh").selectpicker("val","")
+                    $(`#loai_nha_biet_thu`).selectpicker("refresh").selectpicker("val","")
+                    $(`#ma_can_biet_thu`).selectpicker("refresh").selectpicker("val","")
+                  });
+                  return false;
+            })
+            // GET LOAI NHA
+                $(document).on('change','[id^="duong_nha_biet_thu"]', function() {
+                    $.getJSON($SCRIPT_ROOT + '/ajax_get_option_tang_biet_thu', { 
+                        ten_du_an: $("#du_an_biet_thu").val(),
+                        ten_duong: $("#duong_nha_biet_thu").val(),
+                    }, function(data) { 
+                        $(`#loai_nha_biet_thu`).empty().prop("disabled",true)
+                        $(`#ma_can_biet_thu`).empty().prop("disabled",true)             
+                        $(`[id^="value_"]`).empty() 
+                        $.each(data.result, function(i,r) {
+                            $(`#loai_nha_biet_thu`).append(`<option>${r}</option>`).prop("disabled",false)
+                        })
+                        $(`#loai_nha_biet_thu`).selectpicker("refresh").selectpicker("val","")
+                        $(`#ma_can_biet_thu`).selectpicker("refresh").selectpicker("val","")
+
+                      });
+                      return false;
+                })
+                // GET MA CAN
+                    $(document).on('change','[id^="loai_nha_biet_thu"]', function() {
+                        $.getJSON($SCRIPT_ROOT + '/ajax_get_option_ma_biet_thu', { 
+                            ten_du_an: $("#du_an_biet_thu").val(),
+                            ten_duong: $("#duong_nha_biet_thu").val(),
+                            ten_tang: $(this).val(),
+
+                        }, function(data) { 
+                            $(`#ma_can_biet_thu`).empty().prop("disabled",true)
+                            $(`[id^="value_"]`).empty()             
+                            $.each(data.result, function(i,r) {
+                                $(`#ma_can_biet_thu`).append(`<option>${r}</option>`).prop("disabled",false)
+                            })
+                            $(`#ma_can_biet_thu`).selectpicker("refresh").selectpicker("val","")
+                          });
+                          return false;
+                    })
+                // GET VALUE
+                    $(document).on('click','#get_result_biet_thu', function() {
+                        $.getJSON($SCRIPT_ROOT + '/ajax_get_option_gia_biet_thu', { 
+                            ten_du_an: $("#du_an_biet_thu").val(),
+                            ten_duong: $("#duong_nha_biet_thu").val(),
+                            ten_tang: $("#loai_nha_biet_thu").val(),
+                            ma_can: $("#ma_can_biet_thu").val(),
+                        }, function(data) { 
+                            $("#result_biet_thu").css("display", "")
+                            console.log(data.result)
+                            $("#ket_qua_biet_thu_dia_chi_du_an").text(data.dia_chi)
+
+                            if($.isNumeric(data.result[2])  ) {
+                                $("#ket_qua_biet_thu_tong_gia_xay_tho").text(dot_number(Math.round(data.result[2])))
+
+                            }else {
+                                $("#ket_qua_biet_thu_tong_gia_xay_tho").text(data.result[2])
+                            }
+
+                            if($.isNumeric(data.result[3])  ) {
+                                $("#ket_qua_biet_thu_tong_gia_hoan_thien").text(dot_number(Math.round(data.result[3])))
+
+                            }else {
+                                $("#ket_qua_biet_thu_tong_gia_hoan_thien").text(data.result[3])
+                            }
+
+                            $("#ket_qua_biet_thu_id").text(data.new_id)
+                            $("#ket_qua_biet_thu_ngay_khoi_tao").text(data.ngay_khoi_tao)
+                            $("#ket_qua_biet_thu_ten_du_an").text(data.ten_du_an)
+                            $("#ket_qua_biet_thu_ten_toa_duong").text(data.ten_duong)
+                            $("#ket_qua_biet_thu_loai_nha").text(data.ten_tang)
+                            $("#ket_qua_biet_thu_ma_can").text(data.ma_can)
+                            $("#ket_qua_biet_thu_dien_tich_dat").text(data.result[0] + ' m2')
+                            $("#ket_qua_biet_thu_dien_tich_san").text(data.result[1] + ' m2') 
+
+                            if(data.result[4] != 'Không xác định'){
+                                $("#ket_qua_biet_thu_don_gia_dat").text(dot_number(Math.round(data.result[4])) + ' VNĐ')
+                            }else {
+                                $("#ket_qua_biet_thu_don_gia_dat").text(data.result[4])
+                            }
+                            if(data.result[5] != 'Không xác định'){
+                                $("#ket_qua_biet_thu_don_gia_ctxd").text(dot_number(Math.round(data.result[5])) + ' VNĐ')
+
+                            }else {
+                                $("#ket_qua_biet_thu_don_gia_ctxd").text(data.result[5])
+                            }
+
+                            $("#ket_qua_biet_thu").click()
+                          });
+                          return false;
+                    })
+    </script>
+
+
+{% endblock javascripts %}

@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {% block head %}
+      {% block meta %}
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+      {% endblock meta %}
+
+      <title>iJupiter</title>
+
+      {% block stylesheets %}
+        <!-- Bootstrap -->
+        <link href="{{ url_for('static', filename='vendors/bootstrap/dist/css/bootstrap.min.css') }}" rel="stylesheet">
+        <!-- Font Awesome -->
+        <link href="{{ url_for('static', filename='vendors/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
+        <!-- Custom Theme Style -->
+        <link href="{{ url_for('static', filename='build/css/custom.css') }}" rel="stylesheet">
+        <!-- favicon -->
+        <link rel="icon" href="{{ url_for('static', filename='images/logo_tech.png') }}"/>
+      {% endblock stylesheets %}
+      
+            {% block javascripts %}
+        <!-- jQuery -->
+        <!-- <script type="text/javascript" src="static/js/jquery/jquery-2.1.3.min.js"></script> -->
+        <script src="{{ url_for('static', filename='vendors/jquery/dist/jquery.min.js') }}"></script>
+        <!-- Bootstrap -->
+        <script src="{{ url_for('static', filename='vendors/bootstrap/dist/js/bootstrap.min.js') }}"></script>
+
+
+        <!-- BS Select -->
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap/bootstrap-select.min.css') }} ">
+        <script type="text/javascript" src="{{ url_for('static', filename='js/bootstrap/bootstrap-select.min.js') }} "></script>
+        <script type="text/javascript" src="{{ url_for('static', filename='js/bootstrap/moment.js') }} "></script>
+      {% endblock %}
+
+      
+      
+      
+    {% endblock head %}
+  </head>
+<style type="text/css">
+    
+    /* COLOR SIDEBAR */
+        body {
+            background-color: white; 
+        }
+        .left_col {
+            background-color: white;
+        }
+
+        .nav.side-menu>li>a, .nav.child_menu>li>a, .button_custom {
+            color: black
+        }
+        .button_custom {
+            background-color: transparent; border: none; outline: none; font-weight: bold;height: 4vh; padding: 0;
+            padding-top: 2px;
+
+        }
+    /* COLOR SIDEBAR TOP */
+         .site_title ,.nav_title{
+            background-color: #901e1d;
+            color: white !important;
+         }
+    /* ACTIVE*/
+        .nav.side-menu>li.active>a, .nav.child_menu li.active {
+            background: linear-gradient(#a6a6a6, #d9d9d9), #901e1d;color: black
+
+        }
+
+        .nav.side-menu>li.current-page, .nav.side-menu>li.active,
+        .nav.child_menu li.active, .nav.child_menu li.active-sm, .nav-sm .nav.child_menu li.active {border-right: 5px solid transparent;}
+        .active>.button_custom{color: black;}
+    /*HOVER LI*/
+        .nav.side-menu>li.active>a:hover {
+            color: black !important;
+        }
+        .nav.side-menu>li>a:hover {
+            color: black !important;
+            background-color: #b3b3b3;
+        }
+        .nav.child_menu li:hover{
+            background-color: #b3b3b3;
+        }
+    /* DAU MUC */
+        .nav-md ul.nav.child_menu li:before {background-color: #4d4d4d}
+        .nav-md ul.nav.child_menu li:after {border-color: #4d4d4d}
+        /**/
+        li[id^='btn_'] {background-color: white}
+        label {
+            color: black
+        }
+    /* COLOR PANEL */
+    .color_panel {background-color: #901e1d !important; color: white !important}
+    .color_header {background-color: #2A3F54;}
+    h2 {
+        color: #901e1d
+    }
+
+    /* WIDTH LABEL */
+    .inline_modal {display: inline-block;width: 49.5%;padding: 10px; vertical-align: top}
+    .inline_modal_lg {display: inline-block;width: 90.5%;padding: 10px}
+    .inline_modal_md {display: inline-block;width:55.5%;padding: 10px}
+
+    .inline_modal_3 {display: inline-block;width: 33%;padding: 10px;height: 6vh;}
+
+    .inline_label {display: inline-block !important ;width: 30% !important}
+    .inline_label_sm {display: inline-block !important ;width: 20% !important;}
+    .inline_label_md {display: inline-block !important ;width: 28.5% !important;}
+    .inline_label_xl {display: inline-block !important ;width: 68.5% !important;}
+
+    .inline_label_lg {display: inline-block !important ;width: 88.5% !important;}
+
+    .modal-content {border-radius: 0 !important;}
+
+    .inline_select_input {display: inline-block !important ;width: 68% !important}
+    .label_text {
+        font-family: Arial, Helvetica, sans-serif;
+        color: black;
+        font-size: 110%;
+    }
+    .label_value {
+      font-family: Arial, Helvetica, sans-serif;
+      color: #901e1d;
+      font-size: 110%;
+    }
+    label {vertical-align: top !important;}
+    .label_custom {margin-bottom: 10px;}
+    .modal_ket_qua {width: 70vw;margin: 0 auto;margin-top: 15vh;}
+    .modal-backdrop {background-color: white;opacity: 1 !important;}
+</style>
+<style type="text/css">
+  #menu_toggle_m {display: none;}
+  @media screen and (max-width:1200px){
+    .modal_ket_qua {width: 90vw;}        
+  }
+  /*MOBILE MENU*/
+  @media screen and (max-width:991px){
+    .label_custom {margin-bottom: 0px;}
+    .modal_ket_qua {width: 90vw;margin: 0 auto;margin-top: 5vh;}
+    .inline_modal, .inline_modal_lg, .inline_modal_3, .inline_label, .inline_label_sm,.inline_label_md, .inline_select_input {display: inline-block !important ;width: 100% !important}
+    .x_title h2 {width: 100%; font-weight: bold;}
+    .x_panel {padding: 10px 0px;border: none;width: 99.9vw}
+    .x_title{border: none;}
+    [class^='col-'] {padding: 0}
+    .x_content{padding: 0; width: 100%}
+    .panel-title{font-size: 14px;}
+    .row {margin: 0}
+    .top_nav_text{
+      display: none;
+    }
+    .div_dong {
+      font-size: 70% !important
+    }
+    h1, h2 {font-size: 150% !important; padding-left: 20px;}
+    h3, h4 {
+      font-size: 90% !important; padding-left: 20px;
+    }
+
+    /* SIDEBAR */
+    #sidebar_main, #menu_toggle_lg {display: none;}
+    #menu_toggle_m {display: inline-block;color: white;}
+    #mainav a:hover{color:#901e1d;}
+    .sidenav {height: 100%; width: 0; position: fixed; z-index: 2 !important; top: 0; left: 0; background-color: #b3b3b3; overflow-x: hidden; transition: 0.5s !important; } 
+
+    .sidenav>a {padding: 8px 8px 8px 20px; text-decoration: none; display: block; transition: 0.3s !important}
+
+    .sidenav>div>a{padding: 8px 8px 8px 32px; text-decoration: none; display: block; transition: 0.3s !important}
+
+    .menu_side {transition: margin-left 0.5s !important; font-weight: bold;}
+    .nav_menu {
+    background-color: #901e1d; height: 58px;
+    }
+    .nav.navbar-nav>li>a {color: white !important;}
+    a {white-space: nowrap;color: black;}
+    /*.toggle {
+      position: fixed;
+          top: 0;
+          z-index: 2;
+          background-color: #901e1d;
+          width: 100%;
+
+    }*/
+    .right_col,.toggle {
+      padding: 0.5px !important;
+    }
+    .nav-md .container.body .right_col{
+    width: 97vw !important;background-color: transparent;
+    }
+  }  
+  @media screen and (max-width:500px){
+     
+  } 
+  @media screen and (max-width:400px){
+     
+  } 
+  @media screen and (max-width:350px){
+     h1, h2 {font-size: 110% !important; padding-left: 20px;}
+     h3, h4 {font-size: 80% !important; padding-left: 20px;}
+     .x_panel {width: 318px;}
+  }
+
+</style>
+
+  <body class="{% block body_class %}nav-md {% endblock body_class %}">
+    {% block body %}
+      <div class="container body">
+        <div class="main_container">
+            
+        <!-- SIDEBAR MENU -->
+          {% block sidebar %}
+            <div id="sidebar_main" class="col-md-3 left_col {% block sidebar_class %} {% endblock sidebar_class %}">
+              <div class="left_col scroll-view">
+                <div class="navbar nav_title" style="border: 0;">
+                  <a href="" style="" id="ij"  class="site_title">
+                  <!-- <span class="fa fa-usd"></span> -->
+                  <!-- <span class="fa fa-won" style="transform: rotate(180deg);"></span> -->
+
+                  <span>iJupiter</span></a>
+
+
+                </div>
+
+                <div class="clearfix"></div>
+
+                <!-- menu profile quick info -->
+                <div class="profile clearfix">
+                  <div class="profile_pic">
+                    <!-- ANH ADMIN -->
+                    <!-- <img src="/static/images/sml.jpg" width="" alt="..." class="img-circle profile_img"> -->
+                  </div>
+                  <div class="profile_info">
+                    <span style="color: black;">Welcome </span>
+                    <h2 style="color: #901e1d; font-weight: bold;font-size: 120%">{{session['name']}}</h2>
+                  </div>
+                </div>
+                <!-- /menu profile quick info -->
+
+
+                <!-- sidebar menu -->
+                <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+                  <div class="menu_section">
+                    
+                    <ul class="nav side-menu">                  
+
+                      <!-- GIA THI TRUONG -->
+                      <li><a id="check_gia_thi_truong" class_mobile="fa fa-building" href="/check_gia"><i class="fa fa-home"></i>iJupiter</a>
+                      </li>                      
+                    </ul>
+                  </div>
+                
+                </div>
+
+                
+              </div>
+
+            </div>
+            
+          {% endblock sidebar %}
+          
+          {% block top_navigation %}
+            <div class="top_nav">
+              {% include "tool_calculate_template/top_navigation_check_gia.html" %}
+            </div>
+          {% endblock top_navigation %}
+
+          {% block content %}
+            <!-- {{ content }} -->            
+          {% endblock content %}
+
+        </div>
+      </div>
+
+
+      <!-- Custom Theme Scripts -->
+      <script src="{{ url_for('static', filename='build/js/custom.js') }}"></script>
+    {% endblock body %}
+  </body>
+</html>

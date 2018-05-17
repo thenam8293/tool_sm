@@ -1,0 +1,461 @@
+<style type="text/css">
+    li {
+        color: black
+    }
+    .gach_dong {
+        color: #901e1d; margin-right: 10px;
+    }
+    .div_dong {
+        color: black; margin: 10px 30px;font-size: 120%;
+    }
+    .rainbow2 {
+        background-image: -webkit-linear-gradient(left, black, #901e1d, black); /* For Chrome and Safari */
+        background-image:    -moz-linear-gradient(left, black, #901e1d, black); /* For old Fx (3.6 to 15) */
+        background-image:     -ms-linear-gradient(left, black, #901e1d, black); /* For pre-releases of IE 10*/
+        background-image:      -o-linear-gradient(left, black, #901e1d, black); /* For old Opera (11.1 to 12.0) */
+        background-image:         linear-gradient(to right, black, #901e1d, black); /* Standard syntax; must be last */
+        color:transparent;
+        -webkit-background-clip: text;
+        background-clip: text;
+    }
+    .rainbow3 {
+        background-image: -webkit-linear-gradient(left, orange, black, black); /* For Chrome and Safari */
+        background-image:    -moz-linear-gradient(left, orange, black, black); /* For old Fx (3.6 to 15) */
+        background-image:     -ms-linear-gradient(left, orange, black, black); /* For pre-releases of IE 10*/
+        background-image:      -o-linear-gradient(left, orange, black, black); /* For old Opera (11.1 to 12.0) */
+        background-image:         linear-gradient(to right, orange, black, black); /* Standard syntax; must be last */
+        color:transparent;
+        -webkit-background-clip: text;
+        background-clip: text;
+    }
+    .rainbow {
+          background-image: -webkit-gradient( linear, left top, right top, color-stop(0, #f22), color-stop(0.15, #f2f), color-stop(0.3, #22f), color-stop(0.45, #2ff), color-stop(0.6, #2f2),color-stop(0.75, #2f2), color-stop(0.9, #ff2), color-stop(1, #f22) );
+          background-image: gradient( linear, left top, right top, color-stop(0, #f22), color-stop(0.15, #f2f), color-stop(0.3, #22f), color-stop(0.45, #2ff), color-stop(0.6, #2f2),color-stop(0.75, #2f2), color-stop(0.9, #ff2), color-stop(1, #f22) );
+          color:transparent;
+          -webkit-background-clip: text;
+          background-clip: text;
+    }
+    .raphael-group-14-legend {background-color: red !important}
+    /*.highcharts-button-symbol {display: none !important}*/
+</style>
+
+<script type="text/javascript" src="static\charts\js\fusioncharts.js"></script>
+<script type="text/javascript" src="static\charts\js\fusioncharts.charts.js"></script>
+<script type="text/javascript" src="static\charts\js\thememint.js"></script>
+
+
+
+<!-- MODAL THONG TIN QUY HOACH -->
+    <button type="button" id="ket_qua_quy_hoach" class="btn btn-info btn-lg" data-toggle="modal" data-target="#modal_ket_qua_quy_hoach" style="display: none;">Open btl2</button>
+    <div class="modal fade" id="modal_ket_qua_quy_hoach" role="dialog">
+        <div class="modal-dialog modal-lg" style="margin-top: 5vh" id="modal_quy_hoach1">
+            <div class="modal-content">
+                <div class="modal-header" style="text-align:center;background-color: #901e1d;">
+                    <button type="button" class="close" data-dismiss="modal" style="outline: none;color: white !important;font-size: 200% !important;opacity: 0.8;">&times;</button>
+                    <div style="font-weight: bold;color: white; font-size: 120%">THÔNG TIN QUY HOẠCH</div>
+                </div>
+                <div class="modal-footer" style="text-align:left;color: black">
+                    <label class="inline_label_sm label_custom">ID: </label>
+                    <label class="inline_label_md label_value label_custom" id="ket_qua_quy_hoach_id"></label>
+
+                    <label class="inline_label_sm label_custom">Ngày khởi tạo: </label>
+                    <label class="inline_label_md label_value label_custom" id="ket_qua_quy_hoach_ngay_khoi_tao"></label>
+                    <hr>
+                    <label class="inline_label_lg label_custom label_text">I. QUY HOẠCH TỔNG THỂ THEO QUẬN/HUYỆN: </label>
+                    <div id="container" style="margin: 0 auto; text-align: center;"></div>
+                    <hr>
+                    <label class="inline_label_lg label_custom label_text">II. QUY HOẠCH CHI TIẾT THEO TUYẾN ĐƯỜNG: </label>
+                    <hr>
+                    <label class="inline_label_sm">Địa chỉ: </label>
+                    <label class="inline_label_lg label_value label_custom" id="ket_qua_quy_hoach_dia_chi"></label>
+                    <hr>
+
+                    <label style="display: none !important;" class="inline_label_lg" for="quy_hoach_chua_xac_dinh" id="label_quy_hoach_chua_xac_dinh">Thông tin quy hoạch: </label>
+                    <label style="display: none;" class="inline_label_lg label_value label_custom" id="quy_hoach_chua_xac_dinh"></label>
+                    <hr id="hr_quy_hoach_chua_xac_dinh" style="display: none;">
+
+                    <label class="inline_label_lg" for="quy_hoach_hien_huu" id="label_quy_hoach_hien_huu">Quy hoạch mở đường hiện hữu: </label>
+                    <label class="inline_label_lg label_value label_custom" id="quy_hoach_hien_huu"></label>
+                    <hr id="hr_quy_hoach_hien_huu">
+                    <label class="inline_label_lg" for="quy_hoach_moi" id="label_quy_hoach_moi">Quy hoạch mở đường mới: </label>
+                    <label class="inline_label_lg label_value label_custom" id="quy_hoach_moi"></label>
+                    <hr id="hr_quy_hoach_moi">
+                    <label class="inline_label_lg" for="quy_hoach_thoat_lu" id="label_quy_hoach_thoat_lu">Quy hoạch hành lang thoát lũ: </label>
+                    <label class="inline_label_lg label_value label_custom" id="quy_hoach_thoat_lu"></label>
+                    <hr id="hr_quy_hoach_thoat_lu">
+                    <label class="inline_label_lg" for="quy_hoach_cong_trinh" id="label_quy_hoach_cong_trinh">Quy hoạch liên quan đến các công trình công cộng, công trình Nhà nước: </label>
+                    <label class="inline_label_lg label_value label_custom" id="quy_hoach_cong_trinh"></label>
+                    
+                </div>
+
+                <div class="modal-footer" style="text-align:center;color: black">              
+                <button onclick="takeScreenShot()">Lưu kết quả</button>               
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!-- TI LE TUAN THU -->
+<script type="text/javascript">
+
+    // alert($("#modal_quy_hoach1").width())
+    // alert($("#modal_ket_qua_quy_hoach").width()*0.715)
+
+
+
+    function chart(data, thanh_pho, quan_huyen) {
+        FusionCharts.ready(function () {
+            var revenueChart = new FusionCharts({
+                type: 'pie2d',
+                renderAt: 'container',
+                width: $("#modal_ket_qua_quy_hoach").width()*0.5,
+                height: $("#modal_ket_qua_quy_hoach").height()*0.3,
+                dataFormat: 'json',
+                dataSource: {
+                    "chart": {
+                        "caption": `${quan_huyen}, ${thanh_pho}`,
+                        "captionPadding": "-20",
+                        "chartLeftMargin": "10",
+                        "chartTopMargin": "10",
+                        "chartRightMargin": "10",
+                        "chartBottomMargin": "10",
+                        "paletteColors": "#a6001a, #ffab00, #e06000, #00477e",
+                        "showPercentValues": "1",
+                        "startingAngle" : "60",
+                        "decimals": "1",
+                        "canvasPadding": "0",
+                        // "useDataPlotColorForLabels": "1",
+                        "showToolTip": "0",
+                        "showLegend":"1",
+                        "minimiseWrappingInLegend" : "0",
+                        "interactiveLegend": "1",
+                        "legendPosition": "right",
+                        "legendIconScale": "1",
+                        "labelFontSize": "15",
+
+                        //Smart line cosmetics
+                        "smartLineColor": "#000000",
+                        "smartLineThickness": "1",
+                        "smartLineAlpha": "75",
+                        "showplotBorder": "1",
+                        "showLabels": "0    " ,
+                        "showValues": "1",
+
+                        
+                        //Theme
+                        "theme": "fint",
+                        "bgColor": "white",  
+                    },
+                    "data": data
+                }
+            })
+            // revenueChart.render()
+
+            function rend_clbk() {
+                    revenueChart.render('container', undefined, callBack)
+                }
+
+            function callBack() {
+                $("[class$='-creditgroup']").remove()
+            }
+            rend_clbk()
+        })
+    }
+   
+</script>
+
+
+<div id="intro">
+    <div>
+        <h2 style="font-weight: bold;" class=" intro_text_sx">iJupiter </h2>
+    </div>
+    <div>
+        <h3 class="rainbow2 intro_text_sx">Giải pháp tư vấn giá thông minh (Intelligent Consulting Solution)</h3>
+    </div>
+    <hr style="border-top: 1px solid black">
+    <div>
+        <h4 class=" intro_text_sx" style="color: #262626;">
+            iJupiter cung cấp cho khách hàng công cụ online tư vấn giá trị thị trường của Bất động sản cập nhật từng thời điểm:
+        </h4>
+    </div>
+    
+        <div class="div_dong"><span class="fa fa-mail-forward gach_dong"></span>Đất thổ cư</div>
+        <div class="div_dong"><span class="fa fa-mail-forward gach_dong"></span>Đất dự án (Chung cư, Biệt thự, Shophouse, Officetel,…)</div>
+        <div class="div_dong"><span class="fa fa-mail-forward gach_dong"></span>Khung giá đất Nhà nước ban hành</div>
+        <div class="div_dong"><span class="fa fa-mail-forward gach_dong"></span>Thông tin quy hoạch chi tiết </div>
+        <div class="div_dong"><span class="fa fa-mail-forward gach_dong"></span>ROA – Tỷ suất lợi nhuận trên tài sản…</div>
+    
+</div>
+
+
+<form id="input_form_quy_hoach" method="POST" style="display: none;">
+<div class="row">
+    <div class="col-md-12">
+        <div class="x_panel">
+            <!-- TITLE -->
+            <div class="x_title">
+                <h2>THÔNG TIN QUY HOẠCH</h2>
+                
+                <div class="clearfix"></div>
+            </div>
+            <!-- CONTENT -->
+            <div class="x_content">
+                <div class="collapse-group" style="margin-top: 2vh;height: 100vh">
+                    <!-- TT BDS -->
+                       <div class="panel panel-default">
+                           <div class="panel-heading color_panel" role="tab" id="">
+                               <div class="panel-title">
+                                   <a id="title" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseBDS_tho_cu_One" aria-expanded="true" aria-controls="collapseBDS_tho_cu_One" style="padding: 10px 15px !important"> Thông tin chung BĐS</a>
+                               </div>
+                           </div>
+                           <div class="panel-body">
+                               <div class="inline_modal">
+                                   <label class="inline_label" for="thanh_pho_tt_quy_hoach" style="">Tỉnh/Thành</label>
+                                   <select id="thanh_pho_tt_quy_hoach" name="thanh_pho_tt_quy_hoach" class="form-control inline_select_input selectpicker" title="" data-live-search="true">
+                                        {% for i in list_thanh_pho_quy_hoach %}
+                                            <option>{{i}}</option>
+                                        {% endfor %}
+                                   </select>                   
+                               </div> 
+                               <div class="inline_modal">
+                                   <label class="inline_label" for="quan_huyen_tt_quy_hoach" style="">Quận/Huyện</label>
+                                   <select id="quan_huyen_tt_quy_hoach" name="quan_huyen_tt_quy_hoach" class="form-control inline_select_input selectpicker" title="" data-live-search="true">
+                                   </select>                   
+                               </div> 
+                               <div class="inline_modal">
+                                   <label class="inline_label" for="ten_duong_tt_quy_hoach" style="">Đường Phố</label>
+                                   <select id="ten_duong_tt_quy_hoach" name="ten_duong_tt_quy_hoach" class="form-control inline_select_input selectpicker" title="" data-live-search="true">
+                                   </select>                   
+                               </div>                
+                               <div class="inline_modal">
+                                   <label class="inline_label" for="doan_duong_tt_quy_hoach" style="">Tuyến đường</label>
+                                   <select id="doan_duong_tt_quy_hoach" name="doan_duong_tt_quy_hoach" class="form-control inline_select_input selectpicker" title="" data-live-search="true">
+                                   </select>                   
+                               </div>                   
+                           </div>
+                       </div>
+
+                       <!-- SUBMIT -->
+                       <!-- BTN SUBMIT -->
+                       <div style="text-align: center;">
+                           <button type="button" style="border: none; outline: none; background-color: #901e1d;color: white; width: 90px; height: 30px;margin-bottom: 10px;" id="get_result_quy_hoach">SUBMIT</button>
+                       </div>
+                       
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- SET VALUE NONE -->
+<script type="text/javascript">
+    $("[id$='tt_quy_hoach']").selectpicker("refresh").selectpicker("val","")
+    $(".highcharts-button-symbol, .highcharts-credits").remove()
+</script>
+<script type="text/javascript">
+    // QUAN HUYEN QUY HOACH
+        $(document).on('change',"#thanh_pho_tt_quy_hoach", function() {
+            let thanh_pho_id = $(this).attr("id")
+            let quan_huyen_id = `quan_huyen_${thanh_pho_id.split("thanh_pho_")[1]}`
+            let ten_duong_id = `ten_duong_${thanh_pho_id.split("thanh_pho_")[1]}`
+            let doan_duong_id = `doan_duong_${thanh_pho_id.split("thanh_pho_")[1]}`
+            let vi_tri_bds_id = `vi_tri_bds_${thanh_pho_id.split("thanh_pho_")[1]}`
+            // EMPTY FIELD ONCHANGE
+            empty_field()
+            // AJAX
+            $.getJSON($SCRIPT_ROOT + '/ajax_get_option_quan_huyen_quy_hoach', {
+                thanh_pho: $(this).val(),
+            }, function(data) { 
+                
+                // empty field                        
+                $(`#${quan_huyen_id}`).empty().prop("disabled",true)
+                $(`#${ten_duong_id}`).empty().prop("disabled",true)
+                $(`#${doan_duong_id}`).empty().prop("disabled",true)
+                $(`#${vi_tri_bds_id}`).empty().prop("disabled",true)
+
+                $.each(data.result, function(i,r) {
+                    $(`#${quan_huyen_id}`).append(`<option>${r}</option>`).prop("disabled",false)
+                })
+                $(`#${quan_huyen_id}`).selectpicker("refresh").selectpicker("val","")
+                $(`#${ten_duong_id}`).selectpicker("refresh").selectpicker("val","")
+                $(`#${doan_duong_id}`).selectpicker("refresh").selectpicker("val","")
+                $(`#${vi_tri_bds_id}`).selectpicker("refresh").selectpicker("val","")
+
+              })
+              return false;
+        })
+    // DUONG PHO QUY HOACH
+    $(document).on('change',"#quan_huyen_tt_quy_hoach", function() {
+        let quan_huyen_id = $(this).attr("id")
+        let thanh_pho_id = `thanh_pho_${quan_huyen_id.split("quan_huyen_")[1]}`
+        let ten_duong_id = `ten_duong_${quan_huyen_id.split("quan_huyen_")[1]}`
+        let doan_duong_id = `doan_duong_${quan_huyen_id.split("quan_huyen_")[1]}`
+        let vi_tri_bds_id = `vi_tri_bds_${quan_huyen_id.split("quan_huyen_")[1]}`
+        empty_field()
+        $.getJSON($SCRIPT_ROOT + '/ajax_get_option_duong_pho_quy_hoach', {
+            thanh_pho: $(`#${thanh_pho_id}`).val(),
+            quan_huyen: $(this).val(),
+
+        }, function(data) { 
+            $(`#${ten_duong_id}`).empty().prop("disabled",true)
+            $(`#${doan_duong_id}`).empty().prop("disabled",true)
+            $(`#${vi_tri_bds_id}`).empty().prop("disabled",true)
+            $.each(data.result, function(i,r) {
+                $(`#${ten_duong_id}`).append(`<option>${r}</option>`).prop("disabled",false)
+            })
+            $(`#${ten_duong_id}`).selectpicker("refresh").selectpicker("val","")
+            $(`#${doan_duong_id}`).selectpicker("refresh").selectpicker("val","")
+            $(`#${vi_tri_bds_id}`).selectpicker("refresh").selectpicker("val","")
+
+          });
+          return false;
+    })
+
+    // DOAN DUONG QUY HOACH
+        $(document).on('change',"#ten_duong_tt_quy_hoach", function() {
+            let ten_duong_id = $(this).attr("id")
+            let thanh_pho_id = `thanh_pho_${ten_duong_id.split("ten_duong_")[1]}`
+            let quan_huyen_id = `quan_huyen_${ten_duong_id.split("ten_duong_")[1]}`
+            let doan_duong_id = `doan_duong_${ten_duong_id.split("ten_duong_")[1]}`
+            let vi_tri_bds_id = `vi_tri_bds_${ten_duong_id.split("ten_duong_")[1]}`
+            empty_field()
+            // AJAX
+            $.getJSON($SCRIPT_ROOT + '/ajax_get_option_doan_duong_quy_hoach', {
+                thanh_pho: $(`#${thanh_pho_id}`).val(),
+                quan_huyen: $(`#${quan_huyen_id}`).val(),              
+                ten_duong: $(this).val(),
+
+            }, function(data) { 
+                $(`#${doan_duong_id}`).empty().prop("disabled",true)
+                $(`#${vi_tri_bds_id}`).empty().prop("disabled",true)
+                $.each(data.result, function(i,r) {
+                    $(`#${doan_duong_id}`).append(`<option>${r}</option>`).prop("disabled",false)
+                })
+                $(`#${doan_duong_id}`).selectpicker("refresh").selectpicker("val","")
+                $(`#${vi_tri_bds_id}`).selectpicker("refresh").selectpicker("val","")
+
+              });
+              return false;
+        })
+
+
+
+    // RESULT QUY HOACH
+        $(document).on('click',"#get_result_quy_hoach", function() {
+            let doan_duong_id = $("#doan_duong_tt_quy_hoach").attr("id")
+            let thanh_pho_id = `thanh_pho_${doan_duong_id.split("doan_duong_")[1]}`
+            let quan_huyen_id = `quan_huyen_${doan_duong_id.split("doan_duong_")[1]}`
+            let ten_duong_id = `ten_duong_${doan_duong_id.split("doan_duong_")[1]}`
+            let vi_tri_bds_id = `vi_tri_bds_${doan_duong_id.split("doan_duong_")[1]}`
+            empty_field()
+            // AJAX
+            $.getJSON($SCRIPT_ROOT + '/ajax_get_thong_tin_quy_hoach', {
+                thanh_pho: $(`#${thanh_pho_id}`).val(),
+                quan_huyen: $(`#${quan_huyen_id}`).val(),
+                ten_duong: $(`#${ten_duong_id}`).val(),            
+                doan_duong: $("#doan_duong_tt_quy_hoach").val(),
+
+            }, function(data) {
+                console.log(data.dict_label_value)
+                $("#ket_qua_quy_hoach_id").text(data.new_id)
+                $("#ket_qua_quy_hoach_ngay_khoi_tao").text(data.ngay_khoi_tao)
+                $("#ket_qua_quy_hoach_dia_chi").text(data.dia_chi)
+                $("[id^='quy_hoach_']").empty()
+
+                if(data.quy_hoach_hien_huu == 'Chưa xác định'){
+                    $("[id$='quy_hoach_hien_huu']").attr('style','display:none !important')
+                }
+                else{
+                    $("[id$='quy_hoach_hien_huu']").attr('style','display:block !important')
+
+                    let result_1 = ''                
+                    $.each(String(data.quy_hoach_hien_huu).split("|"), function(i, r) {
+                        result_1 += `<div style="margin-left: 10px;">${r}</div>`
+                    })
+                    $(`#quy_hoach_hien_huu`).append(result_1) 
+                }
+                
+                if(data.quy_hoach_moi == 'Chưa xác định'){
+                    $("[id$='quy_hoach_moi']").attr('style','display:none !important')                    
+                }
+                else {
+                    $("[id$='quy_hoach_moi']").attr('style','display:block !important')                    
+
+                    let result_2 = ''                
+                    $.each(String(data.quy_hoach_moi).split("|"), function(i, r) {
+                        result_2 += `<div style="margin-left: 10px;">${r}</div>`
+                    })
+                    $(`#quy_hoach_moi`).append(result_2)
+                }
+                
+
+                if(data.quy_hoach_thoat_lu == 'Chưa xác định'){
+                    $("[id$='quy_hoach_thoat_lu']").attr('style','display:none !important')
+                }
+                else {
+                    $("[id$='quy_hoach_thoat_lu']").attr('style','display:block !important')
+
+                    let result_3 = ''                
+                    $.each(String(data.quy_hoach_thoat_lu).split("|"), function(i, r) {
+                        result_3 += `<div style="margin-left: 10px;">${r}</div>`
+                    })
+                    $(`#quy_hoach_thoat_lu`).append(result_3)
+                }
+                
+
+                if(data.quy_hoach_cong_trinh == 'Chưa xác định'){
+                    $("[id$='quy_hoach_cong_trinh']").attr('style','display:none !important')
+                }
+                else {
+                    $("[id$='quy_hoach_cong_trinh']").attr('style','display:block !important')
+                    let result_4 = ''                
+                    $.each(String(data.quy_hoach_cong_trinh).split("|"), function(i, r) {
+                        result_4 += `<div style="margin-left: 10px;">${r}</div>`
+                    })
+                    $(`#quy_hoach_cong_trinh`).append(result_4)
+                }
+                if(data.quy_hoach_hien_huu == 'Chưa xác định' && data.quy_hoach_moi == 'Chưa xác định' && data.quy_hoach_thoat_lu == 'Chưa xác định' && data.quy_hoach_cong_trinh == 'Chưa xác định') {
+                    $("[id$='quy_hoach_chua_xac_dinh']").attr('style', 'display:block !important')
+                    $("#quy_hoach_chua_xac_dinh").append(`<div style="margin-left: 10px;">Chưa xác định</div>`)
+                }else {
+                    $("[id$='quy_hoach_chua_xac_dinh']").attr('style', 'display:none !important')
+                }
+
+                $("#ket_qua_quy_hoach").click()
+
+                chart(data.dict_label_value, data.thanh_pho, data.quan_huyen)
+                
+            })
+            return false
+        })
+</script>
+<script type="text/javascript">
+    var width_screen = $(window).width()
+    var ket_qua_tho_cu = document.getElementById("modal_ket_qua_quy_hoach")
+    var takeScreenShot = function() {
+        html2canvas(ket_qua_tho_cu, {
+            onrendered: function (canvas) {
+                var tempcanvas=document.createElement('canvas')
+                var scr_shot_width = $("#modal_ket_qua_quy_hoach").width()
+                var scr_shot_height = $("#modal_ket_qua_quy_hoach").height()
+
+                tempcanvas.width = scr_shot_width
+                tempcanvas.height = scr_shot_height - 50
+                var context=tempcanvas.getContext('2d')
+
+                context.drawImage(canvas, 10, 0, scr_shot_width, scr_shot_height)
+
+                var link = document.createElement("a")
+                link.href = tempcanvas.toDataURL('image/jpg')
+                $('<img src="' + tempcanvas.toDataURL('image/jpg') + '" />').appendTo('#main-container');   //function blocks CORS
+                link.download = 'screenshot.jpg'
+                link.click()
+          }
+      });
+    }
+
+</script>
+
+
+
+</form>

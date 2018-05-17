@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Sao Mộc</title>
+        
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        <!-- jQuery -->
+        <!-- <script src="{{ url_for('static', filename='vendors/jquery/dist/jquery.min.js') }}"></script> -->
+        <script type="text/javascript" src="static/js/jquery/jquery-2.1.3.min.js"></script>
+        <!-- Bootstrap -->
+        <script src="{{ url_for('static', filename='vendors/bootstrap/dist/js/bootstrap.min.js') }}"></script>
+        <link href="{{ url_for('static', filename='vendors/bootstrap/dist/css/bootstrap.min.css') }}" rel="stylesheet">
+
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/sm/layout.css') }} ">
+
+        <style type="text/css">
+            .heading, .uppercase {font-family: Verdana, Geneva, sans-serif; font-weight: bold;}
+            
+            #mainav>div{display:none;}            
+
+            /*MAIN MENU*/
+            a{color:#901e1d;}
+            
+            #mainav .active a{color:white;}
+            #mainav li:hover > a{color:black}
+            #mainav>ul>li{display:block; position:relative; margin:0 auto; padding:0; text-transform:uppercase; float: left;   }
+
+            /*MOBILE MENU*/
+            @media screen and (max-width:700px){
+                .hoc{max-width:90%;}
+                #topbar{}
+                #header{}
+                #mainav{}
+                #mainav>ul{display:none;}
+                .row1, .row0{display:none;}
+                #mainav>div{display:block;}
+                #breadcrumb{}
+                .container{}
+                #comments input[type="reset"]{margin-top:10px;}
+                .pagination li{display:inline-block; margin:0 5px 5px 0;}
+                #footer{}
+                #copyright{}
+                #copyright p:first-of-type{margin-bottom:10px;}
+
+                /*CUSTOM*/
+                #mainav a:hover{color:#901e1d;}
+                .sidenav {height: 100%; width: 0; position: fixed; z-index: 1; top: 0; left: 0; background-color: white; overflow-x: hidden; transition: 0.5s !important; } 
+
+                .sidenav>a {padding: 8px 8px 8px 20px; text-decoration: none; display: block; transition: 0.3s !important}
+                .sidenav>div>a{padding: 8px 8px 8px 32px; text-decoration: none; display: block; transition: 0.3s !important}
+
+                .menu_side {transition: margin-left 5s !important; font-weight: bold;}
+                a {white-space: nowrap;}
+                .toggle {
+                    position: fixed;
+                        top: 0;
+                        z-index: 2;
+                        background-color: #901e1d;
+                        width: 100%;
+
+                }
+                
+            }            
+
+            /*IPHONE X*/
+            @media screen and (max-height: 820px){
+                .icon_mobile {
+                    background-size: 100% 100%;width: 125px; height: 42px;display:inline-block;margin-top: 5px;margin-bottom:0vh;
+                    
+                }
+                .btn_menu_mobile{
+                    font-size: 220%; height: 3.5vh;margin: 12px;
+                }
+                .sidenav>a {font-size: 13px;}
+                .sidenav>div>a{font-size: 12px;}
+            } 
+
+            /*IP 6/7/8 + PLUS*/
+            @media screen and (max-height: 650px){
+                .icon_mobile {
+                    background-size: 100% 100%;width: 120px; height: 40px;display:inline-block;margin-bottom:5px;
+                }
+                .btn_menu_mobile{
+                    font-size: 220%; height: 4vh;margin: 10px;
+                }
+                .sidenav>a {font-size: 13px;}
+                .sidenav>div>a{font-size: 12px;}
+            }
+            
+            /*IP 6/7/8 */
+            @media screen and (max-height: 600px){
+                .icon_mobile {
+                    background-size: 100% 100%;width: 115px; height: 36px;display:inline-block;margin-bottom: 0;
+                }
+                .btn_menu_mobile{
+                    font-size: 200%; height: 4vh;margin: 10px;
+                }
+                .sidenav>a {font-size: 13px;}
+                .sidenav>div>a{font-size: 12px;}
+            }
+            /*IP5*/
+            @media screen and (max-height: 550px){
+                .icon_mobile {
+                    background-size: 100% 100%;width: 92px; height: 30px;display:inline-block;margin-top: 5px;margin-bottom: -2px;
+                    
+                }
+                .btn_menu_mobile{
+                    font-size: 150%; height: 4vh;margin: 8px;
+                }
+                .sidenav>a {font-size: 12px;}
+                .sidenav>div>a{font-size: 11px;}
+            }
+
+            /*IP4*/
+            @media screen and (max-height: 450px){
+                .icon_mobile {
+                    background-size: 100% 100%;width: 92px; height: 30px;display:inline-block;margin-top: 3px;margin-bottom: -2px;
+                    
+                }
+                .btn_menu_mobile{
+                    font-size: 150%; height: 4vh;margin: 8px;
+                }
+                .sidenav>a {font-size: 12px;}
+                .sidenav>div>a{font-size: 11px;}
+            }
+        </style>
+    </head>
+    <body id="top">
+        <!-- HEADER -->
+        <div class="wrapper row0">
+            <div id="topbar" class="hoc clear"> 
+                <!-- INFO -->
+                <!-- <div class="fl_left">
+                    <ul class="nospace inline pushright">
+                        <li><i class="fa fa-phone"></i> +84 984 189 868</li>
+                        <li><i class="fa fa-envelope-o"></i> din@domain.com</li>
+                    </ul>
+                </div> -->
+                <!-- <div class="fl_right">
+                    <ul class="faico clear">
+                        <li><a class="faicon-facebook" href="#"><i class="fa fa-facebook"></i></a></li>
+                        <li><a class="faicon-google-map" href="#"><i class="fa fa-map-marker"></i></a></li>
+                        <li><a class="faicon-gmail" href="#"><i class="fa fa-envelope-o"></i></a></li>
+                        <li><a class="faicon-google-plus" href="#"><i class="fa fa-google-plus"></i></a></li>
+                    </ul>
+                </div> -->
+            <!-- ################################################################################################ -->
+            </div>
+        </div>
+
+        <!-- LOGO -->
+        <div class="wrapper row1">
+            <header id="header" class="hoc clear"> 
+                <div id="logo" class="fl_left">
+                  <div style="background-image:url('static/img/demo/backgrounds/saomoc_do.png'); background-size: 100% 100%; width: 240px; height: 80px;"></div>
+                </div>
+                <!-- <div id="quickinfo" class="fl_right">
+                  <ul class="nospace inline">
+                    <li><strong>Malesuada:</strong><br>
+                      +00 (123) 456 7890</li>
+                    <li><strong>Semper:</strong><br>
+                      +00 (123) 456 7890</li>
+                  </ul>
+                </div> -->
+            </header>
+        </div>
+
+        <!-- MENU CHINH -->
+        <div class="wrapper row2">
+            <nav id="mainav" class=" clear"> 
+                <!--  -->
+                <ul class="clear">
+                    <li class="active" style="margin-left: 10vw;">
+                        <a href="/index" id="home" class_mobile="fa fa-home">TRANG CHỦ</a>
+                    </li>
+                    
+
+                    <li><a class="drop" href="#" id="gioithieu" class_mobile="fa fa-tv">GIỚI THIỆU</a>
+                        <ul>
+                            <li><a href="pages/gallery.html" id="gioithieu_1">Giới thiệu chung</a></li>
+                            <li><a href="pages/full-width.html" id="gioithieu_2">Đội ngũ thẩm định viên</a></li>
+                            <li><a href="pages/sidebar-left.html" id="gioithieu_3">Đối tác</a></li>
+                            <li><a href="pages/sidebar-right.html" id="gioithieu_4">Hồ sơ năng lực</a></li>
+                        </ul>
+                    </li>
+
+                    <li><a class="drop" href="#" id="tintuc" class_mobile="fa fa-newspaper-o">TIN TỨC</a>
+                        <ul>
+                            <li><a href="#" id="tintuc_1">Tin thẩm định giá</a></li>
+                            <li><a href="#" id="tintuc_2">Tin tức động sản</a></li>
+                            <li><a href="#" id="tintuc_3">Tin tức bất động sản</a></li>
+                            <li><a href="#" id="tintuc_4">Tin tức hoạt động</a></li>
+                            <li><a href="#" id="tintuc_5">Tin tức khác</a></li>
+                        </ul>
+                    </li>
+                    <li><a class="drop" href="#" id="dichvu" class_mobile="fa fa-gear">DỊCH VỤ</a>
+                        <ul>
+                            <li><a href="#" id="dichvu_1">Tư vấn giá động sản</a></li>
+                            <li><a href="#" id="dichvu_2">Tư vấn giá bất động sản</a></li>
+                            <li><a href="#" id="dichvu_3">Tư vấn giá máy móc thiết bị</a></li>
+                            <li><a href="#" id="dichvu_4">Biểu phí</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="/check_gia" id="toolsm" class_mobile="fa fa-money">I-JUPITER</a>
+                    </li>
+                    
+                    
+                    <li>
+                        <a href="#" id="tuyendung" class_mobile="fa fa-users">TUYỂN DỤNG</a>
+                    </li>
+                    <li>
+                        <a href="#" id="lienhe" class_mobile="fa fa-phone" >LIÊN HỆ</a>
+                    </li>
+                    
+                </ul>
+
+                <!-- MENU MOBILE -->
+
+                <script type="text/javascript">
+
+                    $("#mainav").append(`
+                        <div class="nav toggle" >
+                            <i class="fa fa-bars btn_menu_mobile" onclick="openNav()" ></i>
+                            <i class="icon_mobile" style="background-image:url('static/img/saomoc.png');float:right;">
+                            </i>                            
+                            <div id="mySidenav" class="sidenav" style="z-index: 2;background: linear-gradient(to right, white,#f2f2f2,#b3b3b3)"></div>
+                        </div>`)
+                    // $("#mySidenav").append(`<div style="background-image:url('static/img/demo/backgrounds/saomoc_do.png'); background-size: 100% 100%; width: 180px; height: 70px;"></div><hr style="margin-top:5px;">`)
+                    $("#mySidenav").append(`<div style="width: 100%; height: 50px;"></div>`)
+                    $("#mainav a").each(function(){
+                     var e=$(this)
+                         // LEVEL 2
+                        if($(e).parents("ul ul").length>=1){
+                            let id_child = e.attr("id").split("_")[0]
+                             $(`#mySidenav .mobile_${id_child}`).append(`
+                                <a href="${e.attr("href")}">
+                                    <span class="fa fa-mail-forward" style="font-size:70%;"></span>
+                                    ${e.text()}
+                                </a>`)
+                         }
+                         // LEVEL 1
+                         else if($(e).parents("ul").length>=1){
+                            $("#mySidenav").append(`
+                                <a href="${e.attr("href")}" class="menu_side" id="mobile_${e.attr("id")}">
+                                    <span class='${e.attr("class_mobile")}' style="margin-right:10px;color:#4d4d4d;"></span>
+                                    ${e.text()}
+                                </a>`)
+                            $("#mySidenav").append(`<div class="mobile_${e.attr("id")}" style="display: none;margin-left: 5px;"></div><hr style="margin:10px;">`)
+
+                         }
+                     })
+                
+                    ///// CLICK OUTSIDE HIDE SIDEBAR 
+
+                    $(document).mouseup(function(e) 
+                    {
+                        var container = $("#mySidenav")
+                        if (!container.is(e.target) && container.has(e.target).length === 0) 
+                        {
+                            closeNav()
+                        }
+                    })
+                </script>
+            </nav>
+        </div>
+
+        <script>
+            $(".menu_side").click(function() {
+                let id_ = $(this).attr("id")
+                $(`.${id_}`).slideToggle()
+                $(`[class^='mobile_'][class!=${id_}]`).slideUp()
+            })
+
+            function openNav() {
+                document.getElementById("mySidenav").style.width = "65%";
+
+            }
+            function closeNav() {
+                document.getElementById("mySidenav").style.width = "0%";
+
+            }
+        </script>
+
+        <!-- BANNER CHINH -->
+        <div class="wrapper bgded overlay" style="background-image:url('static/img/demo/backgrounds/banner.png');">
+            <div id="pageintro" class="hoc clear"> 
+                <div class="flexslider basicslider">
+                    <ul class="slides">
+                        <li>
+                            <article class="group">
+                                <div class="one_half first">
+                                    <p class="uppercase">Suspendisse velit urna</p>
+                                    <h2 class="heading">Eu dolor sit amet ullamcorper</h2>
+                                    <p>Dolor cras diam nec ultrices tincidunt sed vel placerat dui aenean pharetra urna nec nulla tempor sagittis vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere.</p>
+                                    <p><a class="btn medium inverse" href="#">Read More &raquo;</a></p>
+                                </div>
+                                <div class="one_half"><a href="#"><img src="static/img/demo/slider/banner.png" alt=""></a></div>
+                            </article>
+                        </li>
+                        <li>
+                          <article class="group">
+                            <div class="one_half first">
+                              <p class="uppercase">Cubilia curae aliquam</p>
+                              <h2 class="heading">Sodales lectus rhoncus vestibulum</h2>
+                              <p>Aptent taciti sociosqu ad litora torquent per conubia nostra per inceptos himenaeos nam eget dictum dui proin ac turpis pulvinar pulvinar nisl eget accumsan dolor quisque eleifend.</p>
+                              <p><a class="btn medium inverse" href="#">Read More &raquo;</a></p>
+                            </div>
+                            <div class="one_half"><a href="#"><img src="static/img/demo/slider/banner.png" alt=""></a></div>
+                          </article>
+                        </li>
+                        <li>
+                          <article class="group">
+                            <div class="one_half first">
+                              <p class="uppercase">Convallis felis velit</p>
+                              <h2 class="heading">Faucibus metus molestie a class</h2>
+                              <p>Iaculis vestibulum dolor nunc vulputate ipsum eget placerat ipsum tellus ac urna vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae.</p>
+                              <p><a class="btn medium inverse" href="#">Read More &raquo;</a></p>
+                            </div>
+                            <div class="one_half"><a href="#"><img src="static/img/demo/slider/banner.png" alt=""></a></div>
+                          </article>
+                        </li>
+                    </ul>
+                </div>
+          </div>
+        </div>
+
+        <!-- DICH VU -->
+        <div class="wrapper row3">
+            <main class="hoc container clear"> 
+                <!-- main body -->
+                <div class="center btmspace-50">
+                    <h3 class="font-x2 nospace heading">DỊCH VỤ</h3>
+                    <!-- <p class="nospace">Neque et posuere proin elementum luctus risus sit amet aliquet rutrum <a href="#">cras consectetur</a>.</p> -->
+                </div>
+                <ul class="nospace group services">
+                    <li class="one_quarter first">
+                        <article><a href="#"><i class="fa fa-key"></i></a>
+                            <h6 class="heading">Biểu phí</h6>
+                            <p>Vui lòng liên hệ trực tiếp để biết thêm chi tiết&hellip;</p>
+                            <footer><a href="#">Read More &raquo;</a></footer>
+                        </article>
+                    </li>
+                    <li class="one_quarter">
+                        <article><a href="#"><i class="fa fa-language"></i></a>
+                            <h6 class="heading">Tư vấn giá động sản</h6>
+                            <p>sagittis nunc sed congue nunc non ultrices tincidunt morbi accumsan commodo eros nec posuere donec rhoncus quis nisl non tempor&hellip;</p>
+                            <footer><a href="tu-van-dong-san.html">Read More &raquo;</a></footer>
+                        </article>
+                    </li>
+                    <li class="one_quarter">
+                        <article><a href="#"><i class="fa fa-laptop"></i></a>
+                            <h6 class="heading">Tư vấn giá bất động sản</h6>
+                            <p>natoque penatibus et magnis dis parturient montes nascetur ridiculus mus vivamus dictum interdum cum sociis natoque penatibus&hellip;</p>
+                            <footer><a href="#">Read More &raquo;</a></footer>
+                        </article>
+                    </li>
+                    <li class="one_quarter">
+                        <article><a href="#"><i class="fa fa-bar-chart"></i></a>
+                            <h6 class="heading">Tư vấn giá máy móc</h6>
+                            <p>parturient montes nascetur ridiculus mus praesent eleifend nulla quis volutpat gravida diam sapien viverra sem ut faucibus quam&hellip;</p>
+                            <footer><a href="#">Read More &raquo;</a></footer>
+                        </article>
+                    </li>
+                </ul>
+                <!-- / main body -->
+                <div class="clear"></div>
+            </main>
+        </div>
+
+        <!-- TIN TUC -->
+        <div class="wrapper bgded overlay" style="background-image:url('static/img/demo/backgrounds/Picture1.jpg');">
+            <div class="hoc container clear"> 
+                <div class="center btmspace-50">
+                    <h3 class="font-x2 nospace heading">TIN TỨC</h3>
+                </div>
+                <div class="group">
+                    <article class="one_quarter first">
+                        <div class="btmspace-30" style="background-image:url('static/img/demo/backgrounds/bds.jpg');background-size: 100% 100%; width: 100%; height: 15vh" alt="" h></div>
+                        <h4 class="nospace btmspace-10 font-x1 uppercase">Bất động sản</h4>
+                        <ul class="nospace btmspace-10 group font-xs">
+                            <li class="fl_left"> <time datetime="2045-04-05">5<sup>th</sup> April 2045</time> </li>
+                            <li class="fl_right">by <a href="#">Admin</a></li>
+                        </ul>
+                        <hr>
+                        <p>Nunc lacinia vel integer sed tincidunt ipsum nullam at quam non risus maximus consectetur vitae ut nisi praesent vel mauris ut eros&hellip;</p>
+                        <p class="nospace"><a href="#">Read More &raquo;</a></p>
+                    </article>
+                    <article class="one_quarter" >
+                        <div class="btmspace-30" style="background-image:url('static/img/demo/backgrounds/dongsan.jpg');background-size: 100% 100%; width: 100%; height: 15vh" alt="" h></div>
+                        <h4 class="nospace btmspace-10 font-x1 uppercase">Động sản</h4>
+                        <ul class="nospace btmspace-10 group font-xs">
+                            <li class="fl_left"> <time datetime="2045-04-06">6<sup>th</sup> April 2045</time> </li>
+                            <li class="fl_right">by <a href="#">Admin</a></li>
+                        </ul>
+                        <hr>
+                        <p>Faucibus et a nulla praesent consequat dolor ex vitae hendrerit metus lectus suscipit vitae vivamus ultrices sem tortor augue pharetra&hellip;</p>
+                        <p class="nospace"><a href="#">Read More &raquo;</a></p>
+                    </article>
+                    <article class="one_quarter">
+                        <div class="btmspace-30" style="background-image:url('static/img/demo/backgrounds/thamdinhgia.jpg');background-size: 100% 100%; width: 100%; height: 15vh" alt="" h></div>
+                        <h4 class="nospace btmspace-10 font-x1 uppercase">Thẩm định giá</h4>
+                        <ul class="nospace btmspace-10 group font-xs">
+                            <li class="fl_left"> <time datetime="2045-04-04">4<sup>th</sup> April 2045</time> </li>
+                            <li class="fl_right">by <a href="#">Admin</a></li>
+                        </ul>
+                        <hr>
+                        <p>Rhoncus pharetra sed eleifend ante sit amet diam porttitor vitae tempor eros posuere integer consequat enim nisl sed posuere sapien&hellip;</p>
+                        <p class="nospace"><a href="#">Read More &raquo;</a></p>
+                    </article>
+                    <article class="one_quarter">
+                        <div class="btmspace-30" style="background-image:url('static/img/demo/backgrounds/khac.jpg');background-size: 100% 100%; width: 100%; height: 15vh" alt="" h></div>
+                        <h4 class="nospace btmspace-10 font-x1 uppercase">Khác</h4>
+                        <ul class="nospace btmspace-10 group font-xs">
+                            <li class="fl_left"> <time datetime="2045-04-04">4<sup>th</sup> April 2045</time> </li>
+                            <li class="fl_right">by <a href="#">Admin</a></li>
+                        </ul>
+                        <hr>
+                        <p>Rhoncus pharetra sed eleifend ante sit amet diam porttitor vitae tempor eros posuere integer consequat enim nisl sed posuere sapien&hellip;</p>
+                        <p class="nospace"><a href="#">Read More &raquo;</a></p>
+                    </article>
+                </div>
+            </div>
+        </div>
+
+        <!-- TIEN ICH -->
+        <div class="wrapper row3">
+            <main class="hoc container clear"> 
+                <!-- main body -->
+                <div class="center btmspace-50">
+                    <h3 class="font-x2 nospace heading">TIỆN ÍCH</h3>
+                    <!-- <p class="nospace">Neque et posuere proin elementum luctus risus sit amet aliquet rutrum <a href="#">cras consectetur</a>.</p> -->
+                </div>
+                <ul class="nospace group services">
+                    <li class=" first">
+                        <article><a href="#"><i class="fa fa-key"></i></a>
+                            <h6 class="heading">Giới thiệu chung</h6>
+                            <p>mauris aliquet neque a interdum est ex dapibus dui nunc id metus varius vehicula ante nec velit etiam sem arcu varius in lacus sed rhoncus&hellip;</p>
+                            <footer><a href="#">Read More &raquo;</a></footer>
+                        </article>
+                    </li>
+                    <li class="">
+                        <article><a href="#"><i class="fa fa-language"></i></a>
+                            <h6 class="heading">Đội ngũ thẩm định</h6>
+                            <p>sagittis nunc sed congue nunc non ultrices tincidunt morbi accumsan commodo eros nec posuere donec rhoncus quis nisl non tempor&hellip;</p>
+                            <footer><a href="#">Read More &raquo;</a></footer>
+                        </article>
+                    </li>
+                    <li class="">
+                        <article><a href="#"><i class="fa fa-laptop"></i></a>
+                            <h6 class="heading">Đối tác</h6>
+                            <p>natoque penatibus et magnis dis parturient montes nascetur ridiculus mus vivamus dictum interdum cum sociis natoque penatibus&hellip;</p>
+                            <footer><a href="#">Read More &raquo;</a></footer>
+                        </article>
+                    </li>
+                    <li class="">
+                        <article><a href="#"><i class="fa fa-bar-chart"></i></a>
+                            <h6 class="heading">Hồ sơ năng lực</h6>
+                            <p>parturient montes nascetur ridiculus mus praesent eleifend nulla quis volutpat gravida diam sapien viverra sem ut faucibus quam&hellip;</p>
+                            <footer><a href="#">Read More &raquo;</a></footer>
+                        </article>
+                    </li>
+
+                </ul>
+                <!-- / main body -->
+                <div class="clear"></div>
+            </main>
+        </div>
+
+        <!-- LIEN HE -->
+        <div class="wrapper row4">
+            <footer id="footer" class="hoc clear"> 
+                <h6 class="title heading">CÔNG TY TNHH TƯ VẤN BẤT ĐỘNG SẢN SAO MỘC</h6>
+                <div class="two_quarter first">
+                    <ul class="nospace linklist contact">
+                        <li><i class="fa fa-map-marker"></i>
+                            <address> Tầng 11, tòa nhà CDC, số 25, Phố Lê Đại Hành, Phường Lê Đại Hành, Quận Hai Bà Trưng, Hà Nội </address>
+                        </li>
+                        <li><i class="fa fa-phone"></i> +84 984 189 868</li>
+                        <li><i class="fa fa-envelope-o"></i> sm.hr.support@jupitervaluation.com.vn </li>
+                    </ul>
+                </div>
+                <!-- <div class="two_quarter">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3724.5533493239236!2d105.84704231493237!3d21.010533986008294!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135ab8bab596bf7%3A0x9627ec43ff9a6600!2zMjUgUGjhu5EgTMOqIMSQ4bqhaSBIw6BuaCwgTMOqIMSQ4bqhaSBIw6BuaCwgSGFpIELDoCBUcsawbmcsIEjDoCBO4buZaSwgVmnhu4d0IE5hbQ!5e0!3m2!1svi!2s!4v1500015989890" width="400" height="200" frameborder="0" style="border:0" allowfullscreen=""></iframe>
+                </div> -->
+            </footer>
+        </div>
+
+        <!-- COPYRIGHT -->
+        <div class="wrapper row5">
+            <div id="copyright" class="hoc clear"> 
+                <p class="fl_left">Copyright &copy; 2016 - All Rights Reserved - <a href="#">Domain Name</a></p>
+                <p class="fl_right">Template by <a target="_blank" href="http://www.os-templates.com/" title="Free Website Templates">OS Templates</a></p>
+            </div>
+        </div>
+
+        <!-- SLIDE UP -->
+        <a id="backtotop" href="#top"><i class="fa fa-chevron-up"></i></a>
+
+        <!-- JAVASCRIPTS -->
+        <script type="text/javascript" src="{{ url_for('static', filename='js/sm/jquery.min.js') }}"></script>
+        <script type="text/javascript" src="{{ url_for('static', filename='js/sm/jquery.backtotop.js') }}"></script>
+
+        <script type="text/javascript" src="{{ url_for('static', filename='js/sm/jquery.flexslider-min.js') }}"></script>
+
+    </body>
+</html>

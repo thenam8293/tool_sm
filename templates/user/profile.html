@@ -1,0 +1,77 @@
+{% extends "tool_calculate_template/layout.html" %}
+
+{% block title %} Profile {% endblock title %}
+
+{% block stylesheets %}
+  {{ super() }}
+  <style type="text/css">
+    .inline_modal {display: inline-block;width: 49.5%;padding: 10px; vertical-align: top}
+    .inline_modal_lg {display: inline-block;width: 90.5%;padding: 10px}
+    .inline_modal_3 {display: inline-block;width: 33%;padding: 10px;height: 6vh;}
+    .inline_label {display: inline-block !important ;width: 30% !important}
+    .inline_label_sm {display: inline-block !important ;width: 20% !important}
+    
+    .inline_select_input {display: inline-block !important ;width: 68% !important}
+    .label_value {
+        font-family: Arial, Helvetica, sans-serif;
+        color: #901e1d;
+        font-size: 150%;
+    }
+
+  </style>
+{% endblock stylesheets %}
+
+
+{% block content %}
+<script type=text/javascript>
+    var $SCRIPT_ROOT = {{ request.script_root|tojson|safe }}
+</script>
+    <div class="right_col" role="main" style="">
+        <div class="row tile_count" style="">          
+            <div class="col-md-12">
+                <!-- PROFILE -->
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h3 style="color: #901e1d;">THÔNG TIN CÁ NHÂN </h3>                    
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                        <div class="inline_modal">
+                            <label class="inline_label">Họ tên: </label>
+                            <label class="inline_label_xl" id="prf_name">{{user[0]}}</label>
+                        </div>
+                        <div class="inline_modal">
+                            <label class="inline_label">Email: </label>
+                            <label class="inline_label_xl" id="prf_mail">{{user[2]}}</label>
+                        </div>
+                        <div class="inline_modal">
+                            <label class="inline_label">SĐT: </label>
+                            <label class="inline_label_xl" id="prf_mobile">{{user[3]}}</label>
+                        </div>
+                        <div class="inline_modal">
+                            <label class="inline_label">CMND: </label>
+                            <label class="inline_label_xl" class="inline_label_xl"  id="prf_id">{{user[1]}}</label>
+                        </div>
+                        <div class="inline_modal">
+                            <label class="inline_label">Ngày khởi tạo: </label>
+                            <label class="inline_label_xl"  id="prf_creation_date">{{user[5].split(".")[0]}}</label>
+                        </div>
+                        <div class="inline_modal">
+                            <label class="inline_label">Trạng thái: </label>
+                            <label class="inline_label_xl" id="prf_status">{{user[7]}}</label>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- /top tiles -->    
+  </div>
+{% endblock content %}
+
+{% block javascripts %}
+  {{ super()}}
+    
+{% endblock javascripts %}
