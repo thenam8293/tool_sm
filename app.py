@@ -109,12 +109,14 @@ def ajax_get_option_gia_biet_thu():
     ma_can = request.args['ma_can']
 
     result = db.session.query(BDS_biet_thu.dien_tich_dat, BDS_biet_thu.dien_tich_san_xay_dung, BDS_biet_thu.tong_gia_tri_xay_tho, BDS_biet_thu.tong_gia_tri_hoan_thien, BDS_biet_thu.don_gia_dat, BDS_biet_thu.don_gia_ctxd).filter_by(ten_du_an = ten_du_an, ten_duong = ten_duong, ten_tang = ten_tang, ma_can = ma_can).distinct().all()[0]
-    dien_tich_dat_raw = result[0]
-    dien_tich_san_xay_dung_raw = result[1]
-    tong_gia_tri_xay_tho_raw = result[2]
-    tong_gia_tri_hoan_thien_raw = result[3]
-    don_gia_dat_raw = result[4]
-    don_gia_ctxd_raw = result[5]
+
+
+    dien_tich_dat_raw = result.dien_tich_dat
+    dien_tich_san_xay_dung_raw = result.dien_tich_san_xay_dung
+    tong_gia_tri_xay_tho_raw = result.tong_gia_tri_xay_tho
+    tong_gia_tri_hoan_thien_raw = result.tong_gia_tri_hoan_thien
+    don_gia_dat_raw = result.don_gia_dat
+    don_gia_ctxd_raw = result.don_gia_ctxd
 
     dia_chi = db.session.query(BDS_biet_thu.dia_chi).filter_by(ten_du_an = ten_du_an).first()
     # NEW TICKET
