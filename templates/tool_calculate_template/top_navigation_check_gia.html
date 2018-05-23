@@ -89,7 +89,7 @@
                 $("#ket_qua_tho_cu_dd_vi_tri").text(data.dac_diem_VT)            
                 $("#ket_qua_tho_cu_ti_le").text(
                     Math.round((parseFloat(data.result[11]) - parseFloat(data.result[10]))/parseFloat(data.result[10])*10000)/100  + '%')
-                $("#ket_qua_tho_cu_ngay_khoi_tao").text(data.result[17])
+                $("#ket_qua_tho_cu_ngay_khoi_tao").text(data.result[17].split(".")[0])
                 $("#ket_qua_tho_cu").click()
             }
             // BDS QUY HOACH
