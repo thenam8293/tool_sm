@@ -172,8 +172,11 @@ def ajax_get_option_tang_can_ho():
 
 
     list_1 = [r[0] for r in db.session.query(Data_chung_cu.ten_tang_loai_nha).filter_by(ten_du_an = ten_du_an, ten_toa_duong_day_khu = ten_toa_nha).distinct().order_by(Data_chung_cu.ten_tang_loai_nha.asc()).all()]
+    print(list_1)
+    result = sorted([r if 'A' not in r and 'B' not in r and ',' not in r  and r != '' else 0 if r == '' else r for r in list_1], key=lambda x: int(str(x).split("A")[0].split("B")[0].split(",")[0]))
 
-    result = sorted([r if 'A' not in r and 'B' not in r and ',' not in r and r != '' else 0 if r == '' else r for r in list_1], key=lambda x: int(str(x).split("A")[0].split("B")[0].split(",")[0]))
+    # result = sorted(list_1)
+
     return jsonify({'result':result})
 
 
@@ -968,27 +971,27 @@ def tao_moi_user():
     )
 
 
-# if __name__ == '__main__':
-#     app.debug = True
-#     HOST = environ.get('server_host', 'localhost')
-#     # HOST = environ.get('server_host', '192.168.0.105')
-
-#     # HOST = environ.get('server_host', 'localhost')
-#     try:
-#         # PORT = int(environ.get('8080', '8888'))
-#         PORT = int(environ.get('server_port', '33507'))
-#     except ValueError:
-#         PORT = 33507
-#     app.run(HOST, PORT, threaded = True)
-
-
 if __name__ == '__main__':
-    # Run the app on all available interfaces on port 80 which is the
-    # standard port for HTTP
-    # db.create_all()
+    app.debug = True
+    HOST = environ.get('server_host', 'localhost')
+    # HOST = environ.get('server_host', '192.168.0.105')
 
-    port = int(os.environ.get("PORT", 33507))
-    app.run(
-        host="0.0.0.0",
-        port=port,
-    )
+    # HOST = environ.get('server_host', 'localhost')
+    try:
+        # PORT = int(environ.get('8080', '8888'))
+        PORT = int(environ.get('server_port', '33507'))
+    except ValueError:
+        PORT = 33507
+    app.run(HOST, PORT, threaded = True)
+
+
+# if __name__ == '__main__':
+#     # Run the app on all available interfaces on port 80 which is the
+#     # standard port for HTTP
+#     # db.create_all()
+
+#     port = int(os.environ.get("PORT", 33507))
+#     app.run(
+#         host="0.0.0.0",
+#         port=port,
+#     )

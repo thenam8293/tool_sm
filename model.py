@@ -1,4 +1,4 @@
-from flask.ext.sqlalchemy import SQLAlchemy
+from flask_sqlalchemy  import SQLAlchemy
 from flask import Flask
 from sqlalchemy import Table, Column, Integer, String, MetaData, ForeignKey, Sequence, VARCHAR,NVARCHAR, DateTime, update
 app = Flask(__name__,static_url_path='/static')

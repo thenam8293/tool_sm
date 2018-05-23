@@ -388,14 +388,14 @@
                             $("#ket_qua_biet_thu_dia_chi_du_an").text(data.dia_chi)
 
                             if($.isNumeric(data.result[2])  ) {
-                                $("#ket_qua_biet_thu_tong_gia_xay_tho").text(dot_number(Math.round(data.result[2])))
+                                $("#ket_qua_biet_thu_tong_gia_xay_tho").text(dot_number(Math.round(data.result[2])) + ' VNĐ')
 
                             }else {
                                 $("#ket_qua_biet_thu_tong_gia_xay_tho").text(data.result[2])
                             }
 
                             if($.isNumeric(data.result[3])  ) {
-                                $("#ket_qua_biet_thu_tong_gia_hoan_thien").text(dot_number(Math.round(data.result[3])))
+                                $("#ket_qua_biet_thu_tong_gia_hoan_thien").text(dot_number(Math.round(data.result[3])) + ' VNĐ')
 
                             }else {
                                 $("#ket_qua_biet_thu_tong_gia_hoan_thien").text(data.result[3])

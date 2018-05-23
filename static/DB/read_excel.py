@@ -67,13 +67,11 @@ def str_to_dt(x):
 #     sqlite("INSERT INTO data_mb values({})".format(",".join(["?"]*10)), r)
 
 
-
-n = xlrd.open_workbook(r'quy_hoach.xlsx')
+n = xlrd.open_workbook(r'MT_230518.xlsx')
 sheet = n.sheet_by_index(0)
 print (sheet.nrows)
-
 for i in range(1,sheet.nrows):
-    print (i)
+    print(i)
     name1 = sheet.cell(i,0).value
     name2 = sheet.cell(i,1).value
     name3 = sheet.cell(i,2).value
@@ -82,11 +80,36 @@ for i in range(1,sheet.nrows):
     name6 = sheet.cell(i,5).value
     name7 = sheet.cell(i,6).value
     name8 = sheet.cell(i,7).value
-    name9 = sheet.cell(i,8).value
 
-    r = [name1, name2, name3, name4, name5, name6, name7, name8, name9]
 
-    sqlite("INSERT INTO thong_tin_quy_hoach values({})".format(",".join(["?"]*9)), r)
+    # name9 = i
+    r = [name1, name2, name3, name4, name5, name6, name7, name8]
+    print(r)
+    sqlite("INSERT INTO data_chung_cu values({})".format(",".join(["?"]*8)), r)
+
+
+
+
+
+# n = xlrd.open_workbook(r'quy_hoach.xlsx')
+# sheet = n.sheet_by_index(0)
+# print (sheet.nrows)
+
+# for i in range(1,sheet.nrows):
+#     print (i)
+#     name1 = sheet.cell(i,0).value
+#     name2 = sheet.cell(i,1).value
+#     name3 = sheet.cell(i,2).value
+#     name4 = sheet.cell(i,3).value
+#     name5 = sheet.cell(i,4).value
+#     name6 = sheet.cell(i,5).value
+#     name7 = sheet.cell(i,6).value
+#     name8 = sheet.cell(i,7).value
+#     name9 = sheet.cell(i,8).value
+
+#     r = [name1, name2, name3, name4, name5, name6, name7, name8, name9]
+
+#     sqlite("INSERT INTO thong_tin_quy_hoach values({})".format(",".join(["?"]*9)), r)
 
 
 

@@ -49,16 +49,14 @@
 
             // BDS THO CU
             if(data.phan_loai == 'bds_tho_cu'){
-                $("#ket_qua_tho_cu_id").text(data.result[0])          
-                               
+                $("#ket_qua_tho_cu_id").text(data.result[0])      
                 $("#ket_qua_tho_cu_dia_chi").text(data.result[1])
                 $("#ket_qua_tho_cu_vi_tri").text(data.result[2])
                 $("#ket_qua_tho_cu_dien_tich").text(data.result[3] + ' m2')
                 $("#ket_qua_tho_cu_mat_tien").text(data.result[4] + ' m')
                 $("#ket_qua_tho_cu_hinh_dang").text(data.result[5]) 
                 $("#ket_qua_tho_cu_do_rong_ngo").text(data.result[6] + ' m')
-                $("#ket_qua_tho_cu_kcach_truc_chinh").text(data.result[7] + ' m')               
-
+                $("#ket_qua_tho_cu_kcach_truc_chinh").text(data.result[7] + ' m')             
                 $("#ket_qua_tho_cu_loi_the").empty()
                 $("#ket_qua_tho_cu_bat_loi").empty()
                 console.log(data.result[8],data.result[9])
@@ -91,8 +89,7 @@
                 $("#ket_qua_tho_cu_dd_vi_tri").text(data.dac_diem_VT)            
                 $("#ket_qua_tho_cu_ti_le").text(
                     Math.round((parseFloat(data.result[11]) - parseFloat(data.result[10]))/parseFloat(data.result[10])*10000)/100  + '%')
-                $("#ket_qua_tho_cu_ngay_khoi_tao").text(data.result[13])
-
+                $("#ket_qua_tho_cu_ngay_khoi_tao").text(data.result[17])
                 $("#ket_qua_tho_cu").click()
             }
             // BDS QUY HOACH
