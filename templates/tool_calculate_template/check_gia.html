@@ -382,23 +382,24 @@
                             ten_duong: $("#duong_nha_biet_thu").val(),
                             ten_tang: $("#loai_nha_biet_thu").val(),
                             ma_can: $("#ma_can_biet_thu").val(),
-                        }, function(data) { 
+                        }, function(data) {
+
                             $("#result_biet_thu").css("display", "")
                             console.log(data.result)
                             $("#ket_qua_biet_thu_dia_chi_du_an").text(data.dia_chi)
 
-                            if($.isNumeric(data.result[2])  ) {
-                                $("#ket_qua_biet_thu_tong_gia_xay_tho").text(dot_number(Math.round(data.result[2])) + ' VNĐ')
+                            if($.isNumeric(data.tong_gia_tri_xay_tho)  ) {
+                                $("#ket_qua_biet_thu_tong_gia_xay_tho").text(dot_number(Math.round(data.tong_gia_tri_xay_tho)) + ' VNĐ')
 
                             }else {
-                                $("#ket_qua_biet_thu_tong_gia_xay_tho").text(data.result[2])
+                                $("#ket_qua_biet_thu_tong_gia_xay_tho").text(data.tong_gia_tri_xay_tho)
                             }
 
-                            if($.isNumeric(data.result[3])  ) {
-                                $("#ket_qua_biet_thu_tong_gia_hoan_thien").text(dot_number(Math.round(data.result[3])) + ' VNĐ')
+                            if($.isNumeric(data.tong_gia_tri_hoan_thien)  ) {
+                                $("#ket_qua_biet_thu_tong_gia_hoan_thien").text(dot_number(Math.round(data.tong_gia_tri_hoan_thien)) + ' VNĐ')
 
                             }else {
-                                $("#ket_qua_biet_thu_tong_gia_hoan_thien").text(data.result[3])
+                                $("#ket_qua_biet_thu_tong_gia_hoan_thien").text(data.tong_gia_tri_hoan_thien)
                             }
 
                             $("#ket_qua_biet_thu_id").text(data.new_id)
@@ -407,19 +408,19 @@
                             $("#ket_qua_biet_thu_ten_toa_duong").text(data.ten_duong)
                             $("#ket_qua_biet_thu_loai_nha").text(data.ten_tang)
                             $("#ket_qua_biet_thu_ma_can").text(data.ma_can)
-                            $("#ket_qua_biet_thu_dien_tich_dat").text(data.result[0] + ' m2')
-                            $("#ket_qua_biet_thu_dien_tich_san").text(data.result[1] + ' m2') 
+                            $("#ket_qua_biet_thu_dien_tich_dat").text(data.dien_tich_dat + ' m2')
+                            $("#ket_qua_biet_thu_dien_tich_san").text(data.dien_tich_san_xay_dung + ' m2') 
 
-                            if(data.result[4] != 'Không xác định'){
-                                $("#ket_qua_biet_thu_don_gia_dat").text(dot_number(Math.round(data.result[4])) + ' VNĐ')
+                            if(data.don_gia_dat != 'Không xác định'){
+                                $("#ket_qua_biet_thu_don_gia_dat").text(dot_number(Math.round(data.don_gia_dat)) + ' VNĐ')
                             }else {
-                                $("#ket_qua_biet_thu_don_gia_dat").text(data.result[4])
+                                $("#ket_qua_biet_thu_don_gia_dat").text(data.don_gia_dat)
                             }
-                            if(data.result[5] != 'Không xác định'){
-                                $("#ket_qua_biet_thu_don_gia_ctxd").text(dot_number(Math.round(data.result[5])) + ' VNĐ')
+                            if(data.don_gia_ctxd != 'Không xác định'){
+                                $("#ket_qua_biet_thu_don_gia_ctxd").text(dot_number(Math.round(data.don_gia_ctxd)) + ' VNĐ')
 
                             }else {
-                                $("#ket_qua_biet_thu_don_gia_ctxd").text(data.result[5])
+                                $("#ket_qua_biet_thu_don_gia_ctxd").text(data.don_gia_ctxd)
                             }
                             console.log(data.result[2], data.result[3])
                             console.log(data.result[4], data.result[5])
