@@ -482,4 +482,4 @@ class Dac_diem_VT(db.Model):
         return str([self.thanh_pho, self.vi_tri, self.dac_diem])
 
 
-db.create_all()
+# db.create_all()

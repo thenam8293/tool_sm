@@ -1011,7 +1011,7 @@ def tao_moi_user():
 if __name__ == '__main__':
     # Run the app on all available interfaces on port 80 which is the
     # standard port for HTTP
-    # db.create_all()
+    db.create_all()
     app.debug = True
     port = int(os.environ.get("PORT", 33507))
     app.run(
