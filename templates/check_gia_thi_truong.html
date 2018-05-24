@@ -911,6 +911,20 @@
         }) 
 
     </script>
+    <script type="text/javascript">
+    $(`#loai_nha_tho_cu`).change(function() {
+        if($(this).val() == 'Không có') {
+            $(`#tang_ham_ctxd`).prop("disabled", true)
+            $(`#thoi_gian_su_dung`).prop("disabled", true)
+            $(`#dien_tich_san_xd`).prop("disabled", true)
+        }
+        else {
+            $(`#tang_ham_ctxd`).prop("disabled", false)
+            $(`#thoi_gian_su_dung`).prop("disabled", false)
+            $(`#dien_tich_san_xd`).prop("disabled", false)
+        }
+    })
+    </script>
 </form>
 
 <!-- CHUNG CU -->
@@ -972,8 +986,7 @@
             </div>
         </div>
     </div>
-
-    
+  
 </form>
 
 

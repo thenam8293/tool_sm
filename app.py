@@ -658,9 +658,18 @@ def ajax_get_result():
         do_rong_mat_tien_thi_truong = 0
     hinh_dang = request.args['hinh_dang']
     loai_nha_tho_cu = request.args['loai_nha_tho_cu']
-    thoi_gian_su_dung = request.args['thoi_gian_su_dung']
-    dien_tich_san_xd = request.args['dien_tich_san_xd'] 
-    tang_ham_ctxd = request.args['tang_ham_ctxd']
+    try:
+        thoi_gian_su_dung = request.args['thoi_gian_su_dung']
+    except:
+        thoi_gian_su_dung = 'Chưa xác định'
+    try:
+        dien_tich_san_xd = request.args['dien_tich_san_xd']
+    except:
+        dien_tich_san_xd = 0
+    try:
+        tang_ham_ctxd = request.args['tang_ham_ctxd']
+    except:
+        tang_ham_ctxd = 0
     try:
         don_gia_loai_nha = db.session.query(Loai_nha.don_gia).filter_by(loai_nha = loai_nha_tho_cu).all()[0].don_gia
     except:
