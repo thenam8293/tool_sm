@@ -886,7 +886,6 @@ def ad_cnb_min():
 @changepass_required
 # @admin_required
 def check_gia():
-    print(session['changepass'])
     list_tinh_thanh = [r[0] for r in db.session.query(Data_MB.Tinh_thanh).distinct().order_by(Data_MB.Tinh_thanh.asc()).all()]
     list_tinh_thanh_uy_ban = [r[0] for r in db.session.query(Khung_gia_uy_ban.thanh_pho).distinct().order_by(Khung_gia_uy_ban.thanh_pho.asc()).all()]
     list_thanh_pho_quy_hoach = [r[0] for r in db.session.query(Quy_hoach.thanh_pho).distinct().order_by(Quy_hoach.thanh_pho.asc()).all()]
@@ -895,7 +894,7 @@ def check_gia():
     list_hinh_dang_bds = [r[0] for r in db.session.query(Hinh_dang.hinh_dang).distinct().order_by(Hinh_dang.hinh_dang.asc()).all()]
     list_loai_nha  = [r[0] for r in db.session.query(Loai_nha.loai_nha).distinct().order_by(Loai_nha.loai_nha.asc()).all()]
     list_nam_su_dung  = [r[0] for r in db.session.query(Nam_su_dung.thoi_gian).distinct().order_by(Nam_su_dung.thoi_gian.asc()).all()]
-    Id_ticket = [r[0] for r in db.session.query(Event_log.id_ticket).filter_by(username = session['username']).all()]
+    Id_ticket = [r[0] for r in db.session.query(Event_log.id_ticket).filter_by(username = session['username']).order_by(Event_log.id_ticket.desc()).all()]
     return render_template(
         "tool_calculate_template/check_gia.html",
         list_tinh_thanh = list_tinh_thanh,
