@@ -9,7 +9,7 @@ from sqlalchemy import create_engine, inspect, or_, update
 
 import datetime as dt
 from config import Config
-from model import Khung_gia_uy_ban, Data_MB, Data_chung_cu, BDS_biet_thu, Yeu_to, Mat_tien, Quy_mo, Hinh_dang, Do_rong_ngo, Khoang_cach_truc, Dac_diem_VT, User_SM, ID_auto, Id_ticket, Id_ticket_BT, Id_ticket_CC, Id_ticket_quy_hoach,Event_log, Quy_hoach, Loai_nha, Nam_su_dung, app, db
+from model import Khung_gia_uy_ban, Data_MB, Data_chung_cu, BDS_biet_thu, Yeu_to, Mat_tien, Quy_mo, Hinh_dang, Do_rong_ngo, Khoang_cach_truc, Dac_diem_VT, User_SM, ID_auto, Id_ticket, Id_ticket_BT, Id_ticket_CC, Id_ticket_quy_hoach,Event_log, Quy_hoach, Loai_nha, Nam_su_dung, ROA_tho_cu, ROA_chung_cu, ROA_biet_thu, app, db
 
 from Setting import *
 
