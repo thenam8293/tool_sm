@@ -44,50 +44,74 @@ def str_to_dt(x):
     except:
         return dt.datetime.strptime(x,'%d/%m/%Y')
 
-# n = xlrd.open_workbook(r'tho_cu_mb.xlsx')
+n = xlrd.open_workbook(r'tc.xlsx')
+sheet = n.sheet_by_index(0)
+print (sheet.nrows)
+for i in range(1,sheet.nrows):
+    print(i)
+    name1 = sheet.cell(i,0).value.strip()
+    name2 = sheet.cell(i,1).value.strip()
+    name3 = sheet.cell(i,2).value.strip()
+    name4 = sheet.cell(i,3).value.strip()
+    name5 = sheet.cell(i,4).value.strip()
+    name6 = str(sheet.cell(i,5).value).strip()
+    name8 = ''
+    name9 = name4 + ', ' + name3  + ', '+ name2  + ', '+ name1
+    name10 = 'MB'
+
+
+    # name9 = i
+    r = [name1, name2, name3, name4, name5, '0', name6, name8, name9, name10]
+    print(r)
+    sqlite("INSERT INTO data_mb values({})".format(",".join(["?"]*10)), r)
+
+
+# n = xlrd.open_workbook(r'cc.xlsx')
 # sheet = n.sheet_by_index(0)
 # print (sheet.nrows)
 # for i in range(1,sheet.nrows):
 #     print(i)
 #     name1 = sheet.cell(i,0).value
 #     name2 = sheet.cell(i,1).value
-#     name3 = sheet.cell(i,2).value
+#     try:
+#         name3 = int(sheet.cell(i,2).value)
+#     except:
+#         name3 = sheet.cell(i,2).value
 #     name4 = sheet.cell(i,3).value
 #     name5 = sheet.cell(i,4).value
 #     name6 = sheet.cell(i,5).value
 #     name7 = sheet.cell(i,6).value
-#     name8 = ''
-#     name9 = name4 + ', ' + name3  + ', '+ name2  + ', '+ name1
-#     name10 = 'MB'
-
-
+#     name8 = sheet.cell(i,7).value
 #     # name9 = i
-#     r = [name1, name2, name3, name4, name5, name6, name7, name8, name9, name10]
+#     r = [name1, name2, name3, name4, name5, name6, name7, name8]
 #     print(r)
-#     sqlite("INSERT INTO data_mb values({})".format(",".join(["?"]*10)), r)
+#     sqlite("INSERT INTO data_chung_cu values({})".format(",".join(["?"]*8)), r)
 
 
-n = xlrd.open_workbook(r'MT_230518.xlsx')
-sheet = n.sheet_by_index(0)
-print (sheet.nrows)
-for i in range(1,sheet.nrows):
-    print(i)
-    name1 = sheet.cell(i,0).value
-    name2 = sheet.cell(i,1).value
-    name3 = sheet.cell(i,2).value
-    name4 = sheet.cell(i,3).value
-    name5 = sheet.cell(i,4).value
-    name6 = sheet.cell(i,5).value
-    name7 = sheet.cell(i,6).value
-    name8 = sheet.cell(i,7).value
 
-
-    # name9 = i
-    r = [name1, name2, name3, name4, name5, name6, name7, name8]
-    print(r)
-    sqlite("INSERT INTO data_chung_cu values({})".format(",".join(["?"]*8)), r)
-
-
+# n = xlrd.open_workbook(r'bt.xlsx')
+# sheet = n.sheet_by_index(0)
+# print (sheet.nrows)
+# for i in range(1,sheet.nrows):
+#     print(i)
+#     name1 = sheet.cell(i,0).value
+#     name2 = sheet.cell(i,1).value
+#     try:
+#         name3 = int(sheet.cell(i,2).value)
+#     except:
+#         name3 = sheet.cell(i,2).value
+#     name4 = sheet.cell(i,3).value
+#     name5 = sheet.cell(i,4).value
+#     name6 = sheet.cell(i,5).value
+#     name7 = sheet.cell(i,6).value
+#     name8 = sheet.cell(i,7).value
+#     name9 = sheet.cell(i,8).value
+#     name10 = sheet.cell(i,9).value
+#     name11 = sheet.cell(i,10).value
+#     # name9 = i
+#     r = [name1, name2, name3, name4, name5, name6, name7, name8, name9, name10, name11]
+#     print(r)
+#     sqlite("INSERT INTO bds_lien_ke_bt values({})".format(",".join(["?"]*11)), r)
 
 
 
@@ -106,9 +130,7 @@ for i in range(1,sheet.nrows):
 #     name7 = sheet.cell(i,6).value
 #     name8 = sheet.cell(i,7).value
 #     name9 = sheet.cell(i,8).value
-
 #     r = [name1, name2, name3, name4, name5, name6, name7, name8, name9]
-
 #     sqlite("INSERT INTO thong_tin_quy_hoach values({})".format(",".join(["?"]*9)), r)
 
 

@@ -565,14 +565,14 @@ def mat_tien(x, mien, vi_tri):
 
 
     for r in range(len(mat_tien_data)):
-        if x < mat_tien_data[r].mat_tien:
+        if x < float(mat_tien_data[r].mat_tien):
             return mat_tien_data[r].ti_le
-        elif x == mat_tien_data[r].mat_tien:
+        elif x == float(mat_tien_data[r].mat_tien):
             return mat_tien_data[r].ti_le
-        elif mat_tien_data[r].mat_tien < x < mat_tien_data[r+1].mat_tien:
-            y = mat_tien_data[r+1].ti_le - ((mat_tien_data[r+1].mat_tien - x)*(mat_tien_data[r+1].ti_le - mat_tien_data[r].ti_le)/(mat_tien_data[r+1].mat_tien - mat_tien_data[r].mat_tien)) 
+        elif float(mat_tien_data[r].mat_tien) < x < float(mat_tien_data[r+1].mat_tien):
+            y = float(mat_tien_data[r+1].ti_le) - ((float(mat_tien_data[r+1].mat_tien) - x)*(float(mat_tien_data[r+1].ti_le) - float(mat_tien_data[r].ti_le))/(float(mat_tien_data[r+1].mat_tien) - float(mat_tien_data[r].mat_tien))) 
             return y
-        elif x > mat_tien_data[-1].mat_tien:
+        elif x > float(mat_tien_data[-1].mat_tien):
             return mat_tien_data[-1].ti_le
 
 
@@ -589,14 +589,14 @@ def do_rong_ngo(a, b, x, mien):
     elif not do_rong_ngo_data and mien == 'MN':
         do_rong_ngo_data = db.session.query(Do_rong_ngo).filter_by(Tinh_thanh = 'Hồ Chí Minh', vi_tri = b).all()
     for r in range(len(do_rong_ngo_data)):
-        if x < do_rong_ngo_data[r].khoang_cach:
+        if x < float(do_rong_ngo_data[r].khoang_cach):
             return do_rong_ngo_data[r].ti_le
-        elif x == do_rong_ngo_data[r].khoang_cach:
+        elif x == float(do_rong_ngo_data[r].khoang_cach):
             return do_rong_ngo_data[r].ti_le
-        elif do_rong_ngo_data[r].khoang_cach < x < do_rong_ngo_data[r+1].khoang_cach:
-            y = do_rong_ngo_data[r+1].ti_le - ((do_rong_ngo_data[r+1].khoang_cach - x)*(do_rong_ngo_data[r+1].ti_le - do_rong_ngo_data[r].ti_le)/(do_rong_ngo_data[r+1].khoang_cach - do_rong_ngo_data[r].khoang_cach)) 
+        elif float(do_rong_ngo_data[r].khoang_cach) < x < float(do_rong_ngo_data[r+1].khoang_cach):
+            y = float(do_rong_ngo_data[r+1].ti_le) - ((float(do_rong_ngo_data[r+1].khoang_cach) - x)*(float(do_rong_ngo_data[r+1].ti_le) - float(do_rong_ngo_data[r].ti_le))/(float(do_rong_ngo_data[r+1].khoang_cach) - float(do_rong_ngo_data[r].khoang_cach)))
             return y
-        elif x > do_rong_ngo_data[-1].khoang_cach:
+        elif x > float(do_rong_ngo_data[-1].khoang_cach):
             return do_rong_ngo_data[-1].ti_le
   
 
@@ -611,14 +611,14 @@ def khoang_cach_den_truc_chinh(a, b, x, mien):
     elif not khoang_cach_den_truc_chinh_data and mien == 'MN':
         khoang_cach_den_truc_chinh_data = db.session.query(Khoang_cach_truc).filter_by(Tinh_thanh = 'Hồ Chí Minh', vi_tri = b).all()
     for r in range(len(khoang_cach_den_truc_chinh_data)):
-        if x < khoang_cach_den_truc_chinh_data[r].khoang_cach:
+        if x < float(khoang_cach_den_truc_chinh_data[r].khoang_cach):
             return khoang_cach_den_truc_chinh_data[r].ti_le
-        elif x == khoang_cach_den_truc_chinh_data[r].khoang_cach:
+        elif x == float(khoang_cach_den_truc_chinh_data[r].khoang_cach):
             return khoang_cach_den_truc_chinh_data[r].ti_le
-        elif khoang_cach_den_truc_chinh_data[r].khoang_cach < x < khoang_cach_den_truc_chinh_data[r+1].khoang_cach:
-            y = khoang_cach_den_truc_chinh_data[r+1].ti_le - ((khoang_cach_den_truc_chinh_data[r+1].khoang_cach - x)*(khoang_cach_den_truc_chinh_data[r+1].ti_le - khoang_cach_den_truc_chinh_data[r].ti_le)/(khoang_cach_den_truc_chinh_data[r+1].khoang_cach - khoang_cach_den_truc_chinh_data[r].khoang_cach)) 
+        elif float(khoang_cach_den_truc_chinh_data[r].khoang_cach) < x < float(khoang_cach_den_truc_chinh_data[r+1].khoang_cach):
+            y = float(khoang_cach_den_truc_chinh_data[r+1].ti_le) - ((float(khoang_cach_den_truc_chinh_data[r+1].khoang_cach) - x)*(float(khoang_cach_den_truc_chinh_data[r+1].ti_le) - float(khoang_cach_den_truc_chinh_data[r].ti_le))/(float(khoang_cach_den_truc_chinh_data[r+1].khoang_cach) - float(khoang_cach_den_truc_chinh_data[r].khoang_cach))) 
             return y
-        elif x > khoang_cach_den_truc_chinh_data[-1].khoang_cach:
+        elif x > float(khoang_cach_den_truc_chinh_data[-1].khoang_cach):
             return khoang_cach_den_truc_chinh_data[-1].ti_le
 
 
