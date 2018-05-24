@@ -491,6 +491,7 @@ class ROA_tho_cu(db.Model):
     Duong = db.Column('Duong', String, primary_key = True, nullable = False)
     Doan_duong = db.Column('Doan_duong', String, primary_key = True)
     Vi_tri = db.Column('Vi_tri', String, primary_key = True, nullable = False)
+    dia_chi = db.Column('dia_chi', String, primary_key = True, nullable = False)
     roa1 = db.Column('roa1', String, primary_key = True)
     roa2 = db.Column('roa2', String, primary_key = True)
     roa3 = db.Column('roa3', String, primary_key = True)
@@ -499,12 +500,13 @@ class ROA_tho_cu(db.Model):
     roa6 = db.Column('roa6', String, primary_key = True)
     roa7 = db.Column('roa7', String, primary_key = True)
     roa8 = db.Column('roa8', String, primary_key = True)
-    def __init__(self, Tinh_thanh, Quan, Duong, Doan_duong, Vi_tri, roa1, roa2, roa3, roa4, roa5, roa6, roa7, roa8):
+    def __init__(self, Tinh_thanh, Quan, Duong, Doan_duong, Vi_tri, dia_chi, roa1, roa2, roa3, roa4, roa5, roa6, roa7, roa8):
         self.Tinh_thanh = Tinh_thanh
         self.Quan = Quan
         self.Duong = Duong
         self.Doan_duong = Doan_duong
         self.Vi_tri = Vi_tri
+        self.dia_chi = dia_chi
         self.roa1 = roa1
         self.roa2 = roa2
         self.roa3 = roa3
@@ -514,7 +516,7 @@ class ROA_tho_cu(db.Model):
         self.roa7 = roa7
         self.roa8 = roa8
     def __repr__(self):
-        return str([self.Tinh_thanh, self.Quan, self.Duong, self.Doan_duong, self.Vi_tri, self.roa1, self.roa2, self.roa3, self.roa4, self.roa5, self.roa6, self.roa7, self.roa8])
+        return str([self.Tinh_thanh, self.Quan, self.Duong, self.Doan_duong, self.Vi_tri, self.dia_chi, self.roa1, self.roa2, self.roa3, self.roa4, self.roa5, self.roa6, self.roa7, self.roa8])
 
 # ROA CHUNG CU
 class ROA_chung_cu(db.Model):
@@ -523,6 +525,8 @@ class ROA_chung_cu(db.Model):
     ten_toa_duong_day_khu = db.Column('ten_toa_duong_day_khu', String, primary_key = True, nullable = False)
     ten_tang_loai_nha = db.Column('ten_tang_loai_nha', String, primary_key = True, nullable = False)
     ma_can = db.Column('ma_can', String, primary_key = True, nullable = False)
+    dia_chi = db.Column('dia_chi', String, primary_key = True, nullable = False)
+
     roa1 = db.Column('roa1', String, primary_key = True)
     roa2 = db.Column('roa2', String, primary_key = True)
     roa3 = db.Column('roa3', String, primary_key = True)
@@ -531,11 +535,12 @@ class ROA_chung_cu(db.Model):
     roa6 = db.Column('roa6', String, primary_key = True)
     roa7 = db.Column('roa7', String, primary_key = True)
     roa8 = db.Column('roa8', String, primary_key = True)
-    def __init__(self, ten_du_an, ten_toa_duong_day_khu, ten_tang_loai_nha, ma_can, roa1, roa2, roa3, roa4, roa5, roa6, roa7, roa8):
+    def __init__(self, ten_du_an, ten_toa_duong_day_khu, ten_tang_loai_nha, ma_can, dia_chi, roa1, roa2, roa3, roa4, roa5, roa6, roa7, roa8):
         self.ten_du_an = ten_du_an
         self.ten_toa_duong_day_khu = ten_toa_duong_day_khu
         self.ten_tang_loai_nha = ten_tang_loai_nha
         self.ma_can = ma_can
+        self.dia_chi = dia_chi
         self.roa1 = roa1
         self.roa2 = roa2
         self.roa3 = roa3
@@ -545,7 +550,7 @@ class ROA_chung_cu(db.Model):
         self.roa7 = roa7
         self.roa8 = roa8
     def __repr__(self):
-        return str([self.ten_du_an, self.ten_toa_duong_day_khu, self.ten_tang_loai_nha, self.ma_can, self.roa1, self.roa2, self.roa3, self.roa4, self.roa5, self.roa6, self.roa7, self.roa8])
+        return str([self.ten_du_an, self.ten_toa_duong_day_khu, self.ten_tang_loai_nha, self.ma_can, self.dia_chi, self.roa1, self.roa2, self.roa3, self.roa4, self.roa5, self.roa6, self.roa7, self.roa8])
 
 # ROA BIET THU
 class ROA_biet_thu(db.Model):
@@ -554,6 +559,7 @@ class ROA_biet_thu(db.Model):
     ten_duong = db.Column('ten_duong', String, primary_key = True, nullable = False)
     ten_tang = db.Column('ten_tang', String, primary_key = True, nullable = False)
     ma_can = db.Column('ma_can', String, primary_key = True, nullable = False)
+    dia_chi = db.Column('dia_chi', String, primary_key = True, nullable = False)
     roa1 = db.Column('roa1', String, primary_key = True, nullable = True)
     roa2 = db.Column('roa2', String, primary_key = True, nullable = True)
     roa3 = db.Column('roa3', String, primary_key = True, nullable = True)
@@ -562,11 +568,12 @@ class ROA_biet_thu(db.Model):
     roa6 = db.Column('roa6', String, primary_key = True, nullable = True)
     roa7 = db.Column('roa7', String, primary_key = True, nullable = True)
     roa8 = db.Column('roa8', String, primary_key = True, nullable = True)
-    def __init__(self, ten_du_an, ten_duong, ten_tang, ma_can, roa1, roa2, roa3, roa4, roa5, roa6, roa7, roa8):
+    def __init__(self, ten_du_an, ten_duong, ten_tang, ma_can, dia_chi, roa1, roa2, roa3, roa4, roa5, roa6, roa7, roa8):
         self.ten_du_an = ten_du_an
         self.ten_duong = ten_duong
         self.ten_tang = ten_tang
         self.ma_can = ma_can
+        self.dia_chi = dia_chi
         self.roa1 = roa1
         self.roa2 = roa2
         self.roa3 = roa3
@@ -576,6 +583,6 @@ class ROA_biet_thu(db.Model):
         self.roa7 = roa7
         self.roa8 = roa8
     def __repr__(self):
-        return str([self.ten_du_an, self.ten_duong, self.ten_tang, self.ma_can, self.roa1, self.roa2, self.roa3, self.roa4, self.roa5, self.roa6, self.roa7, self.roa8])
+        return str([self.ten_du_an, self.ten_duong, self.ten_tang, self.ma_can, self.dia_chi, self.roa1, self.roa2, self.roa3, self.roa4, self.roa5, self.roa6, self.roa7, self.roa8])
 
 # db.create_all()
