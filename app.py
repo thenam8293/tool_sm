@@ -536,11 +536,11 @@ def quy_mo(x, mien, vi_tri):
 
     for r in range(len(quy_mo_data)):
         data_0 = float(quy_mo_data[r].quy_mo)
-        data_1 = quy_mo_data[r].ti_le
-        data_2 = quy_mo_data[r+1].ti_le
+        data_1 = float(quy_mo_data[r].ti_le)
+        data_2 = float(quy_mo_data[r+1].ti_le)
         data_3 = float(quy_mo_data[r+1].quy_mo)
         data_4 = float(quy_mo_data[-1].quy_mo)
-        data_5 = quy_mo_data[-1].ti_le
+        data_5 = float(quy_mo_data[-1].ti_le)
 
         if x < data_0:
             return data_1
