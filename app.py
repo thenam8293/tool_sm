@@ -584,7 +584,7 @@ def do_rong_ngo(a, b, x, mien):
     do_rong_ngo_data = db.session.query(Do_rong_ngo).filter_by(Tinh_thanh = a, vi_tri = b).all()
 
     if not do_rong_ngo_data and mien == 'MB':
-        do_rong_ngo_data = db.session.query(Do_rong_ngo).filter_by(Tinh_thanh = 'Hà Nội', vi_tri = b).all()
+        do_rong_ngo_data = db.session.query(Do_rong_ngo).filter_by(Tinh_thanh = 'TP. Hà Nội', vi_tri = b).all()
 
     elif not do_rong_ngo_data and mien == 'MN':
         do_rong_ngo_data = db.session.query(Do_rong_ngo).filter_by(Tinh_thanh = 'Hồ Chí Minh', vi_tri = b).all()
@@ -607,7 +607,7 @@ def khoang_cach_den_truc_chinh(a, b, x, mien):
         return 0
     khoang_cach_den_truc_chinh_data = db.session.query(Khoang_cach_truc).filter_by(Tinh_thanh = a, vi_tri = b).all()
     if not khoang_cach_den_truc_chinh_data and mien == 'MB':
-        khoang_cach_den_truc_chinh_data = db.session.query(Khoang_cach_truc).filter_by(Tinh_thanh = 'Hà Nội', vi_tri = b).all()
+        khoang_cach_den_truc_chinh_data = db.session.query(Khoang_cach_truc).filter_by(Tinh_thanh = 'TP. Hà Nội', vi_tri = b).all()
     elif not khoang_cach_den_truc_chinh_data and mien == 'MN':
         khoang_cach_den_truc_chinh_data = db.session.query(Khoang_cach_truc).filter_by(Tinh_thanh = 'Hồ Chí Minh', vi_tri = b).all()
     for r in range(len(khoang_cach_den_truc_chinh_data)):
