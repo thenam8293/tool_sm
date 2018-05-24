@@ -254,6 +254,87 @@ class Id_ticket_quy_hoach(db.Model):
         return str([self.id_ticket, self.dia_chi, self.vi_tri, self.ket_qua, self.username, self.time])
 
 
+# ID TICKET ROA BIET THU
+class Ticket_roa_bt(db.Model):
+    __tablename__ = "id_ticket_roa_biet_thu"
+    id_ticket = db.Column('id_ticket', String, nullable = False, primary_key = True)
+    ten_du_an = db.Column('ten_du_an', String, nullable = False)
+    roa = db.Column('roa', String, nullable = False)
+    dia_chi = db.Column('dia_chi', String, nullable = False)
+    username = db.Column('username', String, nullable = False)
+    time = db.Column('time', String, nullable = False, primary_key = True)
+    def __init__(self, id_ticket, ten_du_an, roa, dia_chi, username, time):
+        self.id_ticket = id_ticket
+        self.ten_du_an = ten_du_an
+        self.roa = roa
+        self.dia_chi = dia_chi
+        self.username = username
+        self.time = time
+    def __repr__(self):
+        return str([self.id_ticket, self.ten_du_an, self.roa, self.dia_chi, self.username, self.time])
+
+
+# ID TICKET ROA CHUNG CU
+class Ticket_roa_cc(db.Model):
+    __tablename__ = "id_ticket_roa_chung_cu"
+    id_ticket = db.Column('id_ticket', String, nullable = False, primary_key = True)
+    ten_du_an = db.Column('ten_du_an', String, nullable = False)
+    roa = db.Column('roa', String, nullable = False)
+    dia_chi = db.Column('dia_chi', String, nullable = False)
+    username = db.Column('username', String, nullable = False)
+    time = db.Column('time', String, nullable = False, primary_key = True)
+    def __init__(self, id_ticket, ten_du_an, roa, dia_chi, username, time):
+        self.id_ticket = id_ticket
+        self.ten_du_an = ten_du_an
+        self.roa = roa
+        self.dia_chi = dia_chi
+        self.username = username
+        self.time = time
+    def __repr__(self):
+        return str([self.id_ticket, self.ten_du_an, self.roa, self.dia_chi, self.username, self.time])
+
+
+
+# ID TICKET ROA THO CU
+class Ticket_roa_tc(db.Model):
+    __tablename__ = "id_ticket_roa_tho_cu"
+    id_ticket = db.Column('id_ticket', String, nullable = False, primary_key = True)
+    dia_chi = db.Column('dia_chi', String, nullable = False)
+    vi_tri = db.Column('vi_tri', String, nullable = False)
+    roa = db.Column('roa', String, nullable = False)
+    username = db.Column('username', String, nullable = False)
+    time = db.Column('time', String, nullable = False, primary_key = True)
+    def __init__(self, id_ticket, dia_chi, vi_tri, roa, username, time):
+        self.id_ticket = id_ticket
+        self.dia_chi = dia_chi
+        self.vi_tri = vi_tri
+        self.roa = roa
+        self.username = username
+        self.time = time
+    def __repr__(self):
+        return str([self.id_ticket, self.dia_chi, self.vi_tri, self.roa, self.username, self.time])
+
+
+# ID TICKET ROA NGHI DUONG
+class Ticket_roa_nd(db.Model):
+    __tablename__ = "id_ticket_roa_nghi_duong"
+    id_ticket = db.Column('id_ticket', String, nullable = False, primary_key = True)
+    ten_du_an = db.Column('ten_du_an', String, nullable = False)
+    roa = db.Column('roa', String, nullable = False)
+    dia_chi = db.Column('dia_chi', String, nullable = False)
+    username = db.Column('username', String, nullable = False)
+    time = db.Column('time', String, nullable = False, primary_key = True)
+    def __init__(self, id_ticket, ten_du_an, roa, dia_chi, username, time):
+        self.id_ticket = id_ticket
+        self.ten_du_an = ten_du_an
+        self.roa = roa
+        self.dia_chi = dia_chi
+        self.username = username
+        self.time = time
+    def __repr__(self):
+        return str([self.id_ticket, self.ten_du_an, self.roa, self.dia_chi, self.username, self.time])
+ 
+
 # KHUNG GIA UY BAN
 class Khung_gia_uy_ban(db.Model):
     __tablename__ = "Khung_gia_uy_ban"
@@ -518,6 +599,7 @@ class ROA_tho_cu(db.Model):
     def __repr__(self):
         return str([self.Tinh_thanh, self.Quan, self.Duong, self.Doan_duong, self.Vi_tri, self.dia_chi, self.roa1, self.roa2, self.roa3, self.roa4, self.roa5, self.roa6, self.roa7, self.roa8])
 
+
 # ROA CHUNG CU
 class ROA_chung_cu(db.Model):
     __tablename__ = "roa_chung_cu"
@@ -552,9 +634,44 @@ class ROA_chung_cu(db.Model):
     def __repr__(self):
         return str([self.ten_du_an, self.ten_toa_duong_day_khu, self.ten_tang_loai_nha, self.ma_can, self.dia_chi, self.roa1, self.roa2, self.roa3, self.roa4, self.roa5, self.roa6, self.roa7, self.roa8])
 
+
 # ROA BIET THU
 class ROA_biet_thu(db.Model):
     __tablename__ = "roa_biet_thu"
+    ten_du_an = db.Column('ten_du_an', String, primary_key = True, nullable = False)
+    ten_duong = db.Column('ten_duong', String, primary_key = True, nullable = False)
+    ten_tang = db.Column('ten_tang', String, primary_key = True, nullable = False)
+    ma_can = db.Column('ma_can', String, primary_key = True, nullable = False)
+    dia_chi = db.Column('dia_chi', String, primary_key = True, nullable = False)
+    roa1 = db.Column('roa1', String, primary_key = True, nullable = True)
+    roa2 = db.Column('roa2', String, primary_key = True, nullable = True)
+    roa3 = db.Column('roa3', String, primary_key = True, nullable = True)
+    roa4 = db.Column('roa4', String, primary_key = True, nullable = True)
+    roa5 = db.Column('roa5', String, primary_key = True, nullable = True)
+    roa6 = db.Column('roa6', String, primary_key = True, nullable = True)
+    roa7 = db.Column('roa7', String, primary_key = True, nullable = True)
+    roa8 = db.Column('roa8', String, primary_key = True, nullable = True)
+    def __init__(self, ten_du_an, ten_duong, ten_tang, ma_can, dia_chi, roa1, roa2, roa3, roa4, roa5, roa6, roa7, roa8):
+        self.ten_du_an = ten_du_an
+        self.ten_duong = ten_duong
+        self.ten_tang = ten_tang
+        self.ma_can = ma_can
+        self.dia_chi = dia_chi
+        self.roa1 = roa1
+        self.roa2 = roa2
+        self.roa3 = roa3
+        self.roa4 = roa4
+        self.roa5 = roa5
+        self.roa6 = roa6
+        self.roa7 = roa7
+        self.roa8 = roa8
+    def __repr__(self):
+        return str([self.ten_du_an, self.ten_duong, self.ten_tang, self.ma_can, self.dia_chi, self.roa1, self.roa2, self.roa3, self.roa4, self.roa5, self.roa6, self.roa7, self.roa8])
+
+
+# ROA NGHI DUONG
+class ROA_biet_thu(db.Model):
+    __tablename__ = "roa_nghi_duong"
     ten_du_an = db.Column('ten_du_an', String, primary_key = True, nullable = False)
     ten_duong = db.Column('ten_duong', String, primary_key = True, nullable = False)
     ten_tang = db.Column('ten_tang', String, primary_key = True, nullable = False)
