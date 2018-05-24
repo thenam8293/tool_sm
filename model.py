@@ -554,14 +554,14 @@ class ROA_biet_thu(db.Model):
     ten_duong = db.Column('ten_duong', String, primary_key = True, nullable = False)
     ten_tang = db.Column('ten_tang', String, primary_key = True, nullable = False)
     ma_can = db.Column('ma_can', String, primary_key = True, nullable = False)
-    roa1 = db.Column('roa1', String, primary_key = True)
-    roa2 = db.Column('roa2', String, primary_key = True)
-    roa3 = db.Column('roa3', String, primary_key = True)
-    roa4 = db.Column('roa4', String, primary_key = True)
-    roa5 = db.Column('roa5', String, primary_key = True)
-    roa6 = db.Column('roa6', String, primary_key = True)
-    roa7 = db.Column('roa7', String, primary_key = True)
-    roa8 = db.Column('roa8', String, primary_key = True)
+    roa1 = db.Column('roa1', String, primary_key = True, nullable = True)
+    roa2 = db.Column('roa2', String, primary_key = True, nullable = True)
+    roa3 = db.Column('roa3', String, primary_key = True, nullable = True)
+    roa4 = db.Column('roa4', String, primary_key = True, nullable = True)
+    roa5 = db.Column('roa5', String, primary_key = True, nullable = True)
+    roa6 = db.Column('roa6', String, primary_key = True, nullable = True)
+    roa7 = db.Column('roa7', String, primary_key = True, nullable = True)
+    roa8 = db.Column('roa8', String, primary_key = True, nullable = True)
     def __init__(self, ten_du_an, ten_duong, ten_tang, ma_can, roa1, roa2, roa3, roa4, roa5, roa6, roa7, roa8):
         self.ten_du_an = ten_du_an
         self.ten_duong = ten_duong
