@@ -55,11 +55,9 @@ for i in range(1,sheet.nrows):
     name4 = sheet.cell(i,3).value.strip()
     name5 = sheet.cell(i,4).value.strip()
     name6 = str(sheet.cell(i,5).value).strip()
-    name8 = ''
+    name8 = 'Chưa xác định'
     name9 = name4 + ', ' + name3  + ', '+ name2  + ', '+ name1
     name10 = 'MB'
-
-
     # name9 = i
     r = [name1, name2, name3, name4, name5, '0', name6, name8, name9, name10]
     print(r)
@@ -118,7 +116,6 @@ for i in range(1,sheet.nrows):
 # n = xlrd.open_workbook(r'quy_hoach.xlsx')
 # sheet = n.sheet_by_index(0)
 # print (sheet.nrows)
-
 # for i in range(1,sheet.nrows):
 #     print (i)
 #     name1 = sheet.cell(i,0).value
